@@ -14,6 +14,7 @@
 - Target children aged 3–4 using an Amazon Kindle E Ink reader's built-in browser.
 - Support early math, literacy, shape recognition, branching stories, and simple games.
 - Use simple interactions that aim to be usable with minimal adult help.
+- The child is not yet reading. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
 - Design natural stopping points for suggested 10–15 minute sessions, without speed pressure, endless questions, or reward mechanics that encourage repeated clicking.
 - Activities may use selectable answers, immediate feedback, scores, and question navigation.
 
@@ -30,7 +31,7 @@
 
 ## Evidence, documentation, and tasks
 
-- The Kindle model, firmware, browser capabilities, and deployment status are currently unknown or unverified.
+- The exact Kindle model and firmware remain unknown. GitHub Pages has deployed successfully; the owner reported that v0.1 worked well on their Kindle. New graphics and individual device checks still require verification.
 - Record important technical decisions in reusable repository documentation, with rationale and validation status.
 - Use docs/TASK_TEMPLATE.md when preparing Codex development tasks; include concrete implementation steps and acceptance criteria.
 - Report what was changed, how it was verified, and what still requires actual Kindle testing.

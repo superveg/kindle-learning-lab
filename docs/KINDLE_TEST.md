@@ -1,5 +1,9 @@
 # Kindle Hub Test Checklist
 
+## Owner report — 2026-10-09
+
+The owner reported that v0.1 worked well on their Kindle and that the buttons worked correctly. Exact model and firmware, and results for individual checklist items, were not supplied. Do not mark every check below as passed from this general report. Recheck the new v0.2 embedded PNG icons, navigation symbols, selected borders, and pictured shape target on the device.
+
 Use the deployed page in the actual Kindle's built-in browser. This is a short grown-up compatibility check, not an assessment of the child.
 
 ## Device record

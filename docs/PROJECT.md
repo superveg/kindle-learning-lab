@@ -29,6 +29,7 @@ Build interactive learning content for children aged 3–4 using Kindle E Ink re
 
 - Target age: 3–4 years.
 - Keep operation simple and minimize the need for adult assistance.
+- The child is not yet reading. Use pictograms for activity selection, navigation, feedback, and story choices; minimize visible text while retaining numerals and letters as learning content.
 - Design activities for suggested 10–15 minute sessions.
 - Avoid endless question flows, incentives for repeated clicking, and complex reward systems.
 - Emphasize learning, exploration, and understanding rather than answering speed.
@@ -53,4 +54,4 @@ Keep repository changes focused on the Kindle children's interactive learning sy
 - Browser support for the selected HTML, CSS, and JavaScript features.
 - On-device text and button sizes, tap response, and E Ink refresh behavior.
 - Continued interaction after initial loading during a disconnection; offline reopening or reloading requires separate validation.
-- GitHub Pages configuration, deployment, and access from the target device.
+- GitHub Pages deployment has succeeded. The owner reported that v0.1 worked well on their Kindle; the v0.2 pictogram interface needs a device recheck. See [pictogram decisions and test status](PICTOGRAMS.md).
