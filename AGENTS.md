@@ -31,7 +31,7 @@
 
 ## Evidence, documentation, and tasks
 
-- The exact Kindle model and firmware remain unknown. GitHub Pages has deployed successfully; the owner reported that v0.1 worked well on their Kindle. New graphics and individual device checks still require verification.
+- The exact Kindle model and firmware remain unknown. GitHub Pages has deployed successfully. On 2026-10-09 the owner reported that the localStorage marker test and all four v0.4 capability checks passed on their Kindle: counting restoration, nine-cell selection, manual local updates, and the tested simple SVG/PNG comparison. See docs/CAPABILITY_TESTS.md. Treat this as evidence for those tested behaviors on that device; offline behavior, other SVG features, and other Kindle models remain unverified.
 - Record important technical decisions in reusable repository documentation, with rationale and validation status.
 - Use docs/TASK_TEMPLATE.md when preparing Codex development tasks; include concrete implementation steps and acceptance criteria.
 - Report what was changed, how it was verified, and what still requires actual Kindle testing.
