@@ -36,3 +36,11 @@
 - Use docs/TASK_TEMPLATE.md when preparing Codex development tasks; include concrete implementation steps and acceptance criteria.
 - Report what was changed, how it was verified, and what still requires actual Kindle testing.
 - Desktop or iPhone browser checks do not establish Kindle compatibility.
+
+## Delivery workflow
+
+- The owner has authorized routine project changes to be implemented, checked, pushed, and merged without a manual PR review or another confirmation request.
+- Use a feature branch and PR when useful for change history, then merge it autonomously after appropriate checks. A PR is not a handoff requiring the owner to act.
+- Let the existing GitHub Pages deployment run after merging; inspect deployment status and report the live page link.
+- The owner validates the result by opening the deployed page on their device and providing feedback.
+- Report development checks and device-testing limitations accurately. Continue to explain changes to project scope or technical direction before implementing them.
