@@ -1,5 +1,7 @@
 # Hub v0.1 — Design Decisions
 
+This document records the initial version. [Pictogram interface decisions](PICTOGRAMS.md) supersede the text-heavy navigation, feedback, and image-free representation in v0.2. The owner has since reported that v0.1 worked well on their Kindle; the model and firmware remain unknown.
+
 ## Purpose
 
 Validate the entry layout, text size, touch targets, navigation, simple feedback, and screen refresh behavior before expanding the learning content. These samples are intentionally shorter than a full 10–15 minute activity.

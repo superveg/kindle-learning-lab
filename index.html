@@ -37,71 +37,80 @@
       .tiles .tile { display: inline-block; width: 47%; margin-right: 2%; vertical-align: top; min-height: 134px; }
       .answers button { display: inline-block; width: 30%; margin-right: 2%; vertical-align: top; }
     }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+    .tile { text-align: center; }
+    .tile-icon { display: block; width: 110px; height: 110px; margin: 0 auto; }
+    .nav-icon { display: inline-block; width: 42px; height: 42px; vertical-align: middle; }
+    .feedback-icon { display: inline-block; width: 56px; height: 56px; vertical-align: middle; }
+    .hero-icon { display: block; width: 140px; height: 140px; margin: 0 auto; }
+    .choice-icon { display: block; width: 110px; height: 110px; margin: 0 auto; }
+    .back { text-align: center; }
+    .adult-link { font-size: 18px; }
+    .status { text-align: center; min-height: 82px; }
+    .objects { text-align: center; padding: 12px; }
+    .target { border: 3px solid #000; text-align: center; padding: 8px; margin: 18px 0; }
+    .target .shape { margin: 16px auto; }
+    .shape-answers button, .story-choices button { display: inline-block; width: 47%; margin-right: 2%; vertical-align: top; padding: 10px 2px; }
+    .shape-answers .shape { width: 76px; height: 76px; margin: 18px auto; }
+    .chosen { background: #fff; color: #000 !important; border: 6px double #000; }
+    .progress { text-align: center; margin: 20px 0; }
+    .dot { display: inline-block; width: 16px; height: 16px; border: 2px solid #000; border-radius: 50%; margin: 0 8px; }
+    .dot.current { background: #000; }
+    @media (min-width: 540px) { .tiles .tile { min-height: 154px; } }
   </style>
 </head>
 <body>
 <div id="app">
   <div id="home" class="screen">
     <p class="eyebrow">KINDLE LEARNING LAB</p>
-    <h1>Let's explore.</h1>
-    <p>Choose a little activity.</p>
-    <div class="tiles">
-      <a class="tile" href="#count" id="open-count"><strong>1 2 3 &nbsp; Count</strong><span>Count the blocks. Three questions.</span></a>
-      <a class="tile" href="#shapes" id="open-shapes"><strong>Shapes</strong><span>Find a circle. One question.</span></a>
-      <a class="tile" href="#letters" id="open-letters"><strong>A B C &nbsp; Letters</strong><span>Match a letter. One question.</span></a>
-      <a class="tile" href="#story" id="open-story"><strong>Little story</strong><span>Choose where a rabbit goes.</span></a>
-    </div>
-    <p class="small">Short samples. Take your time.</p>
-    <a class="back" href="#check" id="open-check">Grown-up: screen check</a>
+    <h1>Play</h1>
+    <div class="tiles"><a class="tile" href="#count" id="open-count" aria-label="Count the blocks"><img class="tile-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAABKklEQVR42u3d0Q2AMAhFUZ9x/5XpFI1Azl1A0xP6WVJVj/b2OgLAAizAAizAAizAgAVYgAVYgAVYgAELsAALsAALsAALMGABFmABFmABFmDAAizA6tE399eT/PXpQc8imGBXtAALsAALsAALMGABFmABFmABFmDAAizAAizAAizAAgxYgAVYgAVYgAUYsAALsAALsAALMGABFmB1LIPe9JIJFmDAAizAAizAAizAgAVYgAVYgAVYgAUYsBZ0fXfhxA2Dm7YimmBXtAALsAALsAALMGABFmABFmABFmDAAizAAizAAizAAgxYgAVYgAVYgAUYsAALsAALsAALMGABFmB1zO5CEyzAAizAAizAAgxYgAVYgAVYgAUYsAALsAALsAALsAADFmC17gANjhM5CgBJDQAAAABJRU5ErkJggg==" alt="" width="160" height="160"><span class="sr-only">Count the blocks</span></a>
+<a class="tile" href="#shapes" id="open-shapes" aria-label="Match shapes"><img class="tile-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAACaElEQVR42u3dQW7CMBBA0Sbi/lemi+4QhCaxPTP2++uKUD+NExCE7fl8/mjedksAWIAFWIAFWIAFGLAAC7AAC7AACzBgARZgAdbIHrGH37bt+A98ZOzuCo9fwa+osEsCX3YlnR24IS3mXMCdaDHHAw+gxRz2MmmwbsgR153gU2v99ehtHw3wINoLB+364IDbADQ51rADAT6x6ONPBIybXWSFrHXbk/fE9X0vuusY/T04yL4TfLC+YzbJg6Owvwscrsu4I3ASXcbdL7KSXL66bG4J/GksYlf509FXHmIf2QFcZHwNcd8JznMKdDK+BVx3FNYc4n3KoTHELrIAz7jLLbhLN5jgnPuhXdoWDVhLAb89gWXeCd8+t9VOwyYYsAALsAALsAALMGAB1nTA5d75K/feqgkWYDUHzrlL+1bSFeDqJ7AFP+ZhiwZccD+0P18HrrvLrfkxvH2+oTG+d4Ezf8Er8xfjXGQpDXDOITa+IyY4ytiptzFwqvuepLojzDwTnMSYbsctOtyY7nGPAas/x03l173ICrkvqLvN/neh3C8acPs90x3fSwJf2JD9ZkM94KjLn5v/SKFLtlP/6Z5wrUsccfWXScNux4428nVwV2a08cCdmNHmAn5R8fvBcwK/dfKG1ITAhfzCn97985qP7EweYMACLMACLMACLMCABViABViABViAAQuwAAuwAAuwAAswYAEWYAEWYAEWYMACLMACLMACLMCABViABVjDe1iCgyb45R4TbIsWYAEWYAHW6RcC7plvggVYgAVYgAVYgAELsAALsAALsAADFmABFmABFmABFuD5+wUDzBsZ5Nec0gAAAABJRU5ErkJggg==" alt="" width="160" height="160"><span class="sr-only">Match shapes</span></a>
+<a class="tile" href="#letters" id="open-letters" aria-label="Match letters"><img class="tile-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAACwElEQVR42u3dwXLUMBAEUHsq///Ly2EpLiHABq+s6Xl9hBwkt54cKanN+Xg8DslNeQQKFgWLgkXBomBRsChYwaJgUbAoWBQsChYFK1gULAoWBYuCRcGi4OM4zvO85Gv65iN+CT/7++1vB2dX+3OOwb8X/bm/X5P9w3/ZottXPgFufsFftfjqvytYFLzlN89DEBNM8Ay+qYgJJngM30jEBBM8iW8eYoIJFgUn7c9huzTBBM/jm4R4nOBpnwtW+GYj9g4mOIjvc39+aZfujphggrP4fuNbrdaICSY4ju8oxAQT3D9fYZ1w6dG14PV7ZtNdusbyHYK48M1GXJP5TkBc+GYjruF84xEXvtmIXXQ4B/fk++qum3pzSTDBA/gGIyaY4Bl8UxETTHCr/P+VRdilR4OCd94J99+lC99sxIVv9ggL32zEBUf2OB2THJM6sHjHjppx6UEwwSP5xiAmmOCpfDMQE0zwxllzHdH60mO7grt/ZMJu4y98sxGX5Z89i8I3G3FZ+NlzcUxyTNpvyd+1W3a89CCYYHw7I+7394NH/e3QBMHZhd0+O+9ggkXB9udt50gwwfh2ninBBOPbeb4EE4xv51kTnL6q1t/dN/rRQsCMCPYOxvfScS5+ExNMcAcWRrtFwX5Wv/45FBDZYy58sxEXCtkjL3yzERcE2eMvfLMRu+gIT221SDM+IXKrm0uCCca3M2KCCca3M2KCCZ53OZA0r3cV7HJjkydWlnn27ArfbMSFb/YcC99sxI5JjklvW4AT9udvzPRaxAQTjG9nxAQTjG9nxASnn7uuxfQv624m37se0cUfRvocmbuONdv4DYL/ulSH813/ZKrRYgR3L8GfF6zK1z+Tj2XL04v5lh3upCo7zsEKFgWLgkXBomBRsChYwaJgUbAoWBQsChYFK1gULAoWBYuCRcGiYDmO4/gBxjcekHkvI6AAAAAASUVORK5CYII=" alt="" width="160" height="160"><span class="sr-only">Match letters</span></a>
+<a class="tile" href="#story" id="open-story" aria-label="Rabbit story"><img class="tile-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAECElEQVR42u2d247bMAxEV4L//5fdhwJFkHST+CJqZnTmqUCxNjXHpCVHptu+7z8oVx0LAIwAjACMAIwAjACMAAxgBGAEYARgNFibfoittX//nv7TiFQwXwWsHOWjm4+aErNUMAkl+jdD3//XCsEkAP7oWqWtUsEkAP7SrxpbpYJJAHzIqdG2SgUTO4t+nMVMN1EqGL8MfrXsaY76OmUd57JUMIGzaJQG+GPGVOaNVDCZGfzmAUL9swWpYCwBX7zw780bqWC4ByNDwB/rXmVhlArGEvAtNe2uwigVDCUaGQL+suLVFEapYCwB31jNrh9KKhhKNAIwgLEAwIozrJqpjVQwloBvn4lcOaBUMJRoBGAEYAAjACMAj1tpjFucSAVjCXjQKuLcYaWCoUQjACMAAxgBGAEYARgBGAEYARjACMAIwAjACMAIwAjAAEYAHqJBO5jOHVYqmNgMPrGDqbLT3cRgKNEIwEtqCx7boYKZ+qHsbXGuyrdPANc1BPfN78mA9323mKyeI61wWZi19G+tza2lbwKgpb90NT4RjEXd3oLRHgJw+k4hjnlLQnvF66e//f7U4pglPm335OahmVdB/OdKiAjyzTRxp/SLdlwr+62DJ2bG31N7Ye5GzPZ9V6h7ImG4roNdPP0YkkiiK06yBKcqvvF33Bl6i5mex5Mz2PSz2kbD6dhRkMoT87hDN5txh2424w7dbMYdutmMnZ5kxTCOBfzfizeV7pvRVSZxh242Yza+h6uTvtlJ3KXGvBrjEMCpLw1YONNJ3+xRd9I3O4k3uwv5dQtmMYOLm3NXfJJ15Xove//MtCb1YndGHK2+i0PNuCwz+HR9+/hSWvHVWfNCzXIlGgEYVQFmgaTgVWkGr/l8Y64PPcOUEZbVn3H1e/BvntZ/YZZ3k+oYj/a6/oz3itdHw6cOLJNYJiEAIwAjACN3wDy8rPdhIGAeTCp4RYkO15Y9vC+LYXCx6ZqOV5a+YrpRm+5E+pZZR8g9GIkBrl8s6fzqF9jCQWT+Ivur3+gwtLrslFk5hW5slx2eeEx0Rq4R2uIrclfA03uRCNKtKWwsk1gmkcS26fujsPE9m/H07jNd1gUmVpaABTsqF9PNf310BcY6PVentfQfZMEtV8mgGDK77KyWx2r9kmdOsvIYC3bDnv/dpIDP6iiPYv4ySfmjQwHXaBPJkvcsdb/OKx920/HuY75KYXaJtnm5JlH0HIIUBSzuoBdaXcCHpldSn3hXzBblpcjRWfSNY5l46oUAX1wsHRqaS+/JQMCya2KPj1d7bXkUwez0iM1xT+tEzHZ2NetNy2WkfV1qMbvSb4ed4UwLfu3gEPJUHxrvlWSLje8ARgBGAEYARgBGAEYABjACMPLQH7dLTTzvvF/pAAAAAElFTkSuQmCC" alt="" width="160" height="160"><span class="sr-only">Rabbit story</span></a>
+</div>
+    <a class="back adult-link" href="#check" id="open-check">Grown-up check</a>
   </div>
-
-  <div id="count" class="screen">
-    <a href="#home" class="back" id="count-home">Back to activities</a>
-    <p id="count-progress" class="small">Question 1 of 3</p>
-    <h2>How many blocks?</h2>
+  <div id="count" class="screen"><a href="#home" class="back" id="count-home" aria-label="Back to activities"><img class="nav-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAB3ElEQVR42u3dUW7bQBAFwfAh97+y8pEDGAgUkeqtPgF3yguNYRq6Xq/XL3WbEQAWYAEWYAEWYAEGLMACLMACLMACDFiABViABfg/dl0X4LjuUcY78+6eY7wDdY8yvvLvRf8I2Z7ADtfNX+Udrps3Ht228ei2jUe3bZzaot/IkxnL6Lav8ui2jUe3bTy6bePRbRt/6xZ9y9C/cVaj277Ko9s2Ht228ei2jUe3bfwFW/TDR/nwAY5u+wlndu3nnKm1n3bm1X7mmVT7yZ+1RWf+zP6cqY5u+ywzkfaJZhbtc80U2qcb3fYZb9uiT/tP+7tW69Ftn3p022cf3fYERrdtPLpt409s0WhvXK1Ht32VR7dtPLpt49FtG49u2/jNWzTap63Wo9u+yqPbNh7dtvHoto1Ht23871s02q9YrUe3fZVHt208um3jD71V6cfijR+rN/werMcGGLAAC7AAC7AACzBgARZgARZgARZgwAIswAKsj/a7dJg3vsPmG8AFWIAFWIAFGLAAC7AAC7AAC7AAAxZgARZgARZgAQYswAIswAIswAIMWIAFWIAFWIAFWIABC7AAC7AAC7AAn9iHviBabrAAC7AAAxZgARZgARZgAQYswAIswAIswAKsv/0BS/ZHKhV9SlkAAAAASUVORK5CYII=" alt="" width="160" height="160"><span class="sr-only">Back to activities</span></a>
+    <p id="count-progress" class="sr-only">Question 1 of 3</p>
+    <div id="count-dots" class="progress" aria-hidden="true"></div>
+    <h2 class="sr-only">How many blocks?</h2>
     <div id="blocks" class="objects"><span class="object"></span><span class="object"></span></div>
-    <div class="answers" id="count-answers">
-      <button type="button" disabled>1</button><button type="button" disabled>2</button><button type="button" disabled>3</button>
+    <div class="answers" id="count-answers"><button type="button" disabled>1</button><button type="button" disabled>2</button><button type="button" disabled>3</button></div>
+    <div class="status" aria-live="polite"><span id="count-feedback" class="sr-only">Tap a number.</span><span id="count-yes" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAC5klEQVR42u3cW27rMAwFQDv737PvR4GiuEgfsCWKIud8Bm2BcCKbbBKe13UdUjcvJQAsgAWwABbAAlgAAxbAAlgAC2ABLIABC2ABLIAFsAAWwAIYsAAWwAJYAAtgAQxYAAtgASwfOc8TcHHdecaAs5zdScaAE12Zz/Mczgy4+C0ZcEbFgcaAk57RUcaA816BhxgDTn1/fW4MOHv39LC1BrxHb3z71wFvM/nc+yOAt8m9vcCA9zi+t7c+A66sC3gDXWNScd2HK/kBV9YFXFwXcLWhCHD9thlwI13AxXUBlxp5AbdomwE30gVcXBdwqZEXcIu2GXAjXcDVhiLALRorwF10ARfXBVxtKAJcv20G3EgXcHFdwKVGXsAt2mbAjXQBVxuKALdorKKBt+tTyuhGAM9e1Ud3JXDAqj5D0TLgt6v6tM1FgL8rVlrjkrqzgMP29NFdABy5p8/IGw0cvKdP2xwKHL+nj24c8O09fXQ3AH5SqVXGJfuAKcDPKxVf68Jt82DgUZWKNO6jOwB44JPc65q5he6YS/Rexh0aq/FN1i7G3XRHjkn5jRvqHmP/0ZHZuMlQNBc4rXGrtnkucELjzrrHpLcL8xg31z3mveFfaT7eV/eY+pGd5cY92+Y44LXGdCOAVxm3HYoWAMcba6yigSON6a4BjjGmuxJ4l9mpku4R/+3Cecba5hTAk4zpfluiVc8q2yRTUvdY+AXwqgUFnNG48KvtpbK1ryWv5vUtf6dIsYRlVZU79AFZtuzE17pJl5dojVJkxfv08Ln2ZJmdigPHGLd6GWXcdDcVoNtFIukqw0kMDW8BeXdVDsfoeYNPvYx0IEnb9i37ttkhMJ2b8w3WCf/Mc13Xrz9gTNrV+PNxA/TewG8J/3vk7VEGv9PG969av55puvsBf5r95aZL9yOnQjjBAlgAC2ABLIAFMGABLIAFsAAWwAIYsAAWwAJYAAtgASyAAQtgASyABbAAFsCABbBsk384um9KJRH3TwAAAABJRU5ErkJggg==" alt="Correct" width="160" height="160"></span><span id="count-retry" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAADDklEQVR42u3dS27jMBAE0CGh+1/Zsxggq0Eg2xLZXXp1gdD9XLQ+djRer9cfyc00AsACWAALYAEsgAUwYAEsgAWwABbAAvh/GWMAzjfOZrZFh1cZcHiVAYczAw7fsQGHVxlwODPg8B0bcHiVAYczAw7fsQGHVxlwODPgcGbA4R/MI/jno1uGXm2eUcB1alRnqu2By+6NRQbbGLjFicr28fYD7njJcOOQZy/apheENy67R4Nj7sCvn/aBNnuXnnSzP4MPtNlH0Qfd7PPgSTdYt1aD76D9fdDr/+Jzga+a9cb51jzhPDJ0tw+37OWEo7su2tLA3+iirQ78sS7aBsCf6VaYbK/7bwfdVNpy58Fo78isX1+6nRrcSzfgG4kH3VTabVs03cwGv1XfXSPO+xnAQTeVtugWTbdfg8/Xd/2g45/s9+hfFz7huY3zyfV9QqYyAV508CyxDVZfB1lSD/jk/qy+Giz1gNVXgyUdWH01WEoCu76hwfZnW7QAFsCAHWEBdoQFWAALYAEsgAUwYAEsgAWwABbAUgvYHafGwO4UabAAFsBSGthxVmNgx1kaLA8AtktrsFQFPvkxrMQa3D5738Q3Aivxz6vb+HD6Q8PWV3nlaeQs9cofsjmvLPS9wK54/M6/gHkWf7PHH1vd/cJvBz5f4iTjOv9E2WmS82Alblvfig3ublxt/YuA33qr9jUu+PSgdQ2ON675bKiZMS+rLQH87tu2i3Hlh26ubnCecfFHqm7YopOM6z8wt8fdpH9zLHVlu8vHR6d/hFZnpp+tZMsbdGysxcdg1twD+MtSLl55o6UWAv5+412w/vorLA18yYfrTa+i7MKaAV94AHXJyym1mBDgmw6SN36zs0pzqn1tKuCWcKmRTtPJXv80o+yVj8rTbLRdlx3jNLXsdY4WQyxb5frTG40+8Eoxd5nbaHdEs52518RG30PWxdJNBzW6n3cuYG49opH0A8ALsWPGMoJ/4Vnzi8qA5cr4dSFgASyABbAAFsACGLAAFsACWAALYAEMWAALYAEsgAWwnMxfUBZ+U3p/+KUAAAAASUVORK5CYII=" alt="Try again" width="160" height="160"></span></div>
+    <button id="count-next" type="button" disabled aria-label="Next question"><img class="nav-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAB10lEQVR42u3d0RGCMAAFwcSx/5axBHUiAsdeCey8HzKBuW3bULeHRwBYgAVYgAVYgAUYsAALsAALsAALMGABFmABFmABFmABBizAAizAAizAAvyuOSdgxoAZA2YMmDFgxoDvbAz4U+OLMgOOTxlw3Bhw3Bhw3Bhw3Bhw3Bhw3Bhw3Bhw3Bhw3Bhw3Bjwj43Pxgw4PmXAcWPAcWPAcWPAcWPAcWPAcWPAcWPAcWPAcWPAcWPAcWPAhxn/hxlwfMqA48aA48aA48Zz8RfvsU+WHNuihQXfcceA48aA48aA48aA48aA48aAz268yAw4PmXAcWPAcWPAcWPAcWPAcWPA1+urQyfAZV3AcV3AcV3AcV3Acd0xxtPjq9JacF8XcFwXcFwXcFwXcFwXcFx3rF9d6XXUZZydICw4u13AfV3AcV3Acd3hXXSY1oL7uoDjuoDjuoDjuoDjuoDjuoDjuoDjuoDjuoDjuoDjuoDjusNhQ5jWgvu6gOO6gOO6gOO6gOO6gOO6gOO6gOO6gOO6gOO6gOO6w7voMK0F93UBx3UBx3UBx3UBx3UBx3UBx3UB9wMMWIAFWIAFWIAFGLAAC7AAC7AACzBgARZgARZgARZgAQYswAIswNqpF35bpkmkXKSVAAAAAElFTkSuQmCC" alt="" width="160" height="160"><span class="sr-only">Next question</span></button>
+  </div>
+  <div id="shapes" class="screen"><a href="#home" class="back" id="shapes-home" aria-label="Back to activities"><img class="nav-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAB3ElEQVR42u3dUW7bQBAFwfAh97+y8pEDGAgUkeqtPgF3yguNYRq6Xq/XL3WbEQAWYAEWYAEWYAEGLMACLMACLMACDFiABViABfg/dl0X4LjuUcY78+6eY7wDdY8yvvLvRf8I2Z7ADtfNX+Udrps3Ht228ei2jUe3bZzaot/IkxnL6Lav8ui2jUe3bTy6bePRbRt/6xZ9y9C/cVaj277Ko9s2Ht228ei2jUe3bfwFW/TDR/nwAY5u+wlndu3nnKm1n3bm1X7mmVT7yZ+1RWf+zP6cqY5u+ywzkfaJZhbtc80U2qcb3fYZb9uiT/tP+7tW69Ftn3p022cf3fYERrdtPLpt409s0WhvXK1Ht32VR7dtPLpt49FtG49u2/jNWzTap63Wo9u+yqPbNh7dtvHoto1Ht23871s02q9YrUe3fZVHt208um3jD71V6cfijR+rN/werMcGGLAAC7AAC7AACzBgARZgARZgARZgwAIswAKsj/a7dJg3vsPmG8AFWIAFWIAFGLAAC7AAC7AAC7AAAxZgARZgARZgAQYswAIswAIswAIMWIAFWIAFWIAFWIABC7AAC7AAC7AAn9iHviBabrAAC7AAAxZgARZgARZgAQYswAIswAIswAKsv/0BS/ZHKhV9SlkAAAAASUVORK5CYII=" alt="" width="160" height="160"><span class="sr-only">Back to activities</span></a>
+    <h2 class="sr-only">Find the matching circle.</h2>
+    <div class="target" aria-label="Target: circle"><span class="shape circle" style="display:block"></span></div>
+    <div class="shape-answers">
+      <button id="shape-square" type="button" disabled aria-label="Square"><span class="shape" style="display:block"></span></button>
+      <button id="shape-circle" type="button" disabled aria-label="Circle"><span class="shape circle" style="display:block"></span></button>
     </div>
-    <p id="count-feedback" class="status" aria-live="polite">Tap a number.</p>
-    <button id="count-next" type="button" disabled>Next question</button>
+    <div class="status" aria-live="polite"><span id="shapes-feedback" class="sr-only">Tap the matching shape.</span><span id="shapes-yes" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAC5klEQVR42u3cW27rMAwFQDv737PvR4GiuEgfsCWKIud8Bm2BcCKbbBKe13UdUjcvJQAsgAWwABbAAlgAAxbAAlgAC2ABLIABC2ABLIAFsAAWwAIYsAAWwAJYAAtgAQxYAAtgASwfOc8TcHHdecaAs5zdScaAE12Zz/Mczgy4+C0ZcEbFgcaAk57RUcaA816BhxgDTn1/fW4MOHv39LC1BrxHb3z71wFvM/nc+yOAt8m9vcCA9zi+t7c+A66sC3gDXWNScd2HK/kBV9YFXFwXcLWhCHD9thlwI13AxXUBlxp5AbdomwE30gVcXBdwqZEXcIu2GXAjXcDVhiLALRorwF10ARfXBVxtKAJcv20G3EgXcHFdwKVGXsAt2mbAjXQBVxuKALdorKKBt+tTyuhGAM9e1Ud3JXDAqj5D0TLgt6v6tM1FgL8rVlrjkrqzgMP29NFdABy5p8/IGw0cvKdP2xwKHL+nj24c8O09fXQ3AH5SqVXGJfuAKcDPKxVf68Jt82DgUZWKNO6jOwB44JPc65q5he6YS/Rexh0aq/FN1i7G3XRHjkn5jRvqHmP/0ZHZuMlQNBc4rXGrtnkucELjzrrHpLcL8xg31z3mveFfaT7eV/eY+pGd5cY92+Y44LXGdCOAVxm3HYoWAMcba6yigSON6a4BjjGmuxJ4l9mpku4R/+3Cecba5hTAk4zpfluiVc8q2yRTUvdY+AXwqgUFnNG48KvtpbK1ryWv5vUtf6dIsYRlVZU79AFZtuzE17pJl5dojVJkxfv08Ln2ZJmdigPHGLd6GWXcdDcVoNtFIukqw0kMDW8BeXdVDsfoeYNPvYx0IEnb9i37ttkhMJ2b8w3WCf/Mc13Xrz9gTNrV+PNxA/TewG8J/3vk7VEGv9PG969av55puvsBf5r95aZL9yOnQjjBAlgAC2ABLIAFMGABLIAFsAAWwAIYsAAWwAJYAAtgASyAAQtgASyABbAAFsCABbBsk384um9KJRH3TwAAAABJRU5ErkJggg==" alt="Correct" width="160" height="160"></span><span id="shapes-retry" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAADDklEQVR42u3dS27jMBAE0CGh+1/Zsxggq0Eg2xLZXXp1gdD9XLQ+djRer9cfyc00AsACWAALYAEsgAUwYAEsgAWwABbAAvh/GWMAzjfOZrZFh1cZcHiVAYczAw7fsQGHVxlwODPg8B0bcHiVAYczAw7fsQGHVxlwODPgcGbA4R/MI/jno1uGXm2eUcB1alRnqu2By+6NRQbbGLjFicr28fYD7njJcOOQZy/apheENy67R4Nj7sCvn/aBNnuXnnSzP4MPtNlH0Qfd7PPgSTdYt1aD76D9fdDr/+Jzga+a9cb51jzhPDJ0tw+37OWEo7su2tLA3+iirQ78sS7aBsCf6VaYbK/7bwfdVNpy58Fo78isX1+6nRrcSzfgG4kH3VTabVs03cwGv1XfXSPO+xnAQTeVtugWTbdfg8/Xd/2g45/s9+hfFz7huY3zyfV9QqYyAV508CyxDVZfB1lSD/jk/qy+Giz1gNVXgyUdWH01WEoCu76hwfZnW7QAFsCAHWEBdoQFWAALYAEsgAUwYAEsgAWwABbAUgvYHafGwO4UabAAFsBSGthxVmNgx1kaLA8AtktrsFQFPvkxrMQa3D5738Q3Aivxz6vb+HD6Q8PWV3nlaeQs9cofsjmvLPS9wK54/M6/gHkWf7PHH1vd/cJvBz5f4iTjOv9E2WmS82Alblvfig3ublxt/YuA33qr9jUu+PSgdQ2ON675bKiZMS+rLQH87tu2i3Hlh26ubnCecfFHqm7YopOM6z8wt8fdpH9zLHVlu8vHR6d/hFZnpp+tZMsbdGysxcdg1twD+MtSLl55o6UWAv5+412w/vorLA18yYfrTa+i7MKaAV94AHXJyym1mBDgmw6SN36zs0pzqn1tKuCWcKmRTtPJXv80o+yVj8rTbLRdlx3jNLXsdY4WQyxb5frTG40+8Eoxd5nbaHdEs52518RG30PWxdJNBzW6n3cuYG49opH0A8ALsWPGMoJ/4Vnzi8qA5cr4dSFgASyABbAAFsACGLAAFsACWAALYAEMWAALYAEsgAWwnMxfUBZ+U3p/+KUAAAAASUVORK5CYII=" alt="Try again" width="160" height="160"></span></div>
   </div>
-
-  <div id="shapes" class="screen">
-    <a href="#home" class="back" id="shapes-home">Back to activities</a>
-    <p class="small">One question</p>
-    <h2>Find the circle.</h2>
-    <button id="shape-square" type="button" disabled aria-label="Square"><span class="shape" style="display:block"></span>Square</button>
-    <button id="shape-circle" type="button" disabled aria-label="Circle"><span class="shape circle" style="display:block"></span>Circle</button>
-    <p id="shapes-feedback" class="status" aria-live="polite">Tap a shape.</p>
+  <div id="letters" class="screen"><a href="#home" class="back" id="letters-home" aria-label="Back to activities"><img class="nav-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAB3ElEQVR42u3dUW7bQBAFwfAh97+y8pEDGAgUkeqtPgF3yguNYRq6Xq/XL3WbEQAWYAEWYAEWYAEGLMACLMACLMACDFiABViABfg/dl0X4LjuUcY78+6eY7wDdY8yvvLvRf8I2Z7ADtfNX+Udrps3Ht228ei2jUe3bZzaot/IkxnL6Lav8ui2jUe3bTy6bePRbRt/6xZ9y9C/cVaj277Ko9s2Ht228ei2jUe3bfwFW/TDR/nwAY5u+wlndu3nnKm1n3bm1X7mmVT7yZ+1RWf+zP6cqY5u+ywzkfaJZhbtc80U2qcb3fYZb9uiT/tP+7tW69Ftn3p022cf3fYERrdtPLpt409s0WhvXK1Ht32VR7dtPLpt49FtG49u2/jNWzTap63Wo9u+yqPbNh7dtvHoto1Ht23871s02q9YrUe3fZVHt208um3jD71V6cfijR+rN/werMcGGLAAC7AAC7AACzBgARZgARZgARZgwAIswAKsj/a7dJg3vsPmG8AFWIAFWIAFGLAAC7AAC7AAC7AAAxZgARZgARZgAQYswAIswAIswAIMWIAFWIAFWIAFWIABC7AAC7AAC7AAn9iHviBabrAAC7AAAxZgARZgARZgAQYswAIswAIswAKsv/0BS/ZHKhV9SlkAAAAASUVORK5CYII=" alt="" width="160" height="160"><span class="sr-only">Back to activities</span></a>
+    <h2 class="sr-only">Find the same letter.</h2>
+    <p class="big-letter target">A</p>
+    <div class="answers"><button id="letter-b" type="button" disabled>B</button><button id="letter-a" type="button" disabled>A</button><button id="letter-c" type="button" disabled>C</button></div>
+    <div class="status" aria-live="polite"><span id="letters-feedback" class="sr-only">Tap the matching letter.</span><span id="letters-yes" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAC5klEQVR42u3cW27rMAwFQDv737PvR4GiuEgfsCWKIud8Bm2BcCKbbBKe13UdUjcvJQAsgAWwABbAAlgAAxbAAlgAC2ABLIABC2ABLIAFsAAWwAIYsAAWwAJYAAtgAQxYAAtgASwfOc8TcHHdecaAs5zdScaAE12Zz/Mczgy4+C0ZcEbFgcaAk57RUcaA816BhxgDTn1/fW4MOHv39LC1BrxHb3z71wFvM/nc+yOAt8m9vcCA9zi+t7c+A66sC3gDXWNScd2HK/kBV9YFXFwXcLWhCHD9thlwI13AxXUBlxp5AbdomwE30gVcXBdwqZEXcIu2GXAjXcDVhiLALRorwF10ARfXBVxtKAJcv20G3EgXcHFdwKVGXsAt2mbAjXQBVxuKALdorKKBt+tTyuhGAM9e1Ud3JXDAqj5D0TLgt6v6tM1FgL8rVlrjkrqzgMP29NFdABy5p8/IGw0cvKdP2xwKHL+nj24c8O09fXQ3AH5SqVXGJfuAKcDPKxVf68Jt82DgUZWKNO6jOwB44JPc65q5he6YS/Rexh0aq/FN1i7G3XRHjkn5jRvqHmP/0ZHZuMlQNBc4rXGrtnkucELjzrrHpLcL8xg31z3mveFfaT7eV/eY+pGd5cY92+Y44LXGdCOAVxm3HYoWAMcba6yigSON6a4BjjGmuxJ4l9mpku4R/+3Cecba5hTAk4zpfluiVc8q2yRTUvdY+AXwqgUFnNG48KvtpbK1ryWv5vUtf6dIsYRlVZU79AFZtuzE17pJl5dojVJkxfv08Ln2ZJmdigPHGLd6GWXcdDcVoNtFIukqw0kMDW8BeXdVDsfoeYNPvYx0IEnb9i37ttkhMJ2b8w3WCf/Mc13Xrz9gTNrV+PNxA/TewG8J/3vk7VEGv9PG969av55puvsBf5r95aZL9yOnQjjBAlgAC2ABLIAFMGABLIAFsAAWwAIYsAAWwAJYAAtgASyAAQtgASyABbAAFsCABbBsk384um9KJRH3TwAAAABJRU5ErkJggg==" alt="Correct" width="160" height="160"></span><span id="letters-retry" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAADDklEQVR42u3dS27jMBAE0CGh+1/Zsxggq0Eg2xLZXXp1gdD9XLQ+djRer9cfyc00AsACWAALYAEsgAUwYAEsgAWwABbAAvh/GWMAzjfOZrZFh1cZcHiVAYczAw7fsQGHVxlwODPg8B0bcHiVAYczAw7fsQGHVxlwODPgcGbA4R/MI/jno1uGXm2eUcB1alRnqu2By+6NRQbbGLjFicr28fYD7njJcOOQZy/apheENy67R4Nj7sCvn/aBNnuXnnSzP4MPtNlH0Qfd7PPgSTdYt1aD76D9fdDr/+Jzga+a9cb51jzhPDJ0tw+37OWEo7su2tLA3+iirQ78sS7aBsCf6VaYbK/7bwfdVNpy58Fo78isX1+6nRrcSzfgG4kH3VTabVs03cwGv1XfXSPO+xnAQTeVtugWTbdfg8/Xd/2g45/s9+hfFz7huY3zyfV9QqYyAV508CyxDVZfB1lSD/jk/qy+Giz1gNVXgyUdWH01WEoCu76hwfZnW7QAFsCAHWEBdoQFWAALYAEsgAUwYAEsgAWwABbAUgvYHafGwO4UabAAFsBSGthxVmNgx1kaLA8AtktrsFQFPvkxrMQa3D5738Q3Aivxz6vb+HD6Q8PWV3nlaeQs9cofsjmvLPS9wK54/M6/gHkWf7PHH1vd/cJvBz5f4iTjOv9E2WmS82Alblvfig3ublxt/YuA33qr9jUu+PSgdQ2ON675bKiZMS+rLQH87tu2i3Hlh26ubnCecfFHqm7YopOM6z8wt8fdpH9zLHVlu8vHR6d/hFZnpp+tZMsbdGysxcdg1twD+MtSLl55o6UWAv5+412w/vorLA18yYfrTa+i7MKaAV94AHXJyym1mBDgmw6SN36zs0pzqn1tKuCWcKmRTtPJXv80o+yVj8rTbLRdlx3jNLXsdY4WQyxb5frTG40+8Eoxd5nbaHdEs52518RG30PWxdJNBzW6n3cuYG49opH0A8ALsWPGMoJ/4Vnzi8qA5cr4dSFgASyABbAAFsACGLAAFsACWAALYAEMWAALYAEsgAWwnMxfUBZ+U3p/+KUAAAAASUVORK5CYII=" alt="Try again" width="160" height="160"></span></div>
   </div>
-
-  <div id="letters" class="screen">
-    <a href="#home" class="back" id="letters-home">Back to activities</a>
-    <p class="small">One question</p>
-    <h2>Find the same letter.</h2>
-    <p class="big-letter">A</p>
-    <div class="answers">
-      <button id="letter-b" type="button" disabled>B</button><button id="letter-a" type="button" disabled>A</button><button id="letter-c" type="button" disabled>C</button>
+  <div id="story" class="screen"><a href="#home" class="back" id="story-home" aria-label="Back to activities"><img class="nav-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAB3ElEQVR42u3dUW7bQBAFwfAh97+y8pEDGAgUkeqtPgF3yguNYRq6Xq/XL3WbEQAWYAEWYAEWYAEGLMACLMACLMACDFiABViABfg/dl0X4LjuUcY78+6eY7wDdY8yvvLvRf8I2Z7ADtfNX+Udrps3Ht228ei2jUe3bZzaot/IkxnL6Lav8ui2jUe3bTy6bePRbRt/6xZ9y9C/cVaj277Ko9s2Ht228ei2jUe3bfwFW/TDR/nwAY5u+wlndu3nnKm1n3bm1X7mmVT7yZ+1RWf+zP6cqY5u+ywzkfaJZhbtc80U2qcb3fYZb9uiT/tP+7tW69Ftn3p022cf3fYERrdtPLpt409s0WhvXK1Ht32VR7dtPLpt49FtG49u2/jNWzTap63Wo9u+yqPbNh7dtvHoto1Ht23871s02q9YrUe3fZVHt208um3jD71V6cfijR+rN/werMcGGLAAC7AAC7AACzBgARZgARZgARZgwAIswAKsj/a7dJg3vsPmG8AFWIAFWIAFGLAAC7AAC7AAC7AAAxZgARZgARZgAQYswAIswAIswAIMWIAFWIAFWIAFWIABC7AAC7AAC7AAn9iHviBabrAAC7AAAxZgARZgARZgAQYswAIswAIswAKsv/0BS/ZHKhV9SlkAAAAASUVORK5CYII=" alt="" width="160" height="160"><span class="sr-only">Back to activities</span></a>
+    <h2 class="sr-only">A little rabbit</h2>
+    <p class="sr-only">The rabbit goes for a walk. Where will it go?</p>
+    <div class="story-picture"><img class="hero-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAECElEQVR42u2d247bMAxEV4L//5fdhwJFkHST+CJqZnTmqUCxNjXHpCVHptu+7z8oVx0LAIwAjACMAIwAjACMAAxgBGAEYARgNFibfoittX//nv7TiFQwXwWsHOWjm4+aErNUMAkl+jdD3//XCsEkAP7oWqWtUsEkAP7SrxpbpYJJAHzIqdG2SgUTO4t+nMVMN1EqGL8MfrXsaY76OmUd57JUMIGzaJQG+GPGVOaNVDCZGfzmAUL9swWpYCwBX7zw780bqWC4ByNDwB/rXmVhlArGEvAtNe2uwigVDCUaGQL+suLVFEapYCwB31jNrh9KKhhKNAIwgLEAwIozrJqpjVQwloBvn4lcOaBUMJRoBGAEYAAjACMAj1tpjFucSAVjCXjQKuLcYaWCoUQjACMAAxgBGAEYARgBGAEYARjACMAIwAjACMAIwAjAAEYAHqJBO5jOHVYqmNgMPrGDqbLT3cRgKNEIwEtqCx7boYKZ+qHsbXGuyrdPANc1BPfN78mA9323mKyeI61wWZi19G+tza2lbwKgpb90NT4RjEXd3oLRHgJw+k4hjnlLQnvF66e//f7U4pglPm335OahmVdB/OdKiAjyzTRxp/SLdlwr+62DJ2bG31N7Ye5GzPZ9V6h7ImG4roNdPP0YkkiiK06yBKcqvvF33Bl6i5mex5Mz2PSz2kbD6dhRkMoT87hDN5txh2424w7dbMYdutmMnZ5kxTCOBfzfizeV7pvRVSZxh242Yza+h6uTvtlJ3KXGvBrjEMCpLw1YONNJ3+xRd9I3O4k3uwv5dQtmMYOLm3NXfJJ15Xove//MtCb1YndGHK2+i0PNuCwz+HR9+/hSWvHVWfNCzXIlGgEYVQFmgaTgVWkGr/l8Y64PPcOUEZbVn3H1e/BvntZ/YZZ3k+oYj/a6/oz3itdHw6cOLJNYJiEAIwAjACN3wDy8rPdhIGAeTCp4RYkO15Y9vC+LYXCx6ZqOV5a+YrpRm+5E+pZZR8g9GIkBrl8s6fzqF9jCQWT+Ivur3+gwtLrslFk5hW5slx2eeEx0Rq4R2uIrclfA03uRCNKtKWwsk1gmkcS26fujsPE9m/H07jNd1gUmVpaABTsqF9PNf310BcY6PVentfQfZMEtV8mgGDK77KyWx2r9kmdOsvIYC3bDnv/dpIDP6iiPYv4ySfmjQwHXaBPJkvcsdb/OKx920/HuY75KYXaJtnm5JlH0HIIUBSzuoBdaXcCHpldSn3hXzBblpcjRWfSNY5l46oUAX1wsHRqaS+/JQMCya2KPj1d7bXkUwez0iM1xT+tEzHZ2NetNy2WkfV1qMbvSb4ed4UwLfu3gEPJUHxrvlWSLje8ARgBGAEYARgBGAEYABjACMPLQH7dLTTzvvF/pAAAAAElFTkSuQmCC" alt="Rabbit" width="160" height="160"></div>
+    <div class="story-choices">
+      <button id="story-garden" type="button" disabled aria-label="To the garden"><img class="choice-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAADz0lEQVR42u3d227rMAxEUTvI//+y+9A2CJrCN0n2zHDz9aAniVZISY5Mz8uyTERuPBgCgAmACYAJgAmACYAJgAEmACYAJgAmAO4Y8zxXA35W+8D/Ggf/pEaJpkQTAFtMnwUnYI85eDRM9pmWp5HrPM8cMEoArllLWWRhnwJMHS69TSKJE4BJ4roZfC6Jy+a9LvA1Sdz+KuJfHS5VdtBVNpYGXkkvhTF9fw+yxmRwT29B5of1gAq+upqxOrDmfmlFUe0Ne5fonenSN6uMdD2Ax43aif/Zbj9tv8jSGXHN2cQDWGTsvIoz26R8XSfgey96mOqSwfnhBHxXEvumb4kMbrS31o0CPgq5h8dd1w/4ymHNOCMQVaIvIzE6UeQHfM3gBhTnzEVWlySO0XUFHjrKSbr526SjCZ13+NIVuPGix4lcND2qzaXK2OKcDNz3ZLz1bRbGwB3HPVU3uURzj1oCcJf0Ck7f8EXWniTO1k0AbmGI15UD7jhxrgh9/1ORSVquCcv7uO9Mo2VZXn/VJfOSbj+X7pN1CPuQSoXi/PNJpT7P/rJ5+m2vv0Re6whX4EaVOj1n5XrHNa59Wgo1wDkL6c+XS+3rkwy80zu7BaYB8J932OUbUKcPl19L/3eb09gndtsAgw2wFXaGt8ciq/FNVp62FReQm+sssCuWaKZtgCtO26WBR+y21ZIb4PBKDvAV2DemMsDDse8t1B6H7jT7bi9vIbuhMnuszvwb4ht3nUXWbNevV20QlXUT5mDNX+x13owN8GvI1lutXzyy+me7jH8P/ndwr0xoi5N7xiX6XmmXGyMS9sHrt6KMkBZfWGVe6NicpAvqTkZ3Fx7aOH1efOg1+l66U/bTRzcvM8XrTkW67AxtBEDH94Qw1QU4XBfgcF2Aw3UBDtc1A77y6mCGrjTwjUMZo0uJ9vjCATw8fWknjC7ALOIAZlMEMLrRwCOqaLCuOvD6EA99BlZMsw7vIzuN563idY2B/9ickK6gO0U+u7Clkz9tlOSm5xOHouvoTgHHZo9Kl9Kd6pyLrtYH3HgO3pxijx6Vze5V+XDJyxN/uEc6vu1s/qVK5f4KACvWBoAN5uw6DcEf6AIcpVstyj0/uFT6TtUe8V5N1xV4vfaiawbc5amTNXXTSjS6ycDoJgOjmwyMbjIwusnA6G7GM4wWXcsM3m+GbvI+GN1kYHSTgdEtUaKJTGDSNxkY3WRgdHOAPy3RTc5gdJOB0U0GRjcZGN1kYHQr7oMJgAEmACYAJgAmACYAJgAmAAaYAJgAmACYAJgAmAAYYAJgwiu+ANqzXDE6Oas4AAAAAElFTkSuQmCC" alt="Carrot garden" width="160" height="160"></button>
+      <button id="story-pond" type="button" disabled aria-label="To the pond"><img class="choice-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAADx0lEQVR42u2dSXLDMAwETZX+/2XnkKVS3m0RwAzYc01FJtECSQmLxvl8PqG+2jABgBGAEYARgBGAEYARgAGMAIwAjACMAIwAjAAMYARgBGAEYARgBGAEYARgACMAIwAjACMAIwAjAAMYARgBGGlodxnoGOPBX+lTcNdu4qZ5zBXSxoDfRQtmG8BH0IJZGvAstGBWPEVH0I27LB48H8O9oR75XwA7PQLxKKUI+AGVz8Y2/YIAnk/3+KjirswhS4LBkQ0bwIGa6GE8B1cCvulJ05HcvOBSTry19F38uBhwuQ+t48SbhfuOX+HEBoDf4nTB9QjmNZ1403dfduJWj0mvONni8YM+gJEf4GvnS1s8r39ohZVA2oPvsecVFUs0+pF62uy3s/6tpfiuNGDeVPQEzFNNT8BwbQsYtD0Bw1VQIy77Se0MVfiOxdKD8deegOG60BI9EXb0apmTAtbtkPVnIEe3XuTlyfzEd8HXVSuXGu+hntFgw3Y/e+eVrlTVAEbfZOo9MPLHl1kDmLmEaJKuLD6Lrg+r2iC0miasVl24Gmnqg8NvlGIXosI/B3mVnenRkce7xNRCbZTids2qaJUCZvpkFcwic0hyne6MAhg6j/vLebDFvpO0cTTbg0VfJ9W1/FE/Rb8YkdQPAFQxln4ObhayLZmmbm1Sv4B8yYw2zfu6a7pFflunjTu99+w2QfddUHF22HDf3nOkALy59t7T+7/05YccFFYjPLi5FgKccKATPDNuvTFcLJKhAC4u/mB9zrwPigHnNzHM+XjPu/OKs4PiEj2dwTXjiT9xfbWnnXNTjSkbbMgpmppeXPkB3VAEa0WTjsccj1yhJJpkEw/WP+gK0j1ZZHToV6Q9HSEZHc/tHjTO6NJhcrLmb5OhsO0+pGj5gWj3z9IvnRf91srpmPO7dGXDxxukYJWzyCCH+3KnuVXr3ILDIoOisEiX+mAnzMmiwr8naXp09CRNl52epOmT1Y03ne5aIXe3z+CLNb1F2iyAEYARgBGAEYARgBGAAYwAjACMrAHr51d0auHz8Vz2ub9allp2Z/5GXdaCbsc9YZRqn0IqpJ6/qOwls3rRmpnmmFUfprYv1LRRMtod3Tfy4fspOf1VIWgKlYBzDOr4Dcuq811Nyo5F0dHJrUpFCPBNU7pkhxkN9UTSXXvxqhLACMAIwAjASAow4UKLuRAubH47Ei5MpU64sMwchAsX3R0JF6qYg3BhBuAcgxIuFAJ80JqECy0B3zQl4cLOgFGQeFUJYARgBGAEYARgBGAEYAAjACMPfQFZVncSBF4l0AAAAABJRU5ErkJggg==" alt="Duck pond" width="160" height="160"></button>
     </div>
-    <p id="letters-feedback" class="status" aria-live="polite">Tap a letter.</p>
+    <div class="status" aria-live="polite"><span id="story-feedback" class="sr-only">Choose a place. Both are good choices.</span><span id="story-yes" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAAC5klEQVR42u3cW27rMAwFQDv737PvR4GiuEgfsCWKIud8Bm2BcCKbbBKe13UdUjcvJQAsgAWwABbAAlgAAxbAAlgAC2ABLIABC2ABLIAFsAAWwAIYsAAWwAJYAAtgAQxYAAtgASwfOc8TcHHdecaAs5zdScaAE12Zz/Mczgy4+C0ZcEbFgcaAk57RUcaA816BhxgDTn1/fW4MOHv39LC1BrxHb3z71wFvM/nc+yOAt8m9vcCA9zi+t7c+A66sC3gDXWNScd2HK/kBV9YFXFwXcLWhCHD9thlwI13AxXUBlxp5AbdomwE30gVcXBdwqZEXcIu2GXAjXcDVhiLALRorwF10ARfXBVxtKAJcv20G3EgXcHFdwKVGXsAt2mbAjXQBVxuKALdorKKBt+tTyuhGAM9e1Ud3JXDAqj5D0TLgt6v6tM1FgL8rVlrjkrqzgMP29NFdABy5p8/IGw0cvKdP2xwKHL+nj24c8O09fXQ3AH5SqVXGJfuAKcDPKxVf68Jt82DgUZWKNO6jOwB44JPc65q5he6YS/Rexh0aq/FN1i7G3XRHjkn5jRvqHmP/0ZHZuMlQNBc4rXGrtnkucELjzrrHpLcL8xg31z3mveFfaT7eV/eY+pGd5cY92+Y44LXGdCOAVxm3HYoWAMcba6yigSON6a4BjjGmuxJ4l9mpku4R/+3Cecba5hTAk4zpfluiVc8q2yRTUvdY+AXwqgUFnNG48KvtpbK1ryWv5vUtf6dIsYRlVZU79AFZtuzE17pJl5dojVJkxfv08Ln2ZJmdigPHGLd6GWXcdDcVoNtFIukqw0kMDW8BeXdVDsfoeYNPvYx0IEnb9i37ttkhMJ2b8w3WCf/Mc13Xrz9gTNrV+PNxA/TewG8J/3vk7VEGv9PG969av55puvsBf5r95aZL9yOnQjjBAlgAC2ABLIAFMGABLIAFsAAWwAIYsAAWwAJYAAtgASyAAQtgASyABbAAFsCABbBsk384um9KJRH3TwAAAABJRU5ErkJggg==" alt="Correct" width="160" height="160"></span><span id="story-retry" style="display:none"><img class="feedback-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAADDklEQVR42u3dS27jMBAE0CGh+1/Zsxggq0Eg2xLZXXp1gdD9XLQ+djRer9cfyc00AsACWAALYAEsgAUwYAEsgAWwABbAAvh/GWMAzjfOZrZFh1cZcHiVAYczAw7fsQGHVxlwODPg8B0bcHiVAYczAw7fsQGHVxlwODPgcGbA4R/MI/jno1uGXm2eUcB1alRnqu2By+6NRQbbGLjFicr28fYD7njJcOOQZy/apheENy67R4Nj7sCvn/aBNnuXnnSzP4MPtNlH0Qfd7PPgSTdYt1aD76D9fdDr/+Jzga+a9cb51jzhPDJ0tw+37OWEo7su2tLA3+iirQ78sS7aBsCf6VaYbK/7bwfdVNpy58Fo78isX1+6nRrcSzfgG4kH3VTabVs03cwGv1XfXSPO+xnAQTeVtugWTbdfg8/Xd/2g45/s9+hfFz7huY3zyfV9QqYyAV508CyxDVZfB1lSD/jk/qy+Giz1gNVXgyUdWH01WEoCu76hwfZnW7QAFsCAHWEBdoQFWAALYAEsgAUwYAEsgAWwABbAUgvYHafGwO4UabAAFsBSGthxVmNgx1kaLA8AtktrsFQFPvkxrMQa3D5738Q3Aivxz6vb+HD6Q8PWV3nlaeQs9cofsjmvLPS9wK54/M6/gHkWf7PHH1vd/cJvBz5f4iTjOv9E2WmS82Alblvfig3ublxt/YuA33qr9jUu+PSgdQ2ON675bKiZMS+rLQH87tu2i3Hlh26ubnCecfFHqm7YopOM6z8wt8fdpH9zLHVlu8vHR6d/hFZnpp+tZMsbdGysxcdg1twD+MtSLl55o6UWAv5+412w/vorLA18yYfrTa+i7MKaAV94AHXJyym1mBDgmw6SN36zs0pzqn1tKuCWcKmRTtPJXv80o+yVj8rTbLRdlx3jNLXsdY4WQyxb5frTG40+8Eoxd5nbaHdEs52518RG30PWxdJNBzW6n3cuYG49opH0A8ALsWPGMoJ/4Vnzi8qA5cr4dSFgASyABbAAFsACGLAAFsACWAALYAEMWAALYAEsgAWwnMxfUBZ+U3p/+KUAAAAASUVORK5CYII=" alt="Try again" width="160" height="160"></span></div>
   </div>
-
-  <div id="story" class="screen">
-    <a href="#home" class="back" id="story-home">Back to activities</a>
-    <p class="small">Read together. One choice.</p>
-    <h2>A little rabbit</h2>
-    <p>The rabbit goes for a walk. Where will it go?</p>
-    <button id="story-garden" type="button" disabled>To the garden</button>
-    <button id="story-pond" type="button" disabled>To the pond</button>
-    <p id="story-feedback" class="status" aria-live="polite">Choose a place. Both are good choices.</p>
-  </div>
-
   <div id="check" class="screen">
     <a href="#home" class="back" id="check-home">Back to activities</a>
     <h2>Screen check</h2>
     <p id="script-status">JavaScript has not started.</p>
-    <p class="small">Prototype v0.1. Kindle compatibility is pending an actual device test.</p>
+    <p class="small">Prototype v0.2. The previous version worked well in an owner-reported Kindle test. New pictograms need a device recheck.</p>
     <p class="sample">Aa Bb Cc &nbsp; 1 2 3<br>Can you read this comfortably?</p>
     <button type="button" id="text-size" disabled>Larger text</button>
     <p>Tap each button once.</p>
@@ -125,6 +134,19 @@
   var checked = [false, false, false];
   function el(id) { return document.getElementById(id); }
   function text(id, value) { el(id).innerHTML = ''; el(id).appendChild(document.createTextNode(value)); }
+  function feedback(id, value, state) {
+    text(id + '-feedback', value);
+    el(id + '-yes').style.display = state === 'yes' ? 'inline' : 'none';
+    el(id + '-retry').style.display = state === 'retry' ? 'inline' : 'none';
+  }
+  function dots() {
+    var i, dot;
+    el('count-dots').innerHTML = '';
+    for (i = 0; i < 3; i += 1) {
+      dot = document.createElement('span'); dot.className = 'dot' + (i <= question ? ' current' : '');
+      el('count-dots').appendChild(dot);
+    }
+  }
   function show(id) {
     var i;
     for (i = 0; i < screens.length; i += 1) { el(screens[i]).style.display = screens[i] === id ? 'block' : 'none'; }
@@ -135,8 +157,8 @@
     var i, block, button;
     answered = false;
     firstTry = true;
-    text('count-progress', 'Question ' + (question + 1) + ' of 3');
-    text('count-feedback', 'Tap a number.');
+    text('count-progress', 'Question ' + (question + 1) + ' of 3'); dots();
+    feedback('count', 'Tap a number.', '');
     el('blocks').innerHTML = '';
     for (i = 0; i < counts[question]; i += 1) { block = document.createElement('span'); block.className = 'object'; el('blocks').appendChild(block); }
     el('count-answers').innerHTML = '';
@@ -144,48 +166,52 @@
       button = document.createElement('button'); button.type = 'button'; button.appendChild(document.createTextNode(i));
       button.onclick = (function (value) { return function () {
         if (answered) { return; }
-        if (value !== counts[question]) { firstTry = false; text('count-feedback', 'Try counting each block.'); return; }
+        if (value !== counts[question]) { firstTry = false; feedback('count', 'Try counting each block.', 'retry'); return; }
         answered = true;
         if (firstTry) { score += 1; }
         this.className = 'chosen';
-        text('count-feedback', 'Yes! ' + value + (value === 1 ? ' block.' : ' blocks.'));
+        feedback('count', 'Yes! ' + value + (value === 1 ? ' block.' : ' blocks.'), 'yes');
         el('count-next').disabled = false;
       }; }(i));
       el('count-answers').appendChild(button);
     }
     el('count-next').style.display = 'block'; el('count-next').disabled = true;
-    text('count-next', question === 2 ? 'Finish' : 'Next question');
+    el('count-next').setAttribute('aria-label', question === 2 ? 'Finish' : 'Next question');
   }
   function resetChoices(ids, feedback, prompt) {
     var i;
     for (i = 0; i < ids.length; i += 1) { el(ids[i]).disabled = false; el(ids[i]).className = ''; }
     text(feedback, prompt);
+    el(feedback.replace('-feedback', '-yes')).style.display = 'none';
+    el(feedback.replace('-feedback', '-retry')).style.display = 'none';
   }
   function finishChoices(ids, selected) {
     var i;
     for (i = 0; i < ids.length; i += 1) { el(ids[i]).disabled = true; }
     el(selected).className = 'chosen';
   }
-  bind('open-count', function () { question = 0; score = 0; renderCount(); show('count'); });
+  bind('open-count', function () { question = 0; score = 0; el('count-dots').style.display = 'block'; renderCount(); show('count'); });
   bind('count-next', function () {
     if (!answered) { return; }
     if (question < 2) { question += 1; renderCount(); }
     else {
       text('count-progress', 'All 3 questions complete');
-      text('count-feedback', 'All done! First-try answers: ' + score + ' of 3. Time for a break.');
+      feedback('count', 'All done! First-try answers: ' + score + ' of 3. Time for a break.', 'yes');
+      el('blocks').innerHTML = '';
+      el('count-dots').style.display = 'none';
       el('count-answers').innerHTML = ''; el('count-next').style.display = 'none';
     }
   });
   bind('open-shapes', function () { resetChoices(['shape-square', 'shape-circle'], 'shapes-feedback', 'Tap a shape.'); show('shapes'); });
-  bind('shape-square', function () { text('shapes-feedback', 'That is a square. Look for the round shape.'); });
-  bind('shape-circle', function () { finishChoices(['shape-square', 'shape-circle'], 'shape-circle'); text('shapes-feedback', 'Yes! A circle is round. All done.'); });
+  bind('shape-square', function () { feedback('shapes', 'That is a square. Look for the round shape.', 'retry'); });
+  bind('shape-circle', function () { finishChoices(['shape-square', 'shape-circle'], 'shape-circle'); feedback('shapes', 'Yes! A circle is round. All done.', 'yes'); });
   bind('open-letters', function () { resetChoices(['letter-a', 'letter-b', 'letter-c'], 'letters-feedback', 'Tap a letter.'); show('letters'); });
-  bind('letter-a', function () { finishChoices(['letter-a', 'letter-b', 'letter-c'], 'letter-a'); text('letters-feedback', 'Yes! A matches A. All done.'); });
-  bind('letter-b', function () { text('letters-feedback', 'That is B. Look for A.'); });
-  bind('letter-c', function () { text('letters-feedback', 'That is C. Look for A.'); });
+  bind('letter-a', function () { finishChoices(['letter-a', 'letter-b', 'letter-c'], 'letter-a'); feedback('letters', 'Yes! A matches A. All done.', 'yes'); });
+  bind('letter-b', function () { feedback('letters', 'That is B. Look for A.', 'retry'); });
+  bind('letter-c', function () { feedback('letters', 'That is C. Look for A.', 'retry'); });
   bind('open-story', function () { resetChoices(['story-garden', 'story-pond'], 'story-feedback', 'Choose a place. Both are good choices.'); show('story'); });
-  bind('story-garden', function () { finishChoices(['story-garden', 'story-pond'], 'story-garden'); text('story-feedback', 'In the garden, the rabbit finds a carrot. It eats, then rests. The end.'); });
-  bind('story-pond', function () { finishChoices(['story-garden', 'story-pond'], 'story-pond'); text('story-feedback', 'By the pond, the rabbit sees a duck. It waves, then goes home. The end.'); });
+  bind('story-garden', function () { finishChoices(['story-garden', 'story-pond'], 'story-garden'); feedback('story', 'In the garden, the rabbit finds a carrot. It eats, then rests. The end.', 'yes'); });
+  bind('story-pond', function () { finishChoices(['story-garden', 'story-pond'], 'story-pond'); feedback('story', 'By the pond, the rabbit sees a duck. It waves, then goes home. The end.', 'yes'); });
   bind('open-check', function () { show('check'); });
   bind('text-size', function () {
     var large = document.body.className !== 'large';

@@ -7,13 +7,23 @@ const { JSDOM } = require('jsdom');
 const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 acorn.parse(script, { ecmaVersion: 5 });
-assert.equal(/<(?:script|img|link)\b[^>]*(?:src|href)=/i.test(html), false);
+assert.equal(/<(?:script|link)\b[^>]*(?:src|href)=/i.test(html), false);
 const dom = new JSDOM(html, {
   runScripts: 'dangerously',
   url: 'https://example.test/kindle-learning-lab/',
   beforeParse(window) { window.scrollTo = function () {}; }
 });
 const doc = dom.window.document;
+for (const image of doc.getElementsByTagName('img')) {
+  assert.match(image.getAttribute('src'), /^data:image\/png;base64,/);
+}
+for (const tile of doc.querySelectorAll('.tile')) {
+  assert.ok(tile.querySelector('img'));
+  assert.ok(tile.getAttribute('aria-label'));
+}
+assert.equal(doc.getElementById('shape-square').textContent.trim(), '');
+assert.equal(doc.getElementById('shape-circle').textContent.trim(), '');
+assert.ok(doc.querySelector('#shapes .target .circle'));
 function el(id) { return doc.getElementById(id); }
 function tap(id) { el(id).click(); }
 function answer(value) {
@@ -26,10 +36,13 @@ tap('open-count'); visible('count');
 assert.equal(el('count-next').disabled, true);
 tap('count-next'); assert.equal(el('count-progress').textContent, 'Question 1 of 3');
 answer(1); assert.equal(el('count-next').disabled, true);
+assert.equal(el('count-retry').style.display, 'inline');
 answer(2); answer(2); tap('count-next');
+assert.equal(el('count-retry').style.display, 'none');
 answer(3); answer(3); tap('count-next');
 answer(1); answer(1); tap('count-next');
 assert.match(el('count-feedback').textContent, /First-try answers: 2 of 3/);
+assert.equal(el('count-yes').style.display, 'inline');
 assert.equal(el('count-next').style.display, 'none');
 tap('count-home'); tap('open-count');
 assert.equal(el('count-progress').textContent, 'Question 1 of 3');
@@ -38,6 +51,7 @@ assert.match(el('count-feedback').textContent, /First-try answers: 3 of 3/);
 tap('count-home'); tap('open-shapes'); tap('shape-square');
 assert.match(el('shapes-feedback').textContent, /Look for/);
 tap('shape-circle'); assert.equal(el('shape-square').disabled, true);
+assert.equal(el('shapes-yes').style.display, 'inline');
 tap('shapes-home'); tap('open-shapes'); assert.equal(el('shape-square').disabled, false);
 tap('shapes-home'); tap('open-letters'); tap('letter-c'); tap('letter-a');
 assert.match(el('letters-feedback').textContent, /All done/);
@@ -60,4 +74,4 @@ const fallback = new JSDOM(html);
 assert.equal(fallback.window.document.getElementById('shape-circle').disabled, true);
 assert.ok(fallback.window.document.querySelector('noscript'));
 fallback.window.close();
-console.log('PASS: ES5 syntax, self-contained assets, navigation, scoring, retries, completion, reset, story branches, text size, touch state, static fallback. Rendering and actual Kindle remain pending.');
+console.log('PASS: ES5 syntax, embedded PNG assets, navigation, scoring, visual feedback state, retries, completion, reset, story branches, text size, touch state, static fallback. New graphics on Kindle remain pending.');

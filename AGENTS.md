@@ -14,6 +14,7 @@
 - Target children aged 3–4 using an Amazon Kindle E Ink reader's built-in browser.
 - Support early math, literacy, shape recognition, branching stories, and simple games.
 - Use simple interactions that aim to be usable with minimal adult help.
+- The child is not yet reading. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
 - Design natural stopping points for suggested 10–15 minute sessions, without speed pressure, endless questions, or reward mechanics that encourage repeated clicking.
 - Activities may use selectable answers, immediate feedback, scores, and question navigation.
 
@@ -30,8 +31,16 @@
 
 ## Evidence, documentation, and tasks
 
-- The Kindle model, firmware, browser capabilities, and deployment status are currently unknown or unverified.
+- The exact Kindle model and firmware remain unknown. GitHub Pages has deployed successfully; the owner reported that v0.1 worked well on their Kindle. New graphics and individual device checks still require verification.
 - Record important technical decisions in reusable repository documentation, with rationale and validation status.
 - Use docs/TASK_TEMPLATE.md when preparing Codex development tasks; include concrete implementation steps and acceptance criteria.
 - Report what was changed, how it was verified, and what still requires actual Kindle testing.
 - Desktop or iPhone browser checks do not establish Kindle compatibility.
+
+## Delivery workflow
+
+- The owner has authorized routine project changes to be implemented, checked, pushed, and merged without a manual PR review or another confirmation request.
+- Use a feature branch and PR when useful for change history, then merge it autonomously after appropriate checks. A PR is not a handoff requiring the owner to act.
+- Let the existing GitHub Pages deployment run after merging; inspect deployment status and report the live page link.
+- The owner validates the result by opening the deployed page on their device and providing feedback.
+- Report development checks and device-testing limitations accurately. Continue to explain changes to project scope or technical direction before implementing them.

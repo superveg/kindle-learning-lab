@@ -9,13 +9,15 @@ Open `index.html` in a browser. No build step, server, account, or runtime depen
 The entry page offers four bounded samples:
 
 - Count: three questions with feedback, first-try scoring, and a completion state.
-- Shapes: identify a circle.
+- Shapes: match a circle to the pictured target.
 - Letters: match the letter A.
-- Little story: choose one of two short endings; read together with an adult.
+- Little story: a rabbit chooses a carrot garden or duck pond; the adult may narrate the scene.
 
 The grown-up screen check includes a larger-text option, three touch targets, and instructions for testing a brief disconnection.
 
-All styles, script, and activity content are embedded in one HTML file. No content is fetched during interaction. Session progress resets on reload. Offline reload/reopening is not implemented or promised.
+The child-facing Hub uses pictograms. Home navigation, next-question controls, feedback, and story choices use images instead of written instructions. Numerals and letters remain as learning content; English accessible labels and adult screen-check text are retained.
+
+All styles, script, PNG pictograms, and activity content are embedded in one HTML file. No content is fetched during interaction. Session progress resets on reload. Offline reload/reopening is not implemented or promised.
 
 ## Publish on GitHub Pages
 
@@ -45,7 +47,7 @@ The DOM check validates ES5 syntax and interaction logic without a browser. The 
 
 ## Device status
 
-The exact Kindle model and firmware are unknown. Desktop browser results do not establish Kindle compatibility. Follow the [Kindle test checklist](docs/KINDLE_TEST.md) on the actual device.
+The owner reported that v0.1 worked well on their Kindle and that the buttons worked correctly. The exact model and firmware are still unknown. The new embedded PNG graphics in v0.2 need an on-device recheck. Follow the [Kindle test checklist](docs/KINDLE_TEST.md).
 
 ## Documentation
 
@@ -54,3 +56,4 @@ The exact Kindle model and firmware are unknown. Desktop browser results do not 
 - [Development task template](docs/TASK_TEMPLATE.md)
 - [Hub design decisions](docs/HUB_DESIGN.md)
 - [Kindle test checklist](docs/KINDLE_TEST.md)
+- [Pictogram interface decisions](docs/PICTOGRAMS.md)
