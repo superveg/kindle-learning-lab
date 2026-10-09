@@ -41,6 +41,7 @@ npm install --no-save --package-lock=false jsdom acorn playwright
 node tests/hub-dom.cjs
 node tests/storage-dom.cjs
 node tests/capabilities-dom.cjs
+node tests/advanced-dom.cjs
 npx playwright install chromium
 node tests/hub-smoke.cjs
 ```
@@ -63,3 +64,5 @@ The owner reported that v0.1 worked well on their Kindle and that the buttons wo
 - [Local storage test](docs/LOCAL_STORAGE_TEST.md)
 
 - [Four capability checks](docs/CAPABILITY_TESTS.md): counting resume, nine-cell selection, manual local updates, and PNG/SVG comparison.
+
+- [Advanced device checks](docs/ADVANCED_TESTS.md): drag/release and movement modes, timestamp timing, and delayed feedback.

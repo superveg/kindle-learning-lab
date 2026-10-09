@@ -65,6 +65,12 @@
     .render-card img, .render-card svg { max-width: 100%; }
     #refresh-box { width: 180px; height: 156px; border: 4px solid #000; text-align: center; margin: 20px auto; font: bold 100px/1.4 Arial, sans-serif; }
     .reference-lines { border-top: 2px solid #000; border-bottom: 5px solid #000; padding: 12px; text-align: center; }
+
+    #drag-stage { position: relative; height: 260px; border: 4px solid #000; margin: 18px 0; }
+    #drag-piece { position: absolute; left: 12px; top: 20px; width: 64px; height: 64px; background: #000; cursor: move; touch-action: none; -ms-touch-action: none; user-select: none; -webkit-user-select: none; }
+    #drag-target { position: absolute; right: 12px; bottom: 20px; width: 100px; height: 100px; border: 6px dashed #000; }
+    #clock-value { font-size: 42px; font-weight: bold; }
+    #delay-box { min-height: 92px; border: 3px solid #000; margin: 18px 0; text-align: center; padding: 20px; }
   </style>
 </head>
 <body>
@@ -120,6 +126,9 @@
     <button type="button" id="open-grid" disabled>2. Nine touch targets</button>
     <button type="button" id="open-refresh" disabled>3. Local screen updates</button>
     <button type="button" id="open-svg" disabled>4. PNG and SVG</button>
+    <button type="button" id="open-drag" disabled>5. Drag and drop</button>
+    <button type="button" id="open-clock" disabled>6. Elapsed time</button>
+    <button type="button" id="open-delay" disabled>7. Delayed feedback</button>
     <h2>Save test</h2>
     <p class="small">This checks localStorage on this device. It does not save learning progress yet.</p>
     <p class="small">1. Save a marker. 2. Refresh, or close and reopen this same page. 3. Check that the same marker is still shown.</p>
@@ -130,7 +139,7 @@
     <p class="small">A successful save only confirms writing and reading now. Reopening on Kindle is still required to test persistence. Clearing removes only this test marker.</p>
 
     <p id="script-status">JavaScript has not started.</p>
-    <p class="small">Prototype v0.4. The previous version worked well in an owner-reported Kindle test. New pictograms need a device recheck.</p>
+    <p class="small">Prototype v0.5. The previous version worked well in an owner-reported Kindle test. New pictograms need a device recheck.</p>
     <p class="sample">Aa Bb Cc &nbsp; 1 2 3<br>Can you read this comfortably?</p>
     <button type="button" id="text-size" disabled>Larger text</button>
     <p>Tap each button once.</p>
@@ -177,11 +186,43 @@
     <button type="button" id="svg-different" disabled>SVG is blank or different</button>
     <p id="svg-status" class="status" aria-live="polite">SVG rendering is pending your device check.</p>
   </div>
+
+  <div id="test-drag" class="screen">
+    <a href="#check" id="test-drag-back" class="back">Back to checks</a>
+    <h2>5. Drag and drop</h2>
+    <p class="small">Drag the black block and release your finger inside the dashed box. First try release-only mode; then turn on visible movement and compare lag, ghosting, and page scrolling.</p>
+    <button type="button" id="drag-follow" disabled>Show movement: OFF</button>
+    <div id="drag-stage"><div id="drag-target" aria-label="Drop target"></div><div id="drag-piece" role="img" aria-label="Draggable black block"></div></div>
+    <p id="drag-status" class="status" aria-live="polite">Drag input has not been tested.</p>
+    <button type="button" id="drag-reset" disabled>Reset block</button>
+    <p class="small">Visible movement updates only while you drag. Release-only mode still tracks the gesture, but avoids moving the block on every event.</p>
+  </div>
+  <div id="test-clock" class="screen">
+    <a href="#check" id="test-clock-back" class="back">Back to checks</a>
+    <h2>6. Elapsed time</h2>
+    <p class="small">Start, wait about 30 seconds using another clock, then check or stop. Try navigating away and back, or briefly sleeping the Kindle while this page stays loaded.</p>
+    <p id="clock-value">0.0 s</p>
+    <button type="button" id="clock-start" disabled>Start</button>
+    <button type="button" id="clock-read" disabled>Check elapsed time</button>
+    <button type="button" id="clock-stop" disabled>Stop</button>
+    <button type="button" id="clock-reset" disabled>Reset timer</button>
+    <p id="clock-status" class="status" aria-live="polite">Timer is not running.</p>
+    <p class="small">No ticking screen updates. Time is calculated from timestamps, so delayed callbacks do not lose seconds. Reloading resets this timer; changing the device clock can affect the result.</p>
+  </div>
+  <div id="test-delay" class="screen">
+    <a href="#check" id="test-delay-back" class="back">Back to checks</a>
+    <h2>7. Delayed feedback</h2>
+    <p class="small">Start once. A black block should appear after about 3 seconds. Extra taps during the wait must not schedule another result. Leaving this check cancels the pending result.</p>
+    <div id="delay-box">Ready</div>
+    <button type="button" id="delay-start" disabled>Show after 3 seconds</button>
+    <button type="button" id="delay-cancel" disabled>Cancel pending result</button>
+    <p id="delay-status" class="status" aria-live="polite">No result pending.</p>
+  </div>
   <noscript><p class="status">JavaScript is unavailable. The page is readable, but interactive samples need JavaScript. Activity links jump to their static sections.</p></noscript>
 </div>
 <script>
 (function () {
-  var screens = ['home', 'count', 'shapes', 'letters', 'story', 'check', 'test-resume', 'test-grid', 'test-refresh', 'test-svg'];
+  var screens = ['home', 'count', 'shapes', 'letters', 'story', 'check', 'test-resume', 'test-grid', 'test-refresh', 'test-svg', 'test-drag', 'test-clock', 'test-delay'];
   var counts = [2, 3, 1];
   var question = 0;
   var score = 0;
@@ -206,6 +247,8 @@
     }
   }
   function show(id) {
+    if (id !== 'test-drag' && dragging) { endDrag(null, true); }
+    if (id !== 'test-delay' && delayPending) { cancelDelay('Cancelled because you left this check.'); }
     var i;
     for (i = 0; i < screens.length; i += 1) { el(screens[i]).style.display = screens[i] === id ? 'block' : 'none'; }
     window.scrollTo(0, 0);
@@ -437,11 +480,148 @@
   bind('test-svg-back', function () { show('check'); });
   buildGrid();
 
+
+  var dragging = false, followDrag = false, dragMoves = 0, dragPointer = null, dragOffsetX = 0, dragOffsetY = 0;
+  var lastTouchTime = 0;
+  var inputMode = window.PointerEvent ? 'Pointer Events' : 'Touch/mouse fallback';
+  function prevent(event) { if (event && event.preventDefault) { event.preventDefault(); } }
+  function resetDrag() {
+    dragging = false; dragPointer = null;
+    el('drag-piece').style.left = '12px'; el('drag-piece').style.top = '20px';
+  }
+  function startDrag(point, event) {
+    if (!point || dragging) { return; }
+    var box = el('drag-piece').getBoundingClientRect();
+    dragging = true; dragMoves = 0;
+    dragOffsetX = point.clientX - box.left; dragOffsetY = point.clientY - box.top;
+    prevent(event);
+  }
+  function moveDrag(point, event) {
+    if (!dragging || !point) { return; }
+    dragMoves += 1; prevent(event);
+    if (followDrag) {
+      var stage = el('drag-stage'), box = stage.getBoundingClientRect();
+      el('drag-piece').style.left = Math.max(0, Math.min(stage.clientWidth - 64, point.clientX - box.left - stage.clientLeft - dragOffsetX)) + 'px';
+      el('drag-piece').style.top = Math.max(0, Math.min(stage.clientHeight - 64, point.clientY - box.top - stage.clientTop - dragOffsetY)) + 'px';
+    }
+  }
+  function endDrag(point, cancelled) {
+    if (!dragging) { return; }
+    var target = el('drag-target').getBoundingClientRect();
+    var inside = !cancelled && point && point.clientX >= target.left && point.clientX <= target.right && point.clientY >= target.top && point.clientY <= target.bottom;
+    dragging = false; dragPointer = null;
+    if (inside) {
+      el('drag-piece').style.left = (el('drag-target').offsetLeft + 18) + 'px';
+      el('drag-piece').style.top = (el('drag-target').offsetTop + 18) + 'px';
+    } else { resetDrag(); }
+    text('drag-status', (cancelled ? 'Gesture cancelled.' : inside ? 'Drop inside target.' : 'Drop outside target; block reset.') + ' Move events: ' + dragMoves + '. Input: ' + inputMode + '.');
+  }
+  function touchPoint(list) {
+    var i;
+    if (!list) { return null; }
+    for (i = 0; i < list.length; i += 1) { if (list[i].identifier === dragPointer) { return list[i]; } }
+    return null;
+  }
+  if (window.PointerEvent) {
+    el('drag-piece').onpointerdown = function (event) {
+      if (event.isPrimary === false || (event.button !== undefined && event.button !== 0)) { return; }
+      if (dragging) { return; }
+      dragPointer = event.pointerId; startDrag(event, event);
+    };
+    document.addEventListener('pointermove', function (event) { if (event.pointerId === dragPointer) { moveDrag(event, event); } }, false);
+    document.addEventListener('pointerup', function (event) { if (event.pointerId === dragPointer) { endDrag(event, false); } }, false);
+    document.addEventListener('pointercancel', function (event) { if (event.pointerId === dragPointer) { endDrag(null, true); } }, false);
+  } else {
+    el('drag-piece').ontouchstart = function (event) {
+      if (dragging || !event.touches || event.touches.length !== 1) { return; }
+      lastTouchTime = new Date().getTime(); dragPointer = event.touches[0].identifier;
+      startDrag(event.touches[0], event);
+    };
+    var touchOptions = false;
+    try {
+      var probe = Object.defineProperty({}, 'passive', { get: function () { touchOptions = { passive: false }; return false; } });
+      var noop = function () {};
+      document.addEventListener('kll-options-probe', noop, probe);
+      document.removeEventListener('kll-options-probe', noop, probe);
+    } catch (error) { touchOptions = false; }
+    document.addEventListener('touchmove', function (event) { moveDrag(touchPoint(event.touches), event); }, touchOptions);
+    document.addEventListener('touchend', function (event) {
+      var point = touchPoint(event.changedTouches);
+      if (point) { endDrag(point, false); lastTouchTime = new Date().getTime(); }
+    }, false);
+    document.addEventListener('touchcancel', function () { endDrag(null, true); lastTouchTime = new Date().getTime(); }, false);
+    el('drag-piece').onmousedown = function (event) {
+      if (new Date().getTime() - lastTouchTime < 800 || event.button !== 0) { return; }
+      startDrag(event, event);
+    };
+    document.addEventListener('mousemove', function (event) { if (dragPointer === null) { moveDrag(event, event); } }, false);
+    document.addEventListener('mouseup', function (event) { if (dragPointer === null) { endDrag(event, false); } }, false);
+  }
+  window.addEventListener('blur', function () { endDrag(null, true); }, false);
+  bind('open-drag', function () { show('test-drag'); });
+  bind('drag-follow', function () {
+    endDrag(null, true); followDrag = !followDrag;
+    text('drag-follow', 'Show movement: ' + (followDrag ? 'ON' : 'OFF'));
+  });
+  bind('drag-reset', function () { resetDrag(); text('drag-status', 'Block reset. Input: ' + inputMode + '.'); });
+  bind('test-drag-back', function () { show('check'); });
+
+  var clockStarted = null;
+  function clockRead(stop) {
+    if (clockStarted === null) { return; }
+    var elapsed = new Date().getTime() - clockStarted;
+    if (elapsed < 0) { text('clock-status', 'Device clock moved backward. Reset and retry.'); return; }
+    text('clock-value', (elapsed / 1000).toFixed(1) + ' s');
+    text('clock-status', stop ? 'Stopped. Compare this duration with your other clock.' : 'Running. Screen updates only when you check.');
+    if (stop) { clockStarted = null; }
+    clockControls();
+  }
+  function clockControls() {
+    el('clock-start').disabled = clockStarted !== null;
+    el('clock-read').disabled = clockStarted === null; el('clock-stop').disabled = clockStarted === null;
+  }
+  bind('open-clock', function () { show('test-clock'); if (clockStarted !== null) { clockRead(false); } });
+  bind('clock-start', function () {
+    if (clockStarted !== null) { return; }
+    clockStarted = new Date().getTime(); text('clock-value', '0.0 s');
+    text('clock-status', 'Started. Wait, then check or stop.'); clockControls();
+  });
+  bind('clock-read', function () { clockRead(false); });
+  bind('clock-stop', function () { clockRead(true); });
+  bind('clock-reset', function () { clockStarted = null; text('clock-value', '0.0 s'); text('clock-status', 'Timer reset.'); clockControls(); });
+  bind('test-clock-back', function () { show('check'); });
+
+  var delayPending = false, delayHandle = null, delayStarted = 0, delayGeneration = 0;
+  function cancelDelay(message) {
+    if (delayHandle !== null) { window.clearTimeout(delayHandle); }
+    delayHandle = null; delayPending = false; delayGeneration += 1;
+    el('delay-start').disabled = false; el('delay-cancel').disabled = true;
+    text('delay-box', 'Ready'); text('delay-status', message);
+  }
+  bind('open-delay', function () { show('test-delay'); });
+  bind('delay-start', function () {
+    if (delayPending) { return; }
+    delayPending = true; delayStarted = new Date().getTime();
+    var generation = ++delayGeneration;
+    el('delay-start').disabled = true; el('delay-cancel').disabled = false;
+    text('delay-box', 'Waiting'); text('delay-status', 'One result pending. Target delay: 3 seconds.');
+    delayHandle = window.setTimeout(function () {
+      if (!delayPending || generation !== delayGeneration) { return; }
+      delayPending = false; delayHandle = null;
+      el('delay-box').innerHTML = '<span class="object" aria-label="Result block"></span>';
+      text('delay-status', 'Result appeared after ' + ((new Date().getTime() - delayStarted) / 1000).toFixed(1) + ' seconds.');
+      el('delay-start').disabled = false; el('delay-cancel').disabled = true;
+    }, 3000);
+  });
+  bind('delay-cancel', function () { cancelDelay('Pending result cancelled.'); });
+  bind('test-delay-back', function () { show('check'); });
+
   var i, buttons = document.getElementsByTagName('button');
   for (i = 0; i < buttons.length; i += 1) { buttons[i].disabled = false; }
   for (i = 1; i < screens.length; i += 1) { if (el(screens[i] + '-home')) { bind(screens[i] + '-home', function () { show('home'); }); } }
   text('script-status', 'JavaScript is working.');
   storageRead();
+  clockControls(); el('delay-cancel').disabled = true;
   show('home');
 }());
 </script>
