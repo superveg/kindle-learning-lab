@@ -208,7 +208,7 @@
     <button type="button" id="clock-stop" disabled>Stop</button>
     <button type="button" id="clock-reset" disabled>Reset timer</button>
     <p id="clock-status" class="status" aria-live="polite">Timer is not running.</p>
-    <p class="small">No ticking screen updates. Time is calculated from timestamps, so delayed callbacks do not lose seconds. Reloading resets this timer; changing the device clock can affect the result.</p>
+    <p class="small">Updates about every 10 seconds while this check is open. Check gives an immediate reading. Time is calculated from timestamps; sleep may delay updates. Reloading resets this timer; changing the device clock can affect the result.</p>
   </div>
   <div id="test-delay" class="screen">
     <a href="#check" id="test-delay-back" class="back">Back to checks</a>
@@ -248,6 +248,8 @@
     }
   }
   function show(id) {
+    clockVisible = id === 'test-clock';
+    if (!clockVisible) { clockCancelUpdate(); }
     if (id !== 'test-drag' && dragging) { endDrag(null, true); }
     if (id !== 'test-delay' && delayPending) { cancelDelay('Cancelled because you left this check.'); }
     var i;
@@ -567,29 +569,46 @@
   bind('drag-reset', function () { resetDrag(); text('drag-status', 'Block reset. Input: ' + inputMode + '.'); });
   bind('test-drag-back', function () { show('check'); });
 
-  var clockStarted = null;
+  var clockStarted = null, clockVisible = false, clockHandle = null, clockGeneration = 0;
+  function clockCancelUpdate() {
+    clockGeneration += 1;
+    if (clockHandle !== null) { window.clearTimeout(clockHandle); clockHandle = null; }
+  }
+  function clockSchedule() {
+    clockCancelUpdate();
+    if (clockStarted === null || !clockVisible) { return; }
+    var generation = clockGeneration;
+    clockHandle = window.setTimeout(function () {
+      if (generation !== clockGeneration) { return; }
+      clockHandle = null;
+      if (clockStarted === null || !clockVisible) { return; }
+      if (!document.hidden) { clockRead(false); }
+      clockSchedule();
+    }, 10000);
+  }
   function clockRead(stop) {
     if (clockStarted === null) { return; }
     var elapsed = new Date().getTime() - clockStarted;
-    if (elapsed < 0) { text('clock-status', 'Device clock moved backward. Reset and retry.'); return; }
-    text('clock-value', (elapsed / 1000).toFixed(1) + ' s');
-    text('clock-status', stop ? 'Stopped. Compare this duration with your other clock.' : 'Running. Screen updates only when you check.');
-    if (stop) { clockStarted = null; }
+    var status = elapsed < 0 ? 'Device clock moved backward. Reset and retry.' :
+      (stop ? 'Stopped. Compare this duration with your other clock.' : 'Running. Updates about every 10 seconds.');
+    if (elapsed >= 0) { text('clock-value', (elapsed / 1000).toFixed(1) + ' s'); }
+    if (el('clock-status').textContent !== status) { text('clock-status', status); }
+    if (stop) { clockStarted = null; clockCancelUpdate(); }
     clockControls();
   }
   function clockControls() {
     el('clock-start').disabled = clockStarted !== null;
     el('clock-read').disabled = clockStarted === null; el('clock-stop').disabled = clockStarted === null;
   }
-  bind('open-clock', function () { show('test-clock'); if (clockStarted !== null) { clockRead(false); } });
+  bind('open-clock', function () { show('test-clock'); if (clockStarted !== null) { clockRead(false); clockSchedule(); } });
   bind('clock-start', function () {
     if (clockStarted !== null) { return; }
     clockStarted = new Date().getTime(); text('clock-value', '0.0 s');
-    text('clock-status', 'Started. Wait, then check or stop.'); clockControls();
+    text('clock-status', 'Running. Updates about every 10 seconds.'); clockControls(); clockSchedule();
   });
   bind('clock-read', function () { clockRead(false); });
   bind('clock-stop', function () { clockRead(true); });
-  bind('clock-reset', function () { clockStarted = null; text('clock-value', '0.0 s'); text('clock-status', 'Timer reset.'); clockControls(); });
+  bind('clock-reset', function () { clockStarted = null; clockCancelUpdate(); text('clock-value', '0.0 s'); text('clock-status', 'Timer reset.'); clockControls(); });
   bind('test-clock-back', function () { show('check'); });
 
   var delayPending = false, delayHandle = null, delayStarted = 0, delayGeneration = 0;

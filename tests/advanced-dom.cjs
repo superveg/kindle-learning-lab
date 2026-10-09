@@ -10,7 +10,8 @@ function setup(pointerMode) {
   const dom=new JSDOM(html,{runScripts:'dangerously',url:'https://superveg.github.io/kindle-learning-lab/',beforeParse(w){
     w.scrollTo=function(){}; w.Date.prototype.getTime=function(){return now;};
     if(pointerMode)w.PointerEvent=function(){};else w.PointerEvent=undefined;
-    w.setTimeout=function(fn,delay){assert.equal(delay,3000);pending.set(++nextHandle,fn);return nextHandle;};
+    Object.defineProperty(w.document,'hidden',{value:false,configurable:true});
+    w.setTimeout=function(fn,delay){assert.ok(delay===3000||delay===10000);pending.set(++nextHandle,fn);return nextHandle;};
     w.clearTimeout=function(id){pending.delete(id);};
   }});
   const w=dom.window, el=id=>w.document.getElementById(id), tap=id=>el(id).click();
@@ -43,11 +44,23 @@ for(const pointerMode of [false,true]){
  s.dom.window.close();
 }
 const s=setup(false),{el,tap,pending}=s;
-tap('open-clock');tap('clock-start');s.setTime(1030000);tap('clock-read');assert.equal(el('clock-value').textContent,'30.0 s');
+function fireTimer(){assert.equal(pending.size,1);const fn=[...pending.values()][0];pending.clear();fn();}
+tap('open-clock');tap('clock-start');tap('clock-start');assert.equal(pending.size,1);
+s.setTime(1010000);fireTimer();assert.equal(el('clock-value').textContent,'10.0 s');assert.equal(pending.size,1);
+s.setTime(1027000);fireTimer();assert.equal(el('clock-value').textContent,'27.0 s'); // Late callbacks use actual time.
+s.setTime(1030000);tap('clock-read');assert.equal(el('clock-value').textContent,'30.0 s');assert.equal(pending.size,1);
+const staleClock=[...pending.values()][0];
 tap('test-clock-back');s.setTime(1050000);tap('open-clock');assert.equal(el('clock-value').textContent,'50.0 s');
+assert.equal(pending.size,1);staleClock();assert.equal(pending.size,1);
 s.setTime(1055000);tap('clock-stop');assert.equal(el('clock-value').textContent,'55.0 s');
+assert.equal(pending.size,0);
 s.setTime(1060000);tap('clock-stop');assert.equal(el('clock-value').textContent,'55.0 s');
 tap('clock-start');s.setTime(1050000);tap('clock-read');assert.match(el('clock-status').textContent,/backward/);tap('clock-reset');
+assert.equal(pending.size,0);
+tap('clock-start');const resetCallback=[...pending.values()][0];tap('clock-reset');resetCallback();assert.equal(el('clock-value').textContent,'0.0 s');assert.equal(pending.size,0);
+tap('clock-start');Object.defineProperty(s.w.document,'hidden',{value:true,configurable:true});s.setTime(1070000);fireTimer();assert.equal(el('clock-value').textContent,'0.0 s');
+Object.defineProperty(s.w.document,'hidden',{value:false,configurable:true});fireTimer();assert.equal(el('clock-value').textContent,'20.0 s');
+tap('test-clock-back');assert.equal(pending.size,0);
 tap('open-delay');tap('delay-start');tap('delay-start');assert.equal(pending.size,1);
 const oldCallback=[...pending.values()][0];tap('delay-cancel');assert.equal(pending.size,0);
 tap('delay-start');oldCallback();assert.equal(el('delay-box').textContent,'Waiting');

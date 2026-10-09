@@ -12,7 +12,11 @@ Check separately that (a) the correct target is recognized, and (b) visible move
 
 ## 6. Timestamp-based elapsed time
 
-Start, wait about 30 seconds with an independent clock, then choose Check or Stop. Also try navigating away and back, and briefly sleeping the Kindle while the same document stays loaded. Elapsed time uses the difference between Date timestamps, rather than counting timer callbacks. The displayed value only updates when requested or when returning to this diagnostic; there is no ticking interval.
+Start and watch for readings at roughly 10, 20, and 30 seconds, comparing with an independent clock. Check gives an immediate reading, and Stop freezes the final duration. Also try navigating away and back, and briefly sleeping the Kindle while the same document stays loaded. Elapsed time uses the difference between Date timestamps, rather than counting timer callbacks.
+
+One timeout is scheduled every 10 seconds while this diagnostic is open and running. Only the time value changes on routine updates; the unchanged status is not rewritten. Leaving the check cancels display updates while elapsed time continues; returning reads the current duration and resumes updates. Stop and Reset cancel pending updates. Cancelled callback generations cannot restart an old refresh loop. When the browser exposes a hidden-document flag, hidden callbacks skip display writes. No per-second interval, animation, or full-page reload is used.
+
+The owner reported that the previous manual reading worked on their Kindle. The new low-frequency automatic updates remain pending device testing. Browser throttling or sleep can delay callbacks; a late callback shows actual elapsed time without replaying missed updates.
 
 Stop retains the displayed final duration. Reset clears it. Reloading or a browser unload loses this diagnostic's timer state. Device clock corrections can affect Date-based durations; a backward jump is reported, while forward clock corrections may overstate elapsed time. Kindle sleep/unload behavior and observed accuracy remain pending.
 
@@ -24,6 +28,6 @@ Cancel or leave the diagnostic to clear the pending timeout. A generation token 
 
 ## Development verification
 
-`tests/advanced-dom.cjs` validates ES5 syntax; simulated mouse, touch, and pointer paths; release-only versus visible-movement updates; inside/outside/cancelled drops; timestamp-based duration across navigation; stopped timer state; backward clock reporting; and duplicate, cancelled, or stale delayed callbacks. Existing counting, grid, SVG, marker-storage, and Hub DOM checks also pass.
+`tests/advanced-dom.cjs` validates ES5 syntax; simulated mouse, touch, and pointer paths; release-only versus visible-movement updates; inside/outside/cancelled drops; timestamp-based duration across navigation; 10-second scheduling and late callbacks; refresh cancellation on leaving, stopping, or resetting; hidden-document display suppression; stale refresh callbacks; backward clock reporting; and duplicate, cancelled, or stale delayed callbacks. Existing counting, grid, SVG, marker-storage, and Hub DOM checks also pass.
 
 Browser rendering, actual touch scrolling, finger-follow lag, ghosting, and real Kindle sleep/timer behavior require the owner's device test. No new backend, continuous animation, external dependency, or offline capability is introduced in the shipped page.
