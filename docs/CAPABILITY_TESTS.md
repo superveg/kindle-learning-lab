@@ -1,5 +1,16 @@
 # Four Capability Checks — v0.4
 
+## Kindle results — 2026-10-09
+
+The owner reported that all four checks passed on their Kindle:
+
+- Real counting progress restoration.
+- Nine-cell selection and deselection.
+- The manual local-update check, including the observed display behavior.
+- The tested static SVG circle/square comparison against PNG.
+
+This is owner-reported actual-device evidence. The exact Kindle model and firmware were not supplied. It confirms these exercised checks on that device, not every browser API, every SVG feature, or other Kindle models. The excluded offline check was not part of this test.
+
 Open **Grown-up check** and choose one of the four numbered buttons. These are diagnostic tools for an adult; the child's Hub keeps its existing pictogram entries.
 
 ## 1. Resume actual counting progress
