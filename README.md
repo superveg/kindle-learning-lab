@@ -66,3 +66,10 @@ The owner reported that v0.1 worked well on their Kindle and that the buttons wo
 - [Four capability checks](docs/CAPABILITY_TESTS.md): counting resume, nine-cell selection, manual local updates, and PNG/SVG comparison.
 
 - [Advanced device checks](docs/ADVANCED_TESTS.md): drag/release and movement modes, timestamp timing, and delayed feedback.
+
+
+## Math playground (v0.6)
+
+The new picture tile opens `math.html`: 27 activities across suggested ages 3, 4 and 5, each with three bounded rounds (81 rounds). Domains: counting, giving a quantity, comparing, joining/taking away and number parts, shapes, patterns, sorting, equal-unit measurement and position. The English grown-up guide explains every prompt; narrate in the home language. No speed score. Completion marks save locally with a storage-failure fallback and scoped clearing; they do not measure mastery. Original activities and device checks remain available.
+
+Run `node tests/math-dom.cjs` alongside the existing DOM checks. New math layout and picture meanings need actual Kindle testing.

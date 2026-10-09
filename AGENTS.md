@@ -11,7 +11,7 @@
 
 ## Product and child experience
 
-- Target children aged 3–4 using an Amazon Kindle E Ink reader's built-in browser.
+- Target children aged 3–5 using an Amazon Kindle E Ink reader's built-in browser.
 - Support early math, literacy, shape recognition, branching stories, and simple games.
 - Use simple interactions that aim to be usable with minimal adult help.
 - The child is not yet reading. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
@@ -44,3 +44,4 @@
 - Let the existing GitHub Pages deployment run after merging; inspect deployment status and report the live page link.
 - The owner validates the result by opening the deployed page on their device and providing feedback.
 - Report development checks and device-testing limitations accurately. Continue to explain changes to project scope or technical direction before implementing them.
+

@@ -4,7 +4,7 @@ These requirements guide the project's design and development.
 
 ## Project goal
 
-Build interactive learning content for children aged 3–4 using Kindle E Ink readers, including early math, literacy, shape recognition, branching stories, and simple games.
+Build interactive learning content for children aged 3–5 using Kindle E Ink readers, including early math, literacy, shape recognition, branching stories, and simple games.
 
 ## Devices and environment
 
@@ -27,7 +27,7 @@ Build interactive learning content for children aged 3–4 using Kindle E Ink re
 
 ## Child experience
 
-- Target age: 3–4 years.
+- Target age: 3–5 years.
 - Keep operation simple and minimize the need for adult assistance.
 - The child is not yet reading. Use pictograms for activity selection, navigation, feedback, and story choices; minimize visible text while retaining numerals and letters as learning content.
 - Design activities for suggested 10–15 minute sessions.
@@ -57,3 +57,4 @@ Keep repository changes focused on the Kindle children's interactive learning sy
 - On-device text and button sizes, tap response, and E Ink refresh behavior.
 - Continued interaction after initial loading during a disconnection; offline reopening or reloading requires separate validation.
 - GitHub Pages deployment has succeeded. The owner reported that v0.1 worked well on their Kindle; the v0.2 pictogram interface needs a device recheck. See [pictogram decisions and test status](PICTOGRAMS.md).
+
