@@ -1,58 +1,56 @@
 # Kindle Learning Lab — Project Instructions
 
-以下为项目拥有者提供的要求，作为后续讨论和开发的基准。
+These requirements guide the project's design and development.
 
-## 项目目标
+## Project goal
 
-为 3–4 岁儿童开发适合 Kindle E Ink 阅读器的互动学习内容，包括数学、识字、图形识别、故事选择和简单小游戏。
+Build interactive learning content for children aged 3–4 using Kindle E Ink readers, including early math, literacy, shape recognition, branching stories, and simple games.
 
-## 设备与环境
+## Devices and environment
 
-- 主要开发和讨论设备：iPhone + ChatGPT。
-- 目标设备：Amazon Kindle E Ink 阅读器，具体型号待补充。
-- 部署：GitHub Repository + GitHub Pages。
-- 阅读方式：通过 Kindle 内置浏览器访问网页。
-- 不依赖专门的后端服务器。
+- Primary development and discussion workflow: iPhone + ChatGPT.
+- Target device: Amazon Kindle E Ink reader; the exact model is still to be supplied.
+- Deployment: GitHub repository + GitHub Pages.
+- Access: web pages opened in Kindle's built-in browser.
+- No dedicated backend server.
 
-## 技术规范
+## Technical requirements
 
-- 优先使用 HTML、CSS 和 Vanilla JavaScript。
-- 尽量不使用大型框架或复杂依赖。
-- 优先兼容 Kindle 较弱的浏览器和处理器。
-- 黑白高对比度，大字体，大按钮。
-- 避免连续动画、频繁刷新、复杂图形和自动播放。
-- 支持点击选项、即时判断、得分统计、题目切换。
-- 尽可能让网页首次加载后，即使短暂断网也可继续互动。
-- 不要假定 Kindle 支持全部现代 Web API，未验证的功能明确标注为待测试。
+- Prefer HTML, CSS, and Vanilla JavaScript.
+- Avoid large frameworks and complex dependencies where possible.
+- Prioritize compatibility with Kindle's limited browser and processing power.
+- Use black-and-white high contrast, large text, and large buttons.
+- Avoid continuous animation, frequent refreshes, complex graphics, and autoplay.
+- Support selectable answers, immediate feedback, score tracking, and question navigation.
+- Where feasible, allow interaction to continue during a brief disconnection after the page has initially loaded.
+- Do not assume support for all modern Web APIs. Clearly label unverified functionality as pending testing.
 
-## 儿童体验
+## Child experience
 
-- 目标年龄 3–4 岁。
-- 操作简单，尽量不需要成人帮助。
-- 每次活动建议 10–15 分钟。
-- 避免无限刷题、诱导持续点击或复杂奖励机制。
-- 重点是学习、探索、理解，而非单纯追求答题速度。
+- Target age: 3–4 years.
+- Keep operation simple and minimize the need for adult assistance.
+- Design activities for suggested 10–15 minute sessions.
+- Avoid endless question flows, incentives for repeated clicking, and complex reward systems.
+- Emphasize learning, exploration, and understanding rather than answering speed.
 
-## 工作方式
+## Working practices
 
-- 使用中文与我讨论，代码与技术文档可以使用英文。
-- 优先延续本项目已有的决定和技术规范。
-- 不要每次重新询问 Kindle 的用途或产品目标。
-- 重要技术决策应整理为可复用的文档。
-- 生成 Codex 开发任务时，提供可执行的任务说明和验收标准。
-- 如果需要修改项目范围或技术路线，先解释原因。
-- 未确认的信息不要作为既定事实。
+- Use English for project communication, code, and documentation.
+- Continue existing project decisions and technical conventions.
+- Do not repeatedly ask about Kindle's intended use or the product's goals.
+- Record important technical decisions in reusable documentation.
+- Provide actionable instructions and acceptance criteria for Codex development tasks.
+- Explain the reason before proposing changes to project scope or technical direction.
+- Do not present unconfirmed information as established fact.
 
-## 项目隔离
+## Repository scope
 
-- 本项目仅讨论 Kindle 儿童互动学习系统及其相关开发。
-- 不主动引入其他聊天的话题。
-- 不把本项目内容主动用于其他无关对话。
+Keep repository changes focused on the Kindle children's interactive learning system and its development.
 
-## 待确认与待测试
+## Pending confirmation and testing
 
-- Kindle 具体型号与固件版本。
-- 内置浏览器对所选 HTML、CSS、JavaScript 特性的支持。
-- 实机字体、按钮尺寸、点击响应和 E Ink 刷新表现。
-- 加载完成后断网继续互动的表现；离线重新打开或刷新页面的能力需另行验证。
-- GitHub Pages 配置、部署和实机访问。
+- Exact Kindle model and firmware version.
+- Browser support for the selected HTML, CSS, and JavaScript features.
+- On-device text and button sizes, tap response, and E Ink refresh behavior.
+- Continued interaction after initial loading during a disconnection; offline reopening or reloading requires separate validation.
+- GitHub Pages configuration, deployment, and access from the target device.
