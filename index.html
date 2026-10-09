@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kindle Learning Lab</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: #000; font: 24px/1.4 Arial, Helvetica, sans-serif; }
+    #app { max-width: 760px; margin: 0 auto; padding: 20px; }
+    h1 { font-size: 36px; line-height: 1.15; margin: 0 0 12px; }
+    h2 { font-size: 32px; line-height: 1.2; margin: 20px 0 12px; }
+    p { margin: 12px 0; }
+    .eyebrow, .small { font-size: 18px; }
+    .eyebrow { font-weight: bold; margin-top: 0; }
+    a { color: #000; }
+    .tile, button, .back { display: block; width: 100%; min-height: 68px; padding: 14px; margin: 12px 0; border: 3px solid #000; background: #fff; color: #000; font: bold 26px/1.25 Arial, Helvetica, sans-serif; text-align: left; text-decoration: none; border-radius: 0; }
+    .tile strong, .tile span { display: block; }
+    .tile span { font-size: 18px; font-weight: normal; margin-top: 4px; }
+    button { cursor: pointer; text-align: center; }
+    button:disabled { color: #000; cursor: default; }
+    a:focus, button:focus { outline: 3px dashed #000; outline-offset: 3px; }
+    .chosen { background: #000; color: #fff !important; }
+    .back { font-size: 22px; width: auto; }
+    .status { min-height: 68px; padding: 12px 0; border-top: 2px solid #000; margin-top: 20px; font-weight: bold; }
+    .objects { margin: 24px 0; min-height: 56px; }
+    .object { display: inline-block; width: 34px; height: 34px; background: #000; margin: 8px; }
+    .big-letter { font: bold 100px/1.2 Arial, Helvetica, sans-serif; margin: 16px 0; }
+    .shape { margin: 24px auto; width: 90px; height: 90px; border: 5px solid #000; }
+    .circle { border-radius: 50%; }
+    .sample { border: 2px solid #000; padding: 16px; }
+    body.large { font-size: 28px; }
+    body.large .small, body.large .eyebrow, body.large .tile span { font-size: 22px; }
+    body.large h1 { font-size: 42px; }
+    body.large button, body.large .tile { font-size: 30px; }
+    @media (min-width: 540px) {
+      .tiles .tile { display: inline-block; width: 47%; margin-right: 2%; vertical-align: top; min-height: 134px; }
+      .answers button { display: inline-block; width: 30%; margin-right: 2%; vertical-align: top; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div id="home" class="screen">
+    <p class="eyebrow">KINDLE LEARNING LAB</p>
+    <h1>Let's explore.</h1>
+    <p>Choose a little activity.</p>
+    <div class="tiles">
+      <a class="tile" href="#count" id="open-count"><strong>1 2 3 &nbsp; Count</strong><span>Count the blocks. Three questions.</span></a>
+      <a class="tile" href="#shapes" id="open-shapes"><strong>Shapes</strong><span>Find a circle. One question.</span></a>
+      <a class="tile" href="#letters" id="open-letters"><strong>A B C &nbsp; Letters</strong><span>Match a letter. One question.</span></a>
+      <a class="tile" href="#story" id="open-story"><strong>Little story</strong><span>Choose where a rabbit goes.</span></a>
+    </div>
+    <p class="small">Short samples. Take your time.</p>
+    <a class="back" href="#check" id="open-check">Grown-up: screen check</a>
+  </div>
+
+  <div id="count" class="screen">
+    <a href="#home" class="back" id="count-home">Back to activities</a>
+    <p id="count-progress" class="small">Question 1 of 3</p>
+    <h2>How many blocks?</h2>
+    <div id="blocks" class="objects"><span class="object"></span><span class="object"></span></div>
+    <div class="answers" id="count-answers">
+      <button type="button" disabled>1</button><button type="button" disabled>2</button><button type="button" disabled>3</button>
+    </div>
+    <p id="count-feedback" class="status" aria-live="polite">Tap a number.</p>
+    <button id="count-next" type="button" disabled>Next question</button>
+  </div>
+
+  <div id="shapes" class="screen">
+    <a href="#home" class="back" id="shapes-home">Back to activities</a>
+    <p class="small">One question</p>
+    <h2>Find the circle.</h2>
+    <button id="shape-square" type="button" disabled aria-label="Square"><span class="shape" style="display:block"></span>Square</button>
+    <button id="shape-circle" type="button" disabled aria-label="Circle"><span class="shape circle" style="display:block"></span>Circle</button>
+    <p id="shapes-feedback" class="status" aria-live="polite">Tap a shape.</p>
+  </div>
+
+  <div id="letters" class="screen">
+    <a href="#home" class="back" id="letters-home">Back to activities</a>
+    <p class="small">One question</p>
+    <h2>Find the same letter.</h2>
+    <p class="big-letter">A</p>
+    <div class="answers">
+      <button id="letter-b" type="button" disabled>B</button><button id="letter-a" type="button" disabled>A</button><button id="letter-c" type="button" disabled>C</button>
+    </div>
+    <p id="letters-feedback" class="status" aria-live="polite">Tap a letter.</p>
+  </div>
+
+  <div id="story" class="screen">
+    <a href="#home" class="back" id="story-home">Back to activities</a>
+    <p class="small">Read together. One choice.</p>
+    <h2>A little rabbit</h2>
+    <p>The rabbit goes for a walk. Where will it go?</p>
+    <button id="story-garden" type="button" disabled>To the garden</button>
+    <button id="story-pond" type="button" disabled>To the pond</button>
+    <p id="story-feedback" class="status" aria-live="polite">Choose a place. Both are good choices.</p>
+  </div>
+
+  <div id="check" class="screen">
+    <a href="#home" class="back" id="check-home">Back to activities</a>
+    <h2>Screen check</h2>
+    <p id="script-status">JavaScript has not started.</p>
+    <p class="small">Prototype v0.1. Kindle compatibility is pending an actual device test.</p>
+    <p class="sample">Aa Bb Cc &nbsp; 1 2 3<br>Can you read this comfortably?</p>
+    <button type="button" id="text-size" disabled>Larger text</button>
+    <p>Tap each button once.</p>
+    <button type="button" id="tap-one" disabled>Tap 1</button>
+    <button type="button" id="tap-two" disabled>Tap 2</button>
+    <button type="button" id="tap-three" disabled>Tap 3</button>
+    <p id="tap-status" class="status" aria-live="polite">0 of 3 buttons checked.</p>
+    <p class="small">After this page loads, turn off Wi-Fi and try the activities. Keep the page open. Reloading offline is a separate test.</p>
+    <p class="small">Check for clipped text, missed taps, slow updates, and lingering marks after switching screens. Progress resets when the page reloads.</p>
+  </div>
+  <noscript><p class="status">JavaScript is unavailable. The page is readable, but interactive samples need JavaScript. Activity links jump to their static sections.</p></noscript>
+</div>
+<script>
+(function () {
+  var screens = ['home', 'count', 'shapes', 'letters', 'story', 'check'];
+  var counts = [2, 3, 1];
+  var question = 0;
+  var score = 0;
+  var answered = false;
+  var firstTry = true;
+  var checked = [false, false, false];
+  function el(id) { return document.getElementById(id); }
+  function text(id, value) { el(id).innerHTML = ''; el(id).appendChild(document.createTextNode(value)); }
+  function show(id) {
+    var i;
+    for (i = 0; i < screens.length; i += 1) { el(screens[i]).style.display = screens[i] === id ? 'block' : 'none'; }
+    window.scrollTo(0, 0);
+  }
+  function bind(id, fn) { el(id).onclick = function () { fn(); return false; }; }
+  function renderCount() {
+    var i, block, button;
+    answered = false;
+    firstTry = true;
+    text('count-progress', 'Question ' + (question + 1) + ' of 3');
+    text('count-feedback', 'Tap a number.');
+    el('blocks').innerHTML = '';
+    for (i = 0; i < counts[question]; i += 1) { block = document.createElement('span'); block.className = 'object'; el('blocks').appendChild(block); }
+    el('count-answers').innerHTML = '';
+    for (i = 1; i <= 3; i += 1) {
+      button = document.createElement('button'); button.type = 'button'; button.appendChild(document.createTextNode(i));
+      button.onclick = (function (value) { return function () {
+        if (answered) { return; }
+        if (value !== counts[question]) { firstTry = false; text('count-feedback', 'Try counting each block.'); return; }
+        answered = true;
+        if (firstTry) { score += 1; }
+        this.className = 'chosen';
+        text('count-feedback', 'Yes! ' + value + (value === 1 ? ' block.' : ' blocks.'));
+        el('count-next').disabled = false;
+      }; }(i));
+      el('count-answers').appendChild(button);
+    }
+    el('count-next').style.display = 'block'; el('count-next').disabled = true;
+    text('count-next', question === 2 ? 'Finish' : 'Next question');
+  }
+  function resetChoices(ids, feedback, prompt) {
+    var i;
+    for (i = 0; i < ids.length; i += 1) { el(ids[i]).disabled = false; el(ids[i]).className = ''; }
+    text(feedback, prompt);
+  }
+  function finishChoices(ids, selected) {
+    var i;
+    for (i = 0; i < ids.length; i += 1) { el(ids[i]).disabled = true; }
+    el(selected).className = 'chosen';
+  }
+  bind('open-count', function () { question = 0; score = 0; renderCount(); show('count'); });
+  bind('count-next', function () {
+    if (!answered) { return; }
+    if (question < 2) { question += 1; renderCount(); }
+    else {
+      text('count-progress', 'All 3 questions complete');
+      text('count-feedback', 'All done! First-try answers: ' + score + ' of 3. Time for a break.');
+      el('count-answers').innerHTML = ''; el('count-next').style.display = 'none';
+    }
+  });
+  bind('open-shapes', function () { resetChoices(['shape-square', 'shape-circle'], 'shapes-feedback', 'Tap a shape.'); show('shapes'); });
+  bind('shape-square', function () { text('shapes-feedback', 'That is a square. Look for the round shape.'); });
+  bind('shape-circle', function () { finishChoices(['shape-square', 'shape-circle'], 'shape-circle'); text('shapes-feedback', 'Yes! A circle is round. All done.'); });
+  bind('open-letters', function () { resetChoices(['letter-a', 'letter-b', 'letter-c'], 'letters-feedback', 'Tap a letter.'); show('letters'); });
+  bind('letter-a', function () { finishChoices(['letter-a', 'letter-b', 'letter-c'], 'letter-a'); text('letters-feedback', 'Yes! A matches A. All done.'); });
+  bind('letter-b', function () { text('letters-feedback', 'That is B. Look for A.'); });
+  bind('letter-c', function () { text('letters-feedback', 'That is C. Look for A.'); });
+  bind('open-story', function () { resetChoices(['story-garden', 'story-pond'], 'story-feedback', 'Choose a place. Both are good choices.'); show('story'); });
+  bind('story-garden', function () { finishChoices(['story-garden', 'story-pond'], 'story-garden'); text('story-feedback', 'In the garden, the rabbit finds a carrot. It eats, then rests. The end.'); });
+  bind('story-pond', function () { finishChoices(['story-garden', 'story-pond'], 'story-pond'); text('story-feedback', 'By the pond, the rabbit sees a duck. It waves, then goes home. The end.'); });
+  bind('open-check', function () { show('check'); });
+  bind('text-size', function () {
+    var large = document.body.className !== 'large';
+    document.body.className = large ? 'large' : '';
+    text('text-size', large ? 'Standard text' : 'Larger text');
+  });
+  function tap(index) {
+    var i, total = 0;
+    checked[index] = true;
+    for (i = 0; i < checked.length; i += 1) { if (checked[i]) { total += 1; } }
+    text('tap-status', total === 3 ? '3 of 3 checked. Touch check complete.' : total + ' of 3 buttons checked.');
+    var ids = ['tap-one', 'tap-two', 'tap-three'];
+    el(ids[index]).className = 'chosen'; el(ids[index]).disabled = true;
+  }
+  bind('tap-one', function () { tap(0); }); bind('tap-two', function () { tap(1); }); bind('tap-three', function () { tap(2); });
+  var i, buttons = document.getElementsByTagName('button');
+  for (i = 0; i < buttons.length; i += 1) { buttons[i].disabled = false; }
+  for (i = 1; i < screens.length; i += 1) { bind(screens[i] + '-home', function () { show('home'); }); }
+  text('script-status', 'JavaScript is working.');
+  show('home');
+}());
+</script>
+</body>
+</html>
