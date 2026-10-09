@@ -1,12 +1,12 @@
-# Math stories — v0.7
+# Math stories — v0.8
 
 ## Objective and confirmed inputs
 
-The owner approved a Singapore-inspired concept sequence on 2026-10-09 and requested less cumbersome input, clearer actionable objects, better illustrations and randomized/dynamic pictures. Replace the v0.6 nine-activity menu with three linked story activities plus scattered-dot counting. Preserve the original Hub samples, diagnostics, GitHub Pages hosting and browser compatibility conventions. Exact Kindle model is unknown.
+The owner approved a Singapore-inspired concept sequence on 2026-10-09 and requested less cumbersome input, clearer actionable objects, better illustrations and randomized/dynamic pictures. Replace the v0.6 nine-activity menu with three linked story activities, scattered-dot counting, and the remaining five curriculum domains. Preserve the original Hub samples, diagnostics, GitHub Pages hosting and browser compatibility conventions. Exact Kindle model is unknown.
 
 ## Implementation steps and decisions
 
-1. Offer suggested age levels 3/4/5 and four picture tiles. Each tile ends after three rounds. Ages are starting difficulty, not developmental cutoffs.
+1. Offer suggested age levels 3/4/5 and nine picture tiles. Each tile ends after three rounds. Ages are starting difficulty, not developmental cutoffs.
 2. Feed rabbits: match one carrot to each rabbit. Hungry rabbits are tappable; fed rabbits are passive. Carrot inventory updates after each action. Rabbit order stays stable within a round.
 3. Train: board a fixed total; explore arbitrary splits of that total; fill the missing part given passengers in the first carriage. The split round intentionally stays editable after Next becomes available. Moving one passenger conserves the total. The last needed seat automatically completes the missing-part round.
 4. Track: younger level compares two equal-unit tracks with randomized longer side. Older levels place equal-size sleepers in gaps. Units become passive pictures; the final gap completes the round. Real-world measuring is an adult-guided extension.
@@ -18,7 +18,7 @@ The owner approved a Singapore-inspired concept sequence on 2026-10-09 and reque
 
 ## Acceptance and verification
 
-- Passed ES5 parsing and DOM checks for all 12 age/activity combinations, 36 rounds each across four seeded random streams (144 exercised rounds).
+- Passed ES5 parsing and DOM checks for all 27 age/activity combinations, 81 rounds each across four seeded random streams (324 exercised rounds).
 - Passed immediate completion, Next gating, wrong answer recovery, stable rabbit order and dot layout during a round, nonoverlapping dot coordinates, varied layouts across seeds, conserved train totals, editable splits, arbitrary seat order, completed controls becoming passive, restart, completion marks and blocked storage.
 - Regression: original Hub, storage, capability and advanced diagnostics checked separately against the refreshed main-branch source, preserving the newer timer change.
 - PNG contact sheet inspected visually. Full browser layout check unavailable because no browser executable is installed. Device input, picture comprehension, clipping, touch sizes and E Ink refresh remain pending.
@@ -30,3 +30,12 @@ The owner approved a Singapore-inspired concept sequence on 2026-10-09 and reque
 - https://www.singaporemath.com/pages/what-is-singapore-math
 
 These are original story activities inspired by CPA and part-whole relationships, not a complete Singapore Math curriculum. On-screen objects are pictorial, not replacements for the physical concrete stage. Adult guides connect each experience with physical toys. The current rabbit rounds practise one-to-one correspondence; they do not yet cover shortages or leftovers. Track filling models equal units; it does not assess a child's general measurement ability. Difficulty across domains is intentionally not uniform.
+
+## Remaining curriculum implemented after owner direction to continue
+
+- Patterns: AB / AAB / ABC with shuffled picture identities; final round advances within the repeated unit rather than always asking at the unit boundary. Correct choice fills the pictured gap immediately.
+- Sorting: circles and squares of both sizes. Ages 4/5 change to a size rule in the middle round, independently varying shape and size. Idle baskets are passive; they become actionable only while an object is selected. Incorrect destinations retain selection.
+- Shape matching: varied-size circles, squares and triangles, including rotated squares and triangles. Age 5 guide asks about sides/corners. This is picture matching, not an independent shape-properties assessment.
+- Group comparison: aligned same-size illustrations with random larger side, equal groups, more/fewer, and numeric differences at level 5. Alignment supports pairing and seeing leftovers.
+- Position: place a rabbit above, below or inside a solid reference box. Dashed destinations are the only interactive regions; other destinations are cleared on completion.
+- Passed added checks for pattern substitution, wrong/right selections, sorting under both rules, idle-basket controls, rotated shape matching, more/fewer/equal/difference decisions, position placement and conserved train totals.

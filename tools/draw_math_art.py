@@ -4,7 +4,7 @@ from pathlib import Path
 import json,base64,io
 root=Path(__file__).resolve().parent.parent
 assets={};imgs=[]
-for name in ['rabbit0','rabbit1','rabbit2','carrot0','carrot1','carrot2','bear0','bear1','bear2','engine','ruler','dots']:
+for name in ['rabbit0','rabbit1','rabbit2','carrot0','carrot1','carrot2','bear0','bear1','bear2','engine','ruler','dots','circle','square','triangle','triangleturn','squareturn','circlelittle','squarelittle','trianglelittle','position','pattern','sorting','compare']:
  im=Image.new('RGB',(200,200),'white');d=ImageDraw.Draw(im);v=int(name[-1]) if name[-1].isdigit() else 0
  def oval(box,fill='white',w=5):d.ellipse(box,fill=fill,outline='black',width=w)
  def line(pts,w=4):d.line(pts,fill='black',width=w)
@@ -27,10 +27,28 @@ for name in ['rabbit0','rabbit1','rabbit2','carrot0','carrot1','carrot2','bear0'
  elif name=='ruler':
   d.rectangle((12,65,186,139),outline='black',width=6)
   for x in range(27,179,19):line((x,70,x,104),3)
+ elif name.startswith('circle'):
+  oval((48,48,152,152) if name=='circlelittle' else (25,25,175,175),w=6)
+ elif name.startswith('square'):
+  if name=='squareturn':d.polygon([(100,15),(185,100),(100,185),(15,100)],outline='black',width=6)
+  else:d.rectangle((48,48,152,152) if name=='squarelittle' else (25,25,175,175),outline='black',width=6)
+ elif name.startswith('triangle'):
+  pts=[(100,25),(175,175),(25,175)] if name=='triangle' else [(25,25),(175,100),(25,175)] if name=='triangleturn' else [(100,50),(150,150),(50,150)]
+  d.polygon(pts,outline='black',width=6)
+ elif name=='position':
+  d.rectangle((53,100,151,184),outline='black',width=6);oval((83,30,121,68),'black',3);line((100,70,100,94),5)
+ elif name=='pattern':
+  for x in [20,110]:oval((x,25,x+60,85),w=5);d.rectangle((x,113,x+60,173),outline='black',width=5)
+ elif name=='sorting':
+  oval((13,23,70,80),w=5);d.rectangle((127,23,185,80),outline='black',width=5);d.rectangle((9,119,91,183),outline='black',width=5);d.rectangle((111,119,194,183),outline='black',width=5);line((39,86,39,109),5);line((155,86,155,109),5)
+ elif name=='compare':
+  for x in [28,80,133]:oval((x,34,x+30,64),'black',2)
+  for x in [28,80]:oval((x,124,x+30,154),'black',2)
+  line((43,72,43,114),2);line((95,72,95,114),2)
  else:
   for x,y in [(36,54),(127,32),(81,105),(164,130),(37,166)]:oval((x-11,y-11,x+11,y+11),'black',2)
  im=im.resize((120,120),Image.Resampling.LANCZOS);b=io.BytesIO();im.save(b,format='PNG');assets[name]='data:image/png;base64,'+base64.b64encode(b.getvalue()).decode();imgs.append(im)
 (root/'art-data.json').write_text(json.dumps(assets))
-sheet=Image.new('RGB',(480,435),'white');d=ImageDraw.Draw(sheet)
+sheet=Image.new('RGB',(480,((len(imgs)+3)//4)*145),'white');d=ImageDraw.Draw(sheet)
 for i,(name,im) in enumerate(zip(assets,imgs)):x=i%4*120;y=i//4*145;sheet.paste(im,(x,y));d.text((x+7,y+123),name,fill='black')
 sheet.save(root.parent/'math-art-contact.png')
