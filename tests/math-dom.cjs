@@ -1,25 +1,20 @@
-const assert=require('node:assert/strict');
-const fs=require('node:fs');const {JSDOM}=require('jsdom');const acorn=require('acorn');
-const html=fs.readFileSync('math.html','utf8');acorn.parse(html.match(/<script>([\s\S]*?)<\/script>/)[1],{ecmaVersion:5});
-function launch(blocked=false){return new JSDOM(html,{url:'https://example.test/kindle-learning-lab/math.html',runScripts:'dangerously',beforeParse(w){if(blocked)Object.defineProperty(w,'localStorage',{get(){throw Error('blocked')}})}});}
-function tap(d,id){d.getElementById(id).click();}function children(d,id){return Array.from(d.getElementById(id).querySelectorAll('button'));}
-for(const age of [3,4,5])for(let kind=0;kind<9;kind++){
- const dom=launch();const d=dom.window.document;children(d,'age-buttons')[age-3].click();assert.equal(children(d,'activities').length,9);children(d,'activities')[kind].click();
+const assert=require('node:assert/strict'),fs=require('node:fs'),{JSDOM}=require('jsdom'),acorn=require('acorn');
+const html=fs.readFileSync('math.html','utf8');acorn.parse(html.match(/<script>([\s\S]*?)<\/script>/)[1],{ecmaVersion:5});assert(!html.includes('id="check"'));assert(!/setInterval|setTimeout/.test(html));
+function launch(blocked=false,seed=1){return new JSDOM(html,{url:'https://example.test/kindle-learning-lab/math.html',runScripts:'dangerously',beforeParse(w){w.Math.random=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};if(blocked)Object.defineProperty(w,'localStorage',{get(){throw Error('blocked')}})}});}
+function btn(d,id){return [...d.getElementById(id).querySelectorAll('button')];}function click(d,id){d.getElementById(id).click();}
+for(let seed=1;seed<=4;seed++)for(const age of [3,4,5])for(let k=0;k<4;k++){
+ const dom=launch(false,seed),d=dom.window.document;btn(d,'levels')[age-3].click();btn(d,'activities')[k].click();
  for(let r=0;r<3;r++){
-  assert.equal(d.getElementById('next').disabled,true);tap(d,'check');assert.equal(d.getElementById('next').disabled,true);
-  const n=age===3?[2,3,4][r]:age===4?[4,5,6][r]:[6,8,10][r];const small=age===3?[1,2,3][r]:[3,4,5][r];
-  if(kind===0){children(d,'workspace').forEach(b=>b.click());children(d,'choices').find(b=>b.textContent===String(n)).click();}
-  if(kind===1)for(let i=0;i<n;i++)tap(d,'plus');
-  if(kind===2){if(age===5)children(d,'choices').find(b=>b.textContent===String([1,0,2][r])).click();else children(d,'choices')[[2,1,0][r]].click();}
-  if(kind===3){const bs=children(d,'choices');if(age===5&&r===2){for(let i=0;i<3;i++)bs[1].click();}else{for(let i=0;i<(r===2?2:1);i++)bs[r===1?0:1].click();}}
-  if(kind===4)children(d,'choices').find(b=>b.getAttribute('aria-label')==='Choose '+r).click();
-  if(kind===5)children(d,'choices').find(b=>b.getAttribute('aria-label')==='Choose '+r).click();
-  if(kind===6){for(let i=0;i<(age===3?3:age===4?4:5);i++){tap(d,'item-'+i);children(d,'baskets')[i%2].click();}}
-  if(kind===7){if(age===3)children(d,'choices')[1].click();else for(let i=0;i<small;i++)children(d,'choices')[1].click();}
-  if(kind===8)children(d,'choices')[r].click();
-  tap(d,'check');assert.equal(d.getElementById('next').disabled,false,`${age}/${kind}/${r}`);tap(d,'check');assert.equal(d.getElementById('next').disabled,false);tap(d,'next');
+  assert.equal(d.getElementById('next').style.display,'none');click(d,'next');assert.equal(d.getElementById('progress').getAttribute('aria-label'),`Round ${r+1} of 3`);
+  if(k===0){let ids=btn(d,'scene').map(x=>x.parentNode.id);for(const id of ids){d.getElementById(id).querySelector('button').click();assert.deepEqual([...d.querySelectorAll('.rabbit-card')].map(x=>x.id),ids);}}
+  if(k===1){if(r===0){while(btn(d,'waiting').length)btn(d,'waiting')[0].click();}if(r===1){btn(d,'scene')[0].click();assert.equal(d.getElementById('next').style.display,'block');const before=d.getElementById('whole').textContent;btn(d,'scene')[0].click();assert.notEqual(d.getElementById('whole').textContent,before);assert(btn(d,'scene').length);const parts=d.getElementById('whole').textContent.match(/\d+/g).map(Number);assert.equal(parts[0],parts[1]+parts[2]);}if(r===2){let bs=btn(d,'wagon1');bs[bs.length-1].click();assert(d.querySelector('#wagon1 .passive-passenger:last-child'));while(btn(d,'wagon1').length)btn(d,'wagon1')[0].click();}}
+  if(k===2){if(age===3){let bs=btn(d,'scene'),n=bs.map(x=>x.querySelectorAll('.rail').length);bs[n[0]>n[1]?1:0].click();assert.equal(d.getElementById('next').style.display,'none');bs[n[0]>n[1]?0:1].click();}else{while(btn(d,'measure').length)btn(d,'measure')[0].click();}}
+  if(k===3){const n=Number(d.querySelector('.dotfield').getAttribute('aria-label').split(' ')[0]),dots=[...d.querySelectorAll('.dot')];assert.equal(dots.length,n);const coords=dots.map(x=>[parseInt(x.style.left),parseInt(x.style.top)]);for(let i=0;i<n;i++)for(let j=i+1;j<n;j++)assert(Math.hypot(coords[i][0]-coords[j][0],coords[i][1]-coords[j][1])>=24);const prev=d.querySelector('.dotfield').innerHTML;btn(d,'choices').find(x=>x.textContent!==String(n)).click();assert.equal(d.querySelector('.dotfield').innerHTML,prev);btn(d,'choices').find(x=>x.textContent===String(n)).click();}
+  assert.equal(d.getElementById('next').style.display,'block',`${age}/${k}/${r}`);if(!(k===1&&r===1)){assert.equal(btn(d,'scene').length+btn(d,'choices').length,0,'Completed objects should not remain buttons');}click(d,'next');
  }
- assert.equal(d.getElementById('next').style.display,'none');assert.equal(JSON.parse(dom.window.localStorage.getItem('kindle-math-v1'))[age+'-'+kind],true);tap(d,'back');assert.match(children(d,'activities')[kind].textContent,/✓/);children(d,'activities')[kind].click();assert.equal(d.getElementById('next').disabled,true);dom.window.close();
+ assert.equal(JSON.parse(dom.window.localStorage.getItem('kindle-math-stories-v2'))[age+'-'+k],true);click(d,'back');btn(d,'activities')[k].click();assert.equal(d.getElementById('next').style.display,'none');dom.window.close();
 }
-const blocked=launch(true);const d=blocked.window.document;children(d,'age-buttons')[0].click();assert.match(d.getElementById('storage-note').textContent,/unavailable/);children(d,'activities')[0].click();assert.equal(d.getElementById('play').style.display,'block');blocked.window.close();
-console.log('PASS: ES5; 27 activities / 81 rounds; retries, answer checks, completion, restart and blocked-storage fallback.');
+const dom=launch(true);const d=dom.window.document;btn(d,'levels')[0].click();assert.match(d.getElementById('save-note').textContent,/unavailable/);btn(d,'activities')[0].click();while(btn(d,'scene').length)btn(d,'scene')[0].click();assert.equal(d.getElementById('next').style.display,'block');dom.window.close();
+const layouts=[];for(let seed=1;seed<=3;seed++){const dom=launch(false,seed),d=dom.window.document;btn(d,'levels')[0].click();btn(d,'activities')[3].click();layouts.push(d.querySelector('.dotfield').innerHTML);dom.window.close();}assert.equal(new Set(layouts).size,3);
+const stored=launch();stored.window.localStorage.setItem('kindle-math-v1','{"3-0":true}');btn(stored.window.document,'levels')[0].click();click(stored.window.document,'clear');assert.equal(stored.window.localStorage.getItem('kindle-math-v1'),'{"3-0":true}');stored.window.close();
+console.log('PASS: ES5, 12 stories / 36 rounds across four random seeds; immediate completion, open splits, passive finished objects, stable/nonoverlapping random layouts, restart, marks and blocked-storage fallback.');

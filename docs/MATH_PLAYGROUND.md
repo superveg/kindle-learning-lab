@@ -1,47 +1,32 @@
-# Math playground — v0.6
+# Math stories — v0.7
 
 ## Objective and confirmed inputs
 
-The owner requested interactive mathematics content for ages 3, 4 and 5 on 2026-10-09. This explicitly expands the former 3–4 scope. Preserve static GitHub Pages, black-and-white pictures, large controls, minimal reading, ES5 and finite sessions. Exact Kindle model remains unknown. Previously reported successful capability checks do not establish compatibility with this new page.
+The owner approved a Singapore-inspired concept sequence on 2026-10-09 and requested less cumbersome input, clearer actionable objects, better illustrations and randomized/dynamic pictures. Replace the v0.6 nine-activity menu with three linked story activities plus scattered-dot counting. Preserve the original Hub samples, diagnostics, GitHub Pages hosting and browser compatibility conventions. Exact Kindle model is unknown.
 
-## Implementation
+## Implementation steps and decisions
 
-1. Keep the original Hub and device checks; add a pictogram tile linking to the self-contained `math.html`.
-2. Offer three suggested age levels, with unrestricted switching and nine activities at each level. Each activity ends after three rounds; it never advances automatically.
-3. Use tap manipulation instead of requiring drag events, continuous animation or timing.
-4. Embed required image assets and script. Navigation from Hub to math needs an initial page load; offline reopening is not promised.
-5. Save only completion marks in the browser with a namespaced key and scoped clear. Storage failure leaves activities available. Completing rounds is not evidence of mastery. Per-question resume is not implemented.
-6. Provide an English adult guide per prompt; adults can explain in Chinese or another home language. Age levels are curriculum starting points, not population averages or diagnostic milestones.
-
-## Activity map
-
-| Activity | Suggested 3 | Suggested 4 | Suggested 5 |
-| --- | --- | --- | --- |
-| Count each one | Mark/count 2–4 blocks | Mark/count 4–6 | Mark/count 6–10 |
-| Pack the wagon | Build quantities 2–4 | Build 4–6 | Build 6–10 |
-| Compare groups | More / equal; larger side changes | More / equal | Differences 1, 0, 2 |
-| Join and take away | 2+1, 2−1, 2+2 with blocks | 4+1, 4−1, 4+2 with blocks | 4+1, 4−1, split 5 into 2+3 |
-| Shapes | Match circle, square, triangle | Match shapes | Choose by corners/sides |
-| Patterns | AB with changing symbols | AAB | ABC |
-| Sort blocks | Three blocks by shape | Four blocks by shape | Five blocks; middle round changes to length |
-| Measure | Compare longer tracks | Build 3–5 equal units | Build 3–5 equal units |
-| Position | Above, below, inside | Above, below, inside | Above, below, inside |
-
-Some foundational concepts intentionally recur at multiple ages; levels do not imply every domain becomes harder. The length sorting round contrasts short square blocks with long circles, so adult real-object follow-up is needed to test sorting independent of shape. Position instructions benefit from adult demonstration. Shape rotation, structured small-set recognition, general classification, number conservation, and authentic measurement of real objects are follow-up opportunities rather than claims about the current screen content.
+1. Offer suggested age levels 3/4/5 and four picture tiles. Each tile ends after three rounds. Ages are starting difficulty, not developmental cutoffs.
+2. Feed rabbits: match one carrot to each rabbit. Hungry rabbits are tappable; fed rabbits are passive. Carrot inventory updates after each action. Rabbit order stays stable within a round.
+3. Train: board a fixed total; explore arbitrary splits of that total; fill the missing part given passengers in the first carriage. The split round intentionally stays editable after Next becomes available. Moving one passenger conserves the total. The last needed seat automatically completes the missing-part round.
+4. Track: younger level compares two equal-unit tracks with randomized longer side. Older levels place equal-size sleepers in gaps. Units become passive pictures; the final gap completes the round. Real-world measuring is an adult-guided extension.
+5. Dots: select a numeral for randomly scattered, nonoverlapping dots. Quantities, positions and choice order vary. A wrong answer does not regenerate the problem. Use 12 cells with bounded jitter; dots have equal diameter.
+6. Replace submit/check with immediate answer feedback and automatic detection of explicit terminal goals. Keep Next manual, allowing inspection of the result and avoiding automatic page jumps.
+7. Reference pictures are not buttons. Freeze completed controls into passive elements. Open exploration is the exception: editable passenger buttons remain visibly actionable.
+8. Embed all PNG art and scripts. Draw original conservative black-and-white rabbits, carrots, bears with varied hats, locomotive, ruler and dot icons. Art generation uses Pillow during development only. No timer, continuous animation, SVG, CSS transition, canvas, fetch or additional runtime dependencies.
+9. Use new `kindle-math-stories-v2` completion marks, with scoped clear and storage-failure fallback. Leave old marks intact. Completion denotes played, not mastery; per-question resume is not implemented.
 
 ## Acceptance and verification
 
-- 27 selectable activities / 81 finite rounds; wrong answers remain editable, Next is gated on correctness, repeated checking does not advance.
-- Completion marks distinguish finished activities, restart resets the round, storage failure has an in-memory fallback, clearing targets only math marks.
-- All application JavaScript parses as ES5. No external runtime dependencies or content requests during an active math session.
-- Passed `tests/math-dom.cjs` for all ages, activities, correct solutions, retries, completion, restart and blocked storage.
-- Passed existing hub, storage, capabilities and advanced DOM checks.
-- Browser visual verification could not run: installed Playwright has no browser executable. No actual Kindle test performed for v0.6.
-- Device acceptance: open new tile; try all nine activity types, inspect width/touch sizes and PNG arrows, show the child the prompts once, complete three rounds, return/reopen and inspect completion marks. Verify fresh navigation/reload online separately from interaction during disconnection.
+- Passed ES5 parsing and DOM checks for all 12 age/activity combinations, 36 rounds each across four seeded random streams (144 exercised rounds).
+- Passed immediate completion, Next gating, wrong answer recovery, stable rabbit order and dot layout during a round, nonoverlapping dot coordinates, varied layouts across seeds, conserved train totals, editable splits, arbitrary seat order, completed controls becoming passive, restart, completion marks and blocked storage.
+- Regression: original Hub, storage, capability and advanced diagnostics checked separately against the refreshed main-branch source, preserving the newer timer change.
+- PNG contact sheet inspected visually. Full browser layout check unavailable because no browser executable is installed. Device input, picture comprehension, clipping, touch sizes and E Ink refresh remain pending.
+- Kindle acceptance: demonstrate feeding; try a wrong dot answer then correct; verify the picture stays still; move a passenger twice and inspect total; fill a seat out of order; complete/reopen a story and inspect the played mark. Reopening offline is a separate unimplemented capability.
 
-## Educational basis
+## Educational references and limits
 
-The activity sequence adapts Head Start's 36–48 month, 48–60 month and by-60-month mathematics framework and NAEYC/NCTM's early mathematics guidance. Numeric ranges above are implementation choices, not diagnostic age cutoffs.
+- https://nel.moe.edu.sg/la/numeracy/how-can-you-do-it-/using-concrete-pictorial-abstract--cpa--approach/
+- https://www.singaporemath.com/pages/what-is-singapore-math
 
-- https://headstart.gov/school-readiness/article/math-preschool
-- https://www.naeyc.org/positionstatements/mathematics
+These are original story activities inspired by CPA and part-whole relationships, not a complete Singapore Math curriculum. On-screen objects are pictorial, not replacements for the physical concrete stage. Adult guides connect each experience with physical toys. The current rabbit rounds practise one-to-one correspondence; they do not yet cover shortages or leftovers. Track filling models equal units; it does not assess a child's general measurement ability. Difficulty across domains is intentionally not uniform.
