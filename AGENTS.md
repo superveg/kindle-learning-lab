@@ -2,11 +2,10 @@
 
 ## Scope and communication
 
-- This repository is exclusively for the Kindle children's interactive learning system.
-- Discuss work with the owner in Chinese. Code and technical documentation may be in English.
+- Keep repository changes focused on the Kindle children's interactive learning system.
+- Use English for project communication, code, and documentation.
 - Read docs/PROJECT.md before implementation and preserve existing project decisions.
 - Do not repeatedly ask about the product purpose or target age.
-- Keep unrelated chat topics out of this project, and do not proactively reuse this project's content in unrelated conversations.
 - Explain the reason before proposing a change to project scope or technical direction.
 - Distinguish confirmed requirements, proposals, and unverified assumptions.
 
