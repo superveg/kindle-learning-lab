@@ -1,8 +1,10 @@
 # Local Storage Test — v0.3
 
+The owner reported that this marker test worked on Kindle on 2026-10-09. The exact model, firmware, and separately tested restart behavior were not supplied.
+
 ## Scope
 
-The grown-up check includes a small localStorage persistence test. It saves a generated marker only. Learning progress and settings still reset on reload; this test does not implement accounts, cloud synchronization, or offline page reopening.
+The grown-up check includes a small localStorage persistence test. It saves a generated marker only. The marker test itself does not save learning progress. In v0.4, the separate counting-resume check saves actual counting state under a different key. Other activities and settings still reset on reload. No accounts, cloud synchronization, or offline page reopening are implemented.
 
 ## Kindle procedure
 
@@ -14,7 +16,7 @@ The grown-up check includes a small localStorage persistence test. It saves a ge
 6. Optionally repeat after a Kindle restart. Record the model and firmware when reporting results.
 7. Choose **Clear test marker**, then refresh to confirm that no marker is found.
 
-The write-and-read result confirms only the current operation. It does not establish persistence after a browser close or device restart. Actual Kindle behavior remains pending this test.
+The write-and-read result confirms only the current operation. It does not establish persistence after a browser close or device restart. The marker test has an owner-reported success; any untested close/restart scenarios remain pending.
 
 ## Implementation
 

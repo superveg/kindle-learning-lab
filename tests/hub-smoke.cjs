@@ -84,7 +84,7 @@ const { chromium } = require('playwright');
     const fallback = await browser.newContext({ javaScriptEnabled: false });
     const staticPage = await fallback.newPage();
     await staticPage.goto(url);
-    assert.equal(await staticPage.locator('.screen:visible').count(), 6);
+    assert.equal(await staticPage.locator('.screen:visible').count(), 10);
     assert.match(await staticPage.locator('noscript').innerText(), /JavaScript is unavailable/);
     assert.equal(await staticPage.locator('#shape-circle').isDisabled(), true);
     console.log('PASS: layout, navigation, scoring, completion, offline interaction, text size, tap checks, no-JavaScript fallback.');

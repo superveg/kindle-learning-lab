@@ -58,6 +58,13 @@
     .dot { display: inline-block; width: 16px; height: 16px; border: 2px solid #000; border-radius: 50%; margin: 0 8px; }
     .dot.current { background: #000; }
     @media (min-width: 540px) { .tiles .tile { min-height: 154px; } }
+
+    .test-grid button { display: inline-block; width: 30%; margin: 6px 1%; padding: 8px 2px; height: 112px; vertical-align: top; font-size: 22px; }
+    .test-grid .shape { display: block; width: 36px; height: 36px; border-width: 4px; margin: 8px auto; }
+    .render-card { display: inline-block; width: 47%; margin-right: 2%; vertical-align: top; text-align: center; }
+    .render-card img, .render-card svg { max-width: 100%; }
+    #refresh-box { width: 180px; height: 156px; border: 4px solid #000; text-align: center; margin: 20px auto; font: bold 100px/1.4 Arial, sans-serif; }
+    .reference-lines { border-top: 2px solid #000; border-bottom: 5px solid #000; padding: 12px; text-align: center; }
   </style>
 </head>
 <body>
@@ -109,6 +116,10 @@
   <div id="check" class="screen">
     <a href="#home" class="back" id="check-home">Back to activities</a>
     <h2>Screen check</h2>
+    <button type="button" id="open-resume" disabled>1. Resume counting</button>
+    <button type="button" id="open-grid" disabled>2. Nine touch targets</button>
+    <button type="button" id="open-refresh" disabled>3. Local screen updates</button>
+    <button type="button" id="open-svg" disabled>4. PNG and SVG</button>
     <h2>Save test</h2>
     <p class="small">This checks localStorage on this device. It does not save learning progress yet.</p>
     <p class="small">1. Save a marker. 2. Refresh, or close and reopen this same page. 3. Check that the same marker is still shown.</p>
@@ -119,7 +130,7 @@
     <p class="small">A successful save only confirms writing and reading now. Reopening on Kindle is still required to test persistence. Clearing removes only this test marker.</p>
 
     <p id="script-status">JavaScript has not started.</p>
-    <p class="small">Prototype v0.3. The previous version worked well in an owner-reported Kindle test. New pictograms need a device recheck.</p>
+    <p class="small">Prototype v0.4. The previous version worked well in an owner-reported Kindle test. New pictograms need a device recheck.</p>
     <p class="sample">Aa Bb Cc &nbsp; 1 2 3<br>Can you read this comfortably?</p>
     <button type="button" id="text-size" disabled>Larger text</button>
     <p>Tap each button once.</p>
@@ -128,19 +139,57 @@
     <button type="button" id="tap-three" disabled>Tap 3</button>
     <p id="tap-status" class="status" aria-live="polite">0 of 3 buttons checked.</p>
     <p class="small">After this page loads, turn off Wi-Fi and try the activities. Keep the page open. Reloading offline is a separate test.</p>
-    <p class="small">Check for clipped text, missed taps, slow updates, and lingering marks after switching screens. Progress resets when the page reloads.</p>
+    <p class="small">Check for clipped text, missed taps, slow updates, and lingering marks after switching screens. Counting progress can be saved and resumed from the counting test. Other activity progress resets on reload.</p>
+  </div>
+
+  <div id="test-resume" class="screen">
+    <a href="#check" id="test-resume-back" class="back">Back to checks</a><h2>1. Resume counting</h2>
+    <p class="small">Start the real counting activity. Answer question 1, go to question 2, and answer it. Refresh or close and reopen the page, then return here and resume.</p>
+    <button type="button" id="resume-start" disabled>Start counting test</button>
+    <button type="button" id="resume-continue" disabled>Resume saved counting</button>
+    <button type="button" id="resume-clear" disabled>Clear counting progress</button>
+    <p id="resume-status" class="status" aria-live="polite">No progress checked yet.</p>
+    <p class="small">Resume should restore the same question, answer state, and score. Starting from the Hub starts a new round and replaces the counting save.</p>
+  </div>
+  <div id="test-grid" class="screen">
+    <a href="#check" id="test-grid-back" class="back">Back to checks</a><h2>2. Nine touch targets</h2>
+    <p class="small">Tap cells 1, 5, and 9. Tap 5 again to deselect it. Check that only the intended cells change.</p>
+    <div id="grid-cells" class="test-grid"></div>
+    <p id="grid-status" class="status" aria-live="polite">No cells selected.</p>
+    <button type="button" id="grid-reset" disabled>Clear selection</button>
+  </div>
+  <div id="test-refresh" class="screen">
+    <a href="#check" id="test-refresh-back" class="back">Back to checks</a><h2>3. Local screen updates</h2>
+    <p class="small">Tap slowly six times. Watch the number, borders, and unchanged reference lines for lingering marks and flashes.</p>
+    <div class="reference-lines">STATIC REFERENCE</div>
+    <div id="refresh-box"><span id="refresh-value">0</span></div>
+    <button type="button" id="refresh-next" disabled>Change the small area</button>
+    <p id="refresh-status" class="status" aria-live="polite">0 of 6 updates.</p>
+    <button type="button" id="refresh-reset" disabled>Restart this check</button>
+    <p class="small">Only a small part of the page changes. The browser and Kindle decide how the physical E Ink display refreshes.</p>
+  </div>
+  <div id="test-svg" class="screen">
+    <a href="#check" id="test-svg-back" class="back">Back to checks</a><h2>4. PNG and SVG</h2>
+    <p class="small">Both pictures should show a circle at the upper left and a square at the lower right. Compare their positions and outlines.</p>
+    <div class="render-card"><p>PNG reference</p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAIAAAAErfB6AAACaElEQVR42u3dQW7CMBBA0Sbi/lemi+4QhCaxPTP2++uKUD+NExCE7fl8/mjedksAWIAFWIAFWIAFGLAAC7AAC7AACzBgARZgAdbIHrGH37bt+A98ZOzuCo9fwa+osEsCX3YlnR24IS3mXMCdaDHHAw+gxRz2MmmwbsgR153gU2v99ehtHw3wINoLB+364IDbADQ51rADAT6x6ONPBIybXWSFrHXbk/fE9X0vuusY/T04yL4TfLC+YzbJg6Owvwscrsu4I3ASXcbdL7KSXL66bG4J/GksYlf509FXHmIf2QFcZHwNcd8JznMKdDK+BVx3FNYc4n3KoTHELrIAz7jLLbhLN5jgnPuhXdoWDVhLAb89gWXeCd8+t9VOwyYYsAALsAALsAALMGAB1nTA5d75K/feqgkWYDUHzrlL+1bSFeDqJ7AFP+ZhiwZccD+0P18HrrvLrfkxvH2+oTG+d4Ezf8Er8xfjXGQpDXDOITa+IyY4ytiptzFwqvuepLojzDwTnMSYbsctOtyY7nGPAas/x03l173ICrkvqLvN/neh3C8acPs90x3fSwJf2JD9ZkM94KjLn5v/SKFLtlP/6Z5wrUsccfWXScNux4428nVwV2a08cCdmNHmAn5R8fvBcwK/dfKG1ITAhfzCn97985qP7EweYMACLMACLMACLMCABViABViABViAAQuwAAuwAAuwAAswYAEWYAEWYAEWYMACLMACLMACLMCABViABVjDe1iCgyb45R4TbIsWYAEWYAHW6RcC7plvggVYgAVYgAVYgAELsAALsAALsAADFmABFmABFmABFuD5+wUDzBsZ5Nec0gAAAABJRU5ErkJggg==" width="160" height="160" alt="Circle and square PNG reference"></div>
+    <div class="render-card"><p>SVG test</p><svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="Circle and square SVG test"><title>Circle and square</title><rect width="160" height="160" fill="white"/><circle cx="47" cy="53" r="29.5" fill="none" stroke="black" stroke-width="7"/><rect x="91.5" y="83.5" width="49" height="49" fill="none" stroke="black" stroke-width="7"/></svg></div>
+    <button type="button" id="svg-match" disabled>Both pictures look correct</button>
+    <button type="button" id="svg-different" disabled>SVG is blank or different</button>
+    <p id="svg-status" class="status" aria-live="polite">SVG rendering is pending your device check.</p>
   </div>
   <noscript><p class="status">JavaScript is unavailable. The page is readable, but interactive samples need JavaScript. Activity links jump to their static sections.</p></noscript>
 </div>
 <script>
 (function () {
-  var screens = ['home', 'count', 'shapes', 'letters', 'story', 'check'];
+  var screens = ['home', 'count', 'shapes', 'letters', 'story', 'check', 'test-resume', 'test-grid', 'test-refresh', 'test-svg'];
   var counts = [2, 3, 1];
   var question = 0;
   var score = 0;
   var answered = false;
   var firstTry = true;
   var checked = [false, false, false];
+  var countCompleted = false;
+  var countKey = 'kindle-learning-lab.counting.v1';
   function el(id) { return document.getElementById(id); }
   function text(id, value) { el(id).innerHTML = ''; el(id).appendChild(document.createTextNode(value)); }
   function feedback(id, value, state) {
@@ -162,6 +211,68 @@
     window.scrollTo(0, 0);
   }
   function bind(id, fn) { el(id).onclick = function () { fn(); return false; }; }
+
+  function savedCounting() {
+    var raw = window.localStorage.getItem(countKey);
+    if (raw === null) { return null; }
+    var saved = JSON.parse(raw);
+    if (!saved || saved.version !== 1 || typeof saved.question !== 'number' ||
+        saved.question % 1 !== 0 || saved.question < 0 || saved.question > 2 ||
+        typeof saved.score !== 'number' || saved.score % 1 !== 0 || saved.score < 0 ||
+        saved.score > saved.question + (saved.answered ? 1 : 0) ||
+        typeof saved.answered !== 'boolean' || typeof saved.firstTry !== 'boolean' ||
+        typeof saved.completed !== 'boolean' ||
+        (saved.completed && (saved.question !== 2 || !saved.answered))) { throw new Error('Invalid counting save'); }
+    return saved;
+  }
+  function saveCounting() {
+    try {
+      var raw = JSON.stringify({version: 1, question: question, score: score, answered: answered, firstTry: firstTry, completed: countCompleted});
+      window.localStorage.setItem(countKey, raw);
+      if (window.localStorage.getItem(countKey) !== raw) { throw new Error('Save verification failed'); }
+      text('resume-status', 'Counting progress saved. Question ' + (question + 1) + ' of 3. Score: ' + score + '.');
+    } catch (error) {
+      text('resume-status', 'Counting could not be saved. Activities still work; do not rely on resume.');
+    }
+  }
+  function inspectCounting() {
+    try {
+      var saved = savedCounting();
+      text('resume-status', saved === null ? 'No saved counting progress.' :
+        (saved.completed ? 'Saved completed round.' : 'Saved question ' + (saved.question + 1) + ' of 3. Answered: ' + saved.answered + '.') + ' Score: ' + saved.score + '.');
+    } catch (error) { text('resume-status', 'Saved progress is unavailable or invalid. Start a new round to replace it.'); }
+  }
+  function completeCounting() {
+    countCompleted = true;
+    text('count-progress', 'All 3 questions complete');
+    feedback('count', 'All done! First-try answers: ' + score + ' of 3. Time for a break.', 'yes');
+    el('blocks').innerHTML = '';
+    el('count-dots').style.display = 'none';
+    el('count-answers').innerHTML = ''; el('count-next').style.display = 'none';
+  }
+  function startCounting() {
+    question = 0; score = 0; countCompleted = false;
+    el('count-dots').style.display = 'block'; renderCount(); saveCounting(); show('count');
+  }
+  function resumeCounting() {
+    try {
+      var saved = savedCounting();
+      if (saved === null) { text('resume-status', 'No saved counting progress. Start a counting test first.'); return; }
+      question = saved.question; score = saved.score;
+      el('count-dots').style.display = 'block';
+      renderCount();
+      answered = saved.answered; firstTry = saved.firstTry; countCompleted = saved.completed;
+      if (countCompleted) { completeCounting(); }
+      else if (answered) {
+        el('count-answers').getElementsByTagName('button')[counts[question] - 1].className = 'chosen';
+        feedback('count', 'Saved correct answer restored.', 'yes');
+        el('count-next').disabled = false;
+        saveCounting();
+      } else if (!firstTry) { feedback('count', 'Try counting each block.', 'retry'); }
+      show('count');
+    } catch (error) { text('resume-status', 'Saved progress is unavailable or invalid. Start a new round to replace it.'); }
+  }
+
   function renderCount() {
     var i, block, button;
     answered = false;
@@ -175,12 +286,13 @@
       button = document.createElement('button'); button.type = 'button'; button.appendChild(document.createTextNode(i));
       button.onclick = (function (value) { return function () {
         if (answered) { return; }
-        if (value !== counts[question]) { firstTry = false; feedback('count', 'Try counting each block.', 'retry'); return; }
+        if (value !== counts[question]) { firstTry = false; feedback('count', 'Try counting each block.', 'retry'); saveCounting(); return; }
         answered = true;
         if (firstTry) { score += 1; }
         this.className = 'chosen';
         feedback('count', 'Yes! ' + value + (value === 1 ? ' block.' : ' blocks.'), 'yes');
         el('count-next').disabled = false;
+        saveCounting();
       }; }(i));
       el('count-answers').appendChild(button);
     }
@@ -199,16 +311,12 @@
     for (i = 0; i < ids.length; i += 1) { el(ids[i]).disabled = true; }
     el(selected).className = 'chosen';
   }
-  bind('open-count', function () { question = 0; score = 0; el('count-dots').style.display = 'block'; renderCount(); show('count'); });
+  bind('open-count', startCounting);
   bind('count-next', function () {
     if (!answered) { return; }
-    if (question < 2) { question += 1; renderCount(); }
+    if (question < 2) { question += 1; renderCount(); saveCounting(); }
     else {
-      text('count-progress', 'All 3 questions complete');
-      feedback('count', 'All done! First-try answers: ' + score + ' of 3. Time for a break.', 'yes');
-      el('blocks').innerHTML = '';
-      el('count-dots').style.display = 'none';
-      el('count-answers').innerHTML = ''; el('count-next').style.display = 'none';
+      completeCounting(); saveCounting();
     }
   });
   bind('open-shapes', function () { resetChoices(['shape-square', 'shape-circle'], 'shapes-feedback', 'Tap a shape.'); show('shapes'); });
@@ -268,9 +376,70 @@
     el(ids[index]).className = 'chosen'; el(ids[index]).disabled = true;
   }
   bind('tap-one', function () { tap(0); }); bind('tap-two', function () { tap(1); }); bind('tap-three', function () { tap(2); });
+
+  bind('open-resume', function () { inspectCounting(); show('test-resume'); });
+  bind('resume-start', startCounting);
+  bind('resume-continue', resumeCounting);
+  bind('resume-clear', function () {
+    try {
+      window.localStorage.removeItem(countKey);
+      text('resume-status', window.localStorage.getItem(countKey) === null ? 'Counting progress cleared.' : 'Clear could not be verified.');
+    } catch (error) { text('resume-status', 'Could not clear counting progress.'); }
+  });
+  var gridSelected = [false, false, false, false, false, false, false, false, false];
+  function gridStatus() {
+    var selected = [], i;
+    for (i = 0; i < 9; i += 1) { if (gridSelected[i]) { selected.push(i + 1); } }
+    text('grid-status', selected.length ? 'Selected cells: ' + selected.join(', ') : 'No cells selected.');
+  }
+  function buildGrid() {
+    var i, button, shape, number;
+    for (i = 0; i < 9; i += 1) {
+      button = document.createElement('button'); button.type = 'button'; button.id = 'grid-cell-' + (i + 1);
+      button.setAttribute('aria-label', 'Cell ' + (i + 1)); button.setAttribute('aria-pressed', 'false');
+      number = document.createTextNode(i + 1); button.appendChild(number);
+      shape = document.createElement('span'); shape.className = 'shape' + (i % 2 ? ' circle' : '');
+      shape.setAttribute('aria-hidden', 'true'); button.appendChild(shape);
+      button.onclick = (function (index) { return function () {
+        gridSelected[index] = !gridSelected[index];
+        this.className = gridSelected[index] ? 'chosen' : '';
+        this.setAttribute('aria-pressed', gridSelected[index] ? 'true' : 'false'); gridStatus();
+      }; }(i));
+      el('grid-cells').appendChild(button);
+    }
+  }
+  bind('open-grid', function () { show('test-grid'); });
+  bind('grid-reset', function () {
+    var i;
+    for (i = 0; i < 9; i += 1) {
+      gridSelected[i] = false; el('grid-cell-' + (i + 1)).className = '';
+      el('grid-cell-' + (i + 1)).setAttribute('aria-pressed', 'false');
+    }
+    gridStatus();
+  });
+  var refreshStep = 0;
+  function refreshView() {
+    text('refresh-value', refreshStep);
+    el('refresh-box').style.backgroundColor = refreshStep % 2 ? '#000' : '#fff';
+    el('refresh-box').style.color = refreshStep % 2 ? '#fff' : '#000';
+    text('refresh-status', refreshStep + ' of 6 updates.' + (refreshStep === 6 ? ' Check complete.' : ''));
+    el('refresh-next').disabled = refreshStep === 6;
+  }
+  bind('open-refresh', function () { refreshView(); show('test-refresh'); });
+  bind('refresh-next', function () { if (refreshStep < 6) { refreshStep += 1; refreshView(); } });
+  bind('refresh-reset', function () { refreshStep = 0; refreshView(); });
+  bind('open-svg', function () { show('test-svg'); });
+  bind('svg-match', function () { text('svg-status', 'You reported that both pictures look correct on this device.'); });
+  bind('svg-different', function () { text('svg-status', 'You reported that the SVG is blank or different on this device.'); });
+  bind('test-resume-back', function () { show('check'); });
+  bind('test-grid-back', function () { show('check'); });
+  bind('test-refresh-back', function () { show('check'); });
+  bind('test-svg-back', function () { show('check'); });
+  buildGrid();
+
   var i, buttons = document.getElementsByTagName('button');
   for (i = 0; i < buttons.length; i += 1) { buttons[i].disabled = false; }
-  for (i = 1; i < screens.length; i += 1) { bind(screens[i] + '-home', function () { show('home'); }); }
+  for (i = 1; i < screens.length; i += 1) { if (el(screens[i] + '-home')) { bind(screens[i] + '-home', function () { show('home'); }); } }
   text('script-status', 'JavaScript is working.');
   storageRead();
   show('home');

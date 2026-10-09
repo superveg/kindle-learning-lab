@@ -13,11 +13,11 @@ The entry page offers four bounded samples:
 - Letters: match the letter A.
 - Little story: a rabbit chooses a carrot garden or duck pond; the adult may narrate the scene.
 
-The grown-up screen check includes a larger-text option, three touch targets, instructions for testing a brief disconnection, and a localStorage test marker that can be saved, checked, and cleared. The marker test does not save learning progress.
+The grown-up screen check includes a larger-text option, three touch targets, instructions for testing a brief disconnection, and a localStorage test marker that can be saved, checked, and cleared. The marker test is separate from the new real-counting resume check.
 
 The child-facing Hub uses pictograms. Home navigation, next-question controls, feedback, and story choices use images instead of written instructions. Numerals and letters remain as learning content; English accessible labels and adult screen-check text are retained.
 
-All styles, script, PNG pictograms, and activity content are embedded in one HTML file. No content is fetched during interaction. Session progress resets on reload. Offline reload/reopening is not implemented or promised.
+All styles, script, PNG pictograms, and activity content are embedded in one HTML file. No content is fetched during interaction. Counting progress is saved locally and can be restored through the grown-up counting-resume test. Starting Count from the Hub starts a fresh round. Other activities reset on reload. Offline reload/reopening is not implemented or promised.
 
 ## Publish on GitHub Pages
 
@@ -40,6 +40,7 @@ The page itself has no dependencies. Optional development checks use Node.js, js
 npm install --no-save --package-lock=false jsdom acorn playwright
 node tests/hub-dom.cjs
 node tests/storage-dom.cjs
+node tests/capabilities-dom.cjs
 npx playwright install chromium
 node tests/hub-smoke.cjs
 ```
@@ -60,3 +61,5 @@ The owner reported that v0.1 worked well on their Kindle and that the buttons wo
 - [Pictogram interface decisions](docs/PICTOGRAMS.md)
 
 - [Local storage test](docs/LOCAL_STORAGE_TEST.md)
+
+- [Four capability checks](docs/CAPABILITY_TESTS.md): counting resume, nine-cell selection, manual local updates, and PNG/SVG comparison.
