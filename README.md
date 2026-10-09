@@ -13,7 +13,7 @@ The entry page offers four bounded samples:
 - Letters: match the letter A.
 - Little story: a rabbit chooses a carrot garden or duck pond; the adult may narrate the scene.
 
-The grown-up screen check includes a larger-text option, three touch targets, and instructions for testing a brief disconnection.
+The grown-up screen check includes a larger-text option, three touch targets, instructions for testing a brief disconnection, and a localStorage test marker that can be saved, checked, and cleared. The marker test does not save learning progress.
 
 The child-facing Hub uses pictograms. Home navigation, next-question controls, feedback, and story choices use images instead of written instructions. Numerals and letters remain as learning content; English accessible labels and adult screen-check text are retained.
 
@@ -39,6 +39,7 @@ The page itself has no dependencies. Optional development checks use Node.js, js
 ```sh
 npm install --no-save --package-lock=false jsdom acorn playwright
 node tests/hub-dom.cjs
+node tests/storage-dom.cjs
 npx playwright install chromium
 node tests/hub-smoke.cjs
 ```
@@ -57,3 +58,5 @@ The owner reported that v0.1 worked well on their Kindle and that the buttons wo
 - [Hub design decisions](docs/HUB_DESIGN.md)
 - [Kindle test checklist](docs/KINDLE_TEST.md)
 - [Pictogram interface decisions](docs/PICTOGRAMS.md)
+
+- [Local storage test](docs/LOCAL_STORAGE_TEST.md)

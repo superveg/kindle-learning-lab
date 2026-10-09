@@ -109,8 +109,17 @@
   <div id="check" class="screen">
     <a href="#home" class="back" id="check-home">Back to activities</a>
     <h2>Screen check</h2>
+    <h2>Save test</h2>
+    <p class="small">This checks localStorage on this device. It does not save learning progress yet.</p>
+    <p class="small">1. Save a marker. 2. Refresh, or close and reopen this same page. 3. Check that the same marker is still shown.</p>
+    <button type="button" id="storage-save" disabled>Save test marker</button>
+    <button type="button" id="storage-read" disabled>Check saved marker</button>
+    <button type="button" id="storage-clear" disabled>Clear test marker</button>
+    <p id="storage-status" class="status" aria-live="polite">Storage test has not started.</p>
+    <p class="small">A successful save only confirms writing and reading now. Reopening on Kindle is still required to test persistence. Clearing removes only this test marker.</p>
+
     <p id="script-status">JavaScript has not started.</p>
-    <p class="small">Prototype v0.2. The previous version worked well in an owner-reported Kindle test. New pictograms need a device recheck.</p>
+    <p class="small">Prototype v0.3. The previous version worked well in an owner-reported Kindle test. New pictograms need a device recheck.</p>
     <p class="sample">Aa Bb Cc &nbsp; 1 2 3<br>Can you read this comfortably?</p>
     <button type="button" id="text-size" disabled>Larger text</button>
     <p>Tap each button once.</p>
@@ -212,7 +221,39 @@
   bind('open-story', function () { resetChoices(['story-garden', 'story-pond'], 'story-feedback', 'Choose a place. Both are good choices.'); show('story'); });
   bind('story-garden', function () { finishChoices(['story-garden', 'story-pond'], 'story-garden'); feedback('story', 'In the garden, the rabbit finds a carrot. It eats, then rests. The end.', 'yes'); });
   bind('story-pond', function () { finishChoices(['story-garden', 'story-pond'], 'story-pond'); feedback('story', 'By the pond, the rabbit sees a duck. It waves, then goes home. The end.', 'yes'); });
-  bind('open-check', function () { show('check'); });
+  var storageKey = 'kindle-learning-lab.storage-test.v1';
+  function storageRead() {
+    try {
+      var saved = window.localStorage.getItem(storageKey);
+      text('storage-status', saved === null ? 'No saved test marker found.' : 'Found saved marker: ' + saved);
+    } catch (error) {
+      text('storage-status', 'Local storage is unavailable or blocked. Activities still work without saving.');
+    }
+  }
+  bind('storage-save', function () {
+    try {
+      var marker = 'KLL-' + new Date().getTime() + '-' + Math.floor(Math.random() * 1000000);
+      window.localStorage.setItem(storageKey, marker);
+      if (window.localStorage.getItem(storageKey) !== marker) {
+        text('storage-status', 'Save could not be verified. Do not assume the marker was stored.');
+        return;
+      }
+      text('storage-status', 'Written and read back. Marker: ' + marker + '. Refresh or reopen to test persistence.');
+    } catch (error) {
+      text('storage-status', 'Save failed: local storage is unavailable, blocked, or full. Activities still work.');
+    }
+  });
+  bind('storage-read', storageRead);
+  bind('storage-clear', function () {
+    try {
+      window.localStorage.removeItem(storageKey);
+      text('storage-status', window.localStorage.getItem(storageKey) === null ? 'Test marker cleared.' : 'Clear could not be verified.');
+    } catch (error) {
+      text('storage-status', 'Could not clear the test marker. Local storage is unavailable or blocked.');
+    }
+  });
+
+  bind('open-check', function () { show('check'); storageRead(); });
   bind('text-size', function () {
     var large = document.body.className !== 'large';
     document.body.className = large ? 'large' : '';
@@ -231,6 +272,7 @@
   for (i = 0; i < buttons.length; i += 1) { buttons[i].disabled = false; }
   for (i = 1; i < screens.length; i += 1) { bind(screens[i] + '-home', function () { show('home'); }); }
   text('script-status', 'JavaScript is working.');
+  storageRead();
   show('home');
 }());
 </script>
