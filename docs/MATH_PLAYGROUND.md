@@ -67,3 +67,7 @@ Each correct answer can record a played mark immediately. The existing key remai
 ## v0.12: six levels and three new topics
 
 See [the implemented six-level curriculum and generator rules](MATH_SIX_LEVELS.md) for levels 4–6, interaction details, constraints and acceptance checks. Existing levels 1–3 and their marks remain. Higher levels add structural arithmetic, reversible construction, membership rules, ordered routes and fractions. They remain uncapped and manually continued.
+
+## Current train subtraction interaction
+
+Level-3 departure questions expose numerical choices from entry. A separate optional departure tool crosses out the removed group; the pictured carriages themselves stay passive. This supersedes any earlier description of a mandatory departure tap before answering.

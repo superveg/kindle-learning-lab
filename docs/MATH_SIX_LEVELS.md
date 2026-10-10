@@ -72,6 +72,12 @@ The live page showed twelve topics, six entries for original topics, and only th
 
 The owner reported unclear prerequisite taps, without identifying exact tasks. Bridge-through-ten, bundle and regroup questions now display numeric choices immediately. Diagrams are passive and explicit optional tool buttons can demonstrate transformations. Numerical picture models start visible; one optional first-step hint replaces the three-click ladder. Upper-level tasks show an entry action cue. This supersedes earlier required manipulation and hidden-model descriptions; manipulation remains the task in sharing, placement and construction. Direct-answer regression checks supplement the existing generated-question checks. Other unclear tasks remain an audit priority.
 
-## Current representation and interaction gaps
+## Current representation and interaction contracts
 
-Live review identified exact-looking whole-serving division equalities before the remainder is included, stale retry feedback after correct intermediate actions, generic cues shared by distinct fraction tasks, tile previews without a board-scale anchor/footprint, separate abstract set bins, and sum/difference hints that box expressions without a useful segmented quantity model. These remain open implementation work; see SESSION_HANDOFF.md for current priorities. Acceptance checks must verify intermediate displayed mathematics and feedback transitions, not only final answers and solvability.
+Remainder tasks ask for full groups without claiming exact division. Completed results use `total = divisor × quotient + remainder`. Valid actions clear old failure feedback. Route failures identify bounds/obstacles or order constraints. Fraction modes have specific action cues rather than a shared generic instruction.
+
+Tile tasks use an explicitly marked bounding anchor, tap-to-preview and a second tap at the same anchor to place. Preview footprints identify conflicts; no piece is consumed until a valid placement. Rotation, different anchors and Undo reset the preview appropriately. Membership controls lie within the overlapping-set diagram with an outside destination below. Scaled item identities are preserved in bins. Comparison models show matching unknown segments and a separate known difference.
+
+Grouping rows, classification sources and task spacing are more compact while interactive targets remain large. Smaller layouts use compact tile trays with full board-scale footprints. Actual Kindle fit, legibility and child interpretation remain to be checked.
+
+`node tests/math-usability.cjs` checks intermediate expressions, direct train answering, stale-feedback regression, preview/place/Undo, spatial set controls, segmented comparison models and all fraction cues, alongside the existing complete math suites. Final-answer correctness and solvability alone are insufficient evidence for displayed mathematics or task clarity.

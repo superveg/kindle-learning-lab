@@ -20,7 +20,7 @@ Current math verification (2026-10-10): 1,296 legacy and 891 higher-level solved
 
 GitHub Pages deployment succeeded. Live Chrome verified direct answers and optional regrouping with stable choices, then nine distinct level-5 expressions with balanced variants and same-level continuation to question 10. Browser checks do not establish Kindle performance or child comprehension.
 
-Current review priorities: inaccurate intermediate division notation in remainder tasks; stale retry feedback after valid phase changes/moves; mandatory departure-carriage tap in train level 3; generic fraction cues; tile anchors/preview; abstract set destinations; weak segmented bar models and long layouts. See SESSION_HANDOFF.md for concrete examples and scope. These were observed in a targeted live Chrome review across ten themes (levels 1, 2, 3 and 6); no app behavior was changed by this review. Automated correctness does not establish task intuitiveness.
+The reviewed implementation patterns now have fixes: valid remainder identities, fresh feedback after actions, immediate train answers, specific fraction cues, tile anchor/footprint preview, spatial set destinations, segmented comparison models and more compact group/classification layouts. All four math suites passed: 1,296 legacy and 891 higher-level solved questions, 1,080 quality samples, and focused checks for the revised mathematics/interaction contracts. Live verification follows deployment. Child comprehension and actual Kindle layout remain unverified.
 
 Exact Kindle model/firmware, advanced diagnostic device behavior, upper-level picture comprehension, touch response and E Ink refresh are not fully verified. No offline reload/reopen, cross-device synchronization or per-question math resume is promised.
 
