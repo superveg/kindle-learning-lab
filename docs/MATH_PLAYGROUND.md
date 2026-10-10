@@ -38,7 +38,7 @@ These are original Singapore-inspired pictorial activities, not a licensed curri
 - Verify correct equations from displayed quantities, retries without changing models, two-step gating, all three shape matches, four-bin sorting by both attributes, conserved exploratory train totals, copied model positions, passive completed objects, next-level entry, scoped marks and blocked-storage fallback.
 - ES5 parsing and original Hub, storage, capability and advanced diagnostic regression checks pass.
 - The cloud browser can directly open and operate the published GitHub Pages site. The previous local Playwright executable limitation does not prevent that route.
-- The final published layout and representative interactions are checked separately in the browser. Browser checks do not establish Kindle touch response, E Ink refresh behaviour, picture comprehension or offline reopening; those require actual device testing.
+- Direct published-browser checks confirmed the topic-to-level route, staircase display, level 3 train addition/retry/completion/subtraction, selection-gated four-way sorting, and sequential three-object spatial copying with a passive completed grid. The visual check led to a larger, aligned Back arrow and stable basket-reference alignment. Browser checks do not establish Kindle touch response, E Ink refresh behaviour, picture comprehension or offline reopening; those require actual device testing.
 
 ## References
 
