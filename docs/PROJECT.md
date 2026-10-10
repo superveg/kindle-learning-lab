@@ -45,6 +45,7 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 - Check the resulting GitHub Pages deployment and provide the page link. The owner accepts changes by trying the deployed interface on their device.
 - Do not repeatedly ask about Kindle's intended use or the product's goals.
 - Record important technical decisions in reusable documentation.
+- Every delivered change includes a dated docs/CHANGELOG.md entry and relevant current-state/feature documentation updates. This applies to routine ChatGPT Work implementation, fixes, tests and documentation changes. Keep enduring requirements in this file and SESSION_HANDOFF.md, current results in STATUS.md, and chronological evidence in CHANGELOG.md.
 - Provide actionable instructions and acceptance criteria for Codex development tasks.
 - Explain the reason before proposing changes to project scope or technical direction.
 - Do not present unconfirmed information as established fact.

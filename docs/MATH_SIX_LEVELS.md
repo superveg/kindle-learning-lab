@@ -30,6 +30,7 @@ This is an original pictorial activity bank inspired by concrete–pictorial–a
 ## Generators and mathematical conditions
 
 - Three task variants use shuffled bags with no adjacent variant repetition. Within a variant, valid quantities, positions, layouts, conditions or choice order vary. New questions never imply a forced next level.
+- The page now retains eight initial task signatures per topic/level and rerolls at most twelve times within the already selected variant to reduce recent repetition. Retry does not regenerate a question. Small fixed banks use a bounded fallback; reload clears history. See [QUESTION_QUALITY.md](QUESTION_QUALITY.md).
 - Within-20 bridge tasks use first parts 6–9 and second parts 3–9. When their total reaches ten, addition offers a concrete transfer to fill the first frame. Subtraction and missing-part variants preserve the whole/part relation.
 - Regrouping starts with 2–6 tens and 1–4 ones. Addition chooses enough added ones to require a carry; a variant adds another 1–2 tens too. Subtraction removes 6–9 ones so borrowing is necessary. Bundled/unpacked representations conserve total quantity. Subtraction includes an explicit removal action before the numerical answer.
 - Train starts at 10–18 with station changes 2–8. Generated departures never exceed the available passengers. Forward and reverse tasks ask one step at a time.

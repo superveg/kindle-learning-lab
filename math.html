@@ -54,7 +54,16 @@ function resetPractice(){questionNumber=0;variantBag=[];lastVariant=-1;}
 function nextVariant(){if(!variantBag.length){variantBag=shuffle([0,1,2]);if(variantBag[variantBag.length-1]===lastVariant){var t=variantBag[0];variantBag[0]=variantBag[variantBag.length-1];variantBag[variantBag.length-1]=t;}}lastVariant=variantBag.pop();return lastVariant;}
 function markPlayed(){if(!marks[age+'-'+kind]){marks[age+'-'+kind]=true;save();}}
 function offerAdvance(){if(age<8){el('advance').innerHTML='→ '+steps(age-1);el('advance').setAttribute('aria-label','Try level '+(age-1));el('advance').style.display='block';}}
-function start(){round=nextVariant();questionNumber++;el('task-instruction').textContent='';el('play').setAttribute('data-variant',String(round));n=target();done=false;fed=[];people=[];placed=0;leftKnown=pick(1,n-1);moved=false;empty('scene');empty('choices');el('feedback').textContent='';el('feedback').setAttribute('aria-label','');el('next').style.display='none';el('next').disabled=true;el('progress').textContent='# '+questionNumber;el('progress').setAttribute('aria-label','Question '+questionNumber+'; continue at your own pace');el('next').innerHTML='→ '+steps(age-2);el('next').setAttribute('aria-label','Another question at level '+(age-2));view('play');el('advance').style.display='none';el('stage').innerHTML=steps(age-2);el('stage').setAttribute('aria-label','Level '+(age-2));
+// Session-only recent tasks survive leaving/re-entering a level; reload starts fresh.
+var recentTasks={};
+function taskSignature(){
+ function describe(node){var tag=node.nodeName.toLowerCase(),out=tag;if(node.nodeType===3){return node.nodeValue.replace(/\s+/g,' ');}if(tag==='img'){var src=node.getAttribute('src'),name='';for(var key in art){if(art.hasOwnProperty(key)&&src===art[key]){name=key.replace(/^(rabbit|carrot|bear)[0-9]+$/,'$1');break;}}return 'image:'+name;}if(node.nodeType!==1){return '';}
+ out+=':'+node.className+':'+(node.getAttribute('aria-label')||'');if(tag!=='button'&&node.className!=='dot'){out+=':'+(node.getAttribute('style')||'');}for(var i=0;i<node.childNodes.length;i++){out+='['+describe(node.childNodes[i])+']';}return out;
+ }
+ return round+'|'+describe(el('prompt'))+'|'+describe(el('scene'));
+}
+function start(){round=nextVariant();questionNumber++;var key=age+'-'+kind,history=recentTasks[key]||[],signature='';for(var attempt=0;attempt<12;attempt++){renderQuestion();signature=taskSignature();if(history.indexOf(signature)<0){break;}}history.push(signature);if(history.length>8){history.shift();}recentTasks[key]=history;}
+function renderQuestion(){el('task-instruction').textContent='';el('play').setAttribute('data-variant',String(round));n=target();done=false;fed=[];people=[];placed=0;leftKnown=pick(1,n-1);moved=false;empty('scene');empty('choices');el('feedback').textContent='';el('feedback').setAttribute('aria-label','');el('next').style.display='none';el('next').disabled=true;el('progress').textContent='# '+questionNumber;el('progress').setAttribute('aria-label','Question '+questionNumber+'; continue at your own pace');el('next').innerHTML='→ '+steps(age-2);el('next').setAttribute('aria-label','Another question at level '+(age-2));view('play');el('advance').style.display='none';el('stage').innerHTML=steps(age-2);el('stage').setAttribute('aria-label','Level '+(age-2));
 if(age>=6){advancedStart();return;}
 if(age===5){challenge();return;}
 if(age===4&&kind===8){spaceChallenge();return;}

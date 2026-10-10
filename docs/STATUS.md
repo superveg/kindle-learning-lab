@@ -11,8 +11,12 @@ Updated: 2026-10-10. For decisions and continuity, read [SESSION_HANDOFF.md](SES
 - Twelve math themes and six task levels; sixty available combinations. Same-level random practice has no fixed question cap.
 - Levels 4–6 include tens, regrouping, grouping/remainders, multistep stories, constraint-based construction, spatial reasoning and introductory fractions.
 - Latest interaction revision: immediate numeric answers, passive reference models and optional explicit tools in bridge/bundle/regroup questions; visible upper-level task cues; one optional hint instead of a discovery ladder.
+- Runtime question quality: eight recent initial tasks per topic/level retained in page memory; up to twelve candidate generations preserve balanced variants while reducing recent repeats. Small banks repeat safely. See QUESTION_QUALITY.md.
+- Every delivered project change includes a dated CHANGELOG.md entry and relevant status/feature/decision documentation updates.
 
 ## Checks and remaining uncertainty
+
+The runtime-quality revision passed both math regression suites (1,296 legacy and 891 higher-level solved questions), direct-answer checks, ES5 parsing, and 1,080 initial quality samples across all sixty combinations. Seeded variety, bounded history, menu return, balanced variants, constant-random fallback and structural constraints were checked.
 
 Math checks passed on 2026-10-10: 1,296 legacy plus 891 higher-level generated questions, including retry stability, correct arithmetic, legal construction, Undo, progression and storage fallback. Additional checks assert that bridge, bundle and regroup questions can be answered without a preliminary tool click.
 
@@ -26,6 +30,8 @@ Exact Kindle model/firmware, advanced diagnostic device behavior, upper-level pi
 
 | Document | Purpose |
 | --- | --- |
+| [CHANGELOG.md](CHANGELOG.md) | Dated changes, reasons, checks and unresolved limits |
+| [QUESTION_QUALITY.md](QUESTION_QUALITY.md) | Runtime generation, recent repeats, balance and structural level boundaries |
 | [PROJECT.md](PROJECT.md) | Product and implementation constraints |
 | [SESSION_HANDOFF.md](SESSION_HANDOFF.md) | Durable owner decisions, engineering context, evidence and next priorities |
 | [MATH_PLAYGROUND.md](MATH_PLAYGROUND.md) | Initial math themes and evolution |

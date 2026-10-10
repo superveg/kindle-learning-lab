@@ -34,6 +34,7 @@
 
 - The exact Kindle model and firmware remain unknown. GitHub Pages has deployed successfully. On 2026-10-09 the owner reported that the localStorage marker test and all four v0.4 capability checks passed on their Kindle: counting restoration, nine-cell selection, manual local updates, and the tested simple SVG/PNG comparison. See docs/CAPABILITY_TESTS.md. Treat this as evidence for those tested behaviors on that device; offline behavior, other SVG features, and other Kindle models remain unverified.
 - Record important technical decisions in reusable repository documentation, with rationale and validation status.
+- Every delivered project change made through ChatGPT Work must include a documentation update in the same delivery: append a dated entry to docs/CHANGELOG.md with scope, rationale, checks and remaining limits. Update docs/STATUS.md for current state, feature documents for changed behavior, and docs/SESSION_HANDOFF.md / PROJECT.md for durable requirements or decisions. Do not create a separate report for each small change or invent verification results.
 - Use docs/TASK_TEMPLATE.md when preparing Codex development tasks; include concrete implementation steps and acceptance criteria.
 - Report what was changed, how it was verified, and what still requires actual Kindle testing.
 - Desktop or iPhone browser checks do not establish Kindle compatibility.
