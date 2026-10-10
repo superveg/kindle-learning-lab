@@ -11,10 +11,10 @@
 
 ## Product and child experience
 
-- Target children aged 3–5 using an Amazon Kindle E Ink reader's built-in browser.
+- Target children roughly aged 3–8 using an Amazon Kindle E Ink reader's built-in browser.
 - Support early math, literacy, shape recognition, branching stories, and simple games.
 - Use simple interactions that aim to be usable with minimal adult help.
-- The child is not yet reading. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
+- Early-level children may not yet be reading; later-level instructions still need concise visual support. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
 - Offer natural pauses after each answered question, without speed pressure or reward mechanics that encourage repeated clicking. The owner explicitly requested uncapped, manually continued random math practice on 2026-10-09; do not reintroduce a three-question limit.
 - Activities may use selectable answers, immediate feedback, scores, and question navigation.
 

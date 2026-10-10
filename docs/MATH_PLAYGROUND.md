@@ -1,8 +1,8 @@
-# Math topics and levels — v0.11
+# Math topics and levels — v0.12
 
 ## Confirmed direction
 
-The owner found the former age 3/4/5 differences too small. On 2026-10-09 they clarified that visible progression matters more than age labels, and authorized choosing a suitable structure. The app now opens with nine topics. Each topic offers levels 1, 2 and 3 with a staircase pictogram. Levels describe tasks, not ages or developmental norms. All are selectable, with no mastery gate or forced advancement.
+The owner found the former age 3/4/5 differences too small. On 2026-10-09 they clarified that visible progression matters more than age labels, and authorized choosing a suitable structure. The app now opens with twelve topics. The original nine offer levels 1–6; Tens Workshop starts at 4, Share Fairly at 5 and Fraction Kitchen at 6. Each level has a staircase pictogram. Levels describe tasks, not ages or developmental norms. All are selectable, with no mastery gate or forced advancement.
 
 ## Learning progression
 
@@ -63,3 +63,7 @@ The owner explicitly requested more than three questions per level and a variabl
 Task variants are drawn from shuffled bags. A bag balances coverage of its three variants; a boundary swap prevents identical adjacent variants. The first question is shuffled too. Quantities, layouts, identities and choice orders retain their level-specific ranges. A new bag does not mean a completed set and has no child-facing boundary. Pattern interruptions are randomized within the unit. A question number is separate from its random task variant.
 
 Each correct answer can record a played mark immediately. The existing key remains valid because the mark still means practised, not mastered. Restarting a session resets its question counter and variant bag; browser marks remain. There is no per-question resume. Tests exercise 12 consecutive questions in all 27 topic/level combinations across four seeded streams, confirm that question 4 and later remain at the same level, verify varied first questions and scenes, and preserve retry stability, task correctness, and next-level navigation.
+
+## v0.12: six levels and three new topics
+
+See [the implemented six-level curriculum and generator rules](MATH_SIX_LEVELS.md) for levels 4–6, interaction details, constraints and acceptance checks. Existing levels 1–3 and their marks remain. Higher levels add structural arithmetic, reversible construction, membership rules, ordered routes and fractions. They remain uncapped and manually continued.
