@@ -212,6 +212,29 @@ For each subject, first author at least six canonical examples per level (two pe
 - Keep source/data/assets loaded for session interaction; distinguish a temporary disconnection from offline reload/reopening. No new capability claim without the relevant test.
 - Update current subject documentation, handoff and status after each lasting decision. This plan replaces obsolete scope in place; no chronological change log.
 
+## Candidate teaching foundations and evidence scope
+
+The owner requested recognizable, academically grounded frameworks analogous to the Singapore-inspired math approach. The following are researched candidates for design, not a confirmed adoption of licensed curricula or proof of this app's effectiveness. Separate standards (what to learn), teaching models (how to teach), and evaluated programs (a specified implementation with evidence).
+
+| Subject | Candidate foundation | How it changes the proposed tasks | Evidence boundary |
+| --- | --- | --- | --- |
+| Logic | Harvard Center on the Developing Child executive-function/self-regulation activities, plus explicit relational reasoning | Include rule switching, planning, visible constraints and checking alternatives; retain deduction as a distinct strand | A research-informed activity guide, not a complete logic curriculum; executive function is not synonymous with reasoning. No claim of general IQ gains or transfer from app practice. |
+| Chinese | Ministry of Education 3–6 learning/development guide for early language; Dialogic Reading for shared stories; 2022 Chinese language standard as a later-school reference | Put oral expression, story meaning and adult-child exchange before mechanical character drills; later connect recognition, reading and expression | Preschool guidance and school standards are scope references, not intervention efficacy ratings. Dialogic Reading research does not automatically validate a Chinese digital adaptation. |
+| English | Systematic phonics alongside oral vocabulary, shared reading and comprehension | Teach reviewed sound/letter relationships and blending in an explicit cumulative sequence when narration/audio is available; connect reading to meaning | EEF summarizes substantial phonics evidence. Silent spelling/letter tasks cannot replace sound instruction; selecting a commercial program requires its own evidence review. |
+| Science | NGSS three-dimensional goals, BSCS 5E lesson structure; Head Start scientific reasoning for preschool entry | Use a phenomenon → prediction/exploration → explanation → new application → check of understanding, with observation/evidence supplied or collected off-screen | NGSS is K–12 standards, not a preschool lesson bank; 5E is a teaching model. Three-year-old tasks need simpler, adult-supported exploration. A screen scene is not a real experiment. |
+| Stories/social situations | CASEL five-competency framework; Preschool PATHS as an evaluated program reference | Organize stories around recognizing feelings, regulating actions, understanding others, relationships and decisions; preserve practice beyond multiple-choice answers | CASEL is a framework; PATHS is a specified program with trials. Original app branches cannot inherit PATHS certification, branding, materials or measured outcomes. |
+
+Primary references for authoring:
+
+- [Harvard activities guide](https://developingchild.harvard.edu/resources/handouts-tools/activities-guide-enhancing-and-practicing-executive-function-skills/), including separate 3–5, 5–7 and 7–12 activity groups.
+- [MOE preschool guide announcement](https://www.moe.gov.cn/srcsite/A06/s3327/201210/t20121009_143254.html) and [language-domain explanation](https://www.moe.gov.cn/jyb_xwfb/s271/201210/t20121015_143257.html); [2022 school standards announcement](https://www.moe.gov.cn/srcsite/A26/s8001/202204/t20220420_619921.html).
+- [IES/WWC Dialogic Reading](https://ies.ed.gov/ncee/wwc/Intervention/271): shared picture-book discussion with the child participating as storyteller; adapt its interaction principle rather than equating screen taps with conversation.
+- [EEF phonics evidence](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/phonics/): supports systematic decoding instruction, alongside other language/reading strands.
+- [NGSS three-dimensional learning](https://www.nextgenscience.org/three-dimensional-learning) and [BSCS 5E origin/effectiveness report](https://bscs.org/reports/the-bscs-5e-instructional-model-origins-and-effectiveness/). The five phases are Engage, Explore, Explain, Elaborate and Evaluate; map them across a small activity/unit, not five mandatory taps in every question.
+- [CASEL framework](https://casel.org/fundamentals-of-sel/) and [PATHS evidence/program listing](https://pg.casel.org/promoting-alternative-thinking-strategies-paths/). PATHS is listed as SELect and supported by multiple randomized trials, including preschool research; results refer to the implemented program.
+
+Implementation should attach a specific learning objective and the relevant framework strand to each task. Our six levels remain a product progression, not framework-certified age bands. Preserve original artwork/stories and check licensing before reusing any named program's lesson content. A recognized name alone does not establish evidence quality or suitability for Kindle.
+
 ## Evidence and design boundaries
 
 The six-level sequence, specific task families and text budgets above are original product proposals. No cited framework validates these exact tasks, proves app effectiveness or assigns them to a particular age.

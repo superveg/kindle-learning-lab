@@ -26,7 +26,7 @@ Exact Kindle model/firmware, advanced diagnostic device behavior, upper-level pi
 
 ## Planned expansion
 
-The complete beyond-math planning specification is recorded in [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md). Delivery order: Logic → Chinese → English → Everyday Science → Stories/Social Situations. Each has six proposed capability levels and three initial activity families per level. Planning/documentation is complete; these five subject modules and their content banks are not implemented. The current task makes no learning-page changes.
+The complete beyond-math planning specification is recorded in [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md). Delivery order: Logic → Chinese → English → Everyday Science → Stories/Social Situations. Each has six proposed capability levels and three initial activity families per level. Planning includes candidate academic foundations and their evidence/adaptation limits; the owner has not selected a licensed curriculum. These five subject modules and their content banks are not implemented. The current task makes no learning-page changes.
 
 ## Documentation map
 
