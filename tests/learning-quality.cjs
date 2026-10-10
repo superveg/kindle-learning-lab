@@ -25,6 +25,12 @@ const id=d.getElementById('play').getAttribute('data-task-id'),q=data.english.le
 for(let i=q.items.length-1;i>=0;i--)tap('Add card '+(i+1)+':');assert(d.getElementById('feedback').textContent.startsWith('↺'));assert(d.getElementById('next').hidden);tap('↶ Undo');assert.equal(d.getElementById('feedback').textContent,'');assert.equal(d.querySelectorAll('#work .card').length,q.items.length-1);
 // Undo the whole attempt; put duplicate o tiles in interchangeable positions.
 while(d.querySelectorAll('#work .card').length)tap('↶ Undo');let sequence=q.items.map((_,i)=>i);if(q.items.length===4)sequence=[0,2,1,3];for(const i of sequence)tap('Add card '+(i+1)+':');assert(d.getElementById('feedback').textContent.startsWith('✓'));dom.window.close();
+// The evidence stage keeps the story visible instead of turning reading into recall.
+for(const subject of ['chinese','english']){
+ const page=new JSDOM(fs.readFileSync(subject+'.html','utf8'),{runScripts:'dangerously',url:'https://example.test'}),doc=page.window.document;
+ function click(prefix){const b=[...doc.querySelectorAll('button')].find(b=>(b.getAttribute('aria-label')||b.textContent).startsWith(prefix));assert(b);b.click();}
+ click('Level 6:');click('Activity 1:');const task=data[subject].levels[5].families[0].tasks.find(q=>q.id===doc.getElementById('play').getAttribute('data-task-id'));const first=task.stages[0];click('Choose option '+(first.answers[0]+1)+':');assert.equal(doc.querySelector('.prior-clue').textContent,first.prompt);assert(doc.getElementById('cue').textContent.includes('2 / 2'));page.window.close();
+}
 // Every asset reference exists and icons meant to differ actually have different bytes.
 for(const id of Object.keys(data)){
  const html=fs.readFileSync(id+'.html','utf8');const art=JSON.parse(html.match(/var ART=(\{.*?\});/s)[1]);
