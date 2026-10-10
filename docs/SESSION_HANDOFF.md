@@ -1,0 +1,66 @@
+# Project handoff and durable session decisions
+
+Updated: 2026-10-10 (America/Denver). Start with this document, [PROJECT.md](PROJECT.md), and [STATUS.md](STATUS.md). This is a maintained handoff, not a transcript or a child assessment.
+
+## Confirmed owner requirements
+
+- Build Kindle Learning Lab for a Kindle E Ink reader's built-in browser. The exact model and firmware remain unknown. The owner works primarily through iPhone and ChatGPT and tests the deployed site on their device.
+- Continue routine implementation, testing, pushing, merging and publication autonomously. Do not repeatedly stop for confirmation or ask again about purpose, target age or settled design decisions. This authorization does not establish untested capabilities or override unrelated action safeguards.
+- Children need intuitive, large-target interactions with minimal adult explanation. Pictures lead early tasks; short text and mathematical symbols can support later tasks.
+- No submit button when the answer or final required placement already establishes completion. Completed objects are passive. Decorative/reference areas must not behave like unexplained controls.
+- The owner's 2026-10-10 feedback: some questions require tapping an unexplained place before their meaning or next action is clear. The exact examples were not identified. This is a confirmed usability concern, not evidence of a particular Kindle API failure.
+- Necessary question information, the immediate task and answer controls should be visible at entry. Do not require a discovery tap on a diagram to unlock a numerical answer. Manipulative demonstrations may be optional tools; direct manipulation can still be the actual task in sharing, construction and placement activities.
+- Math practice is uncapped. The child may remain at one chosen level for as many questions as desired. Each correct answer is a pause; manual Next stays in the same level. Back is always available. An optional separate advance changes level. No forced three-question end or automatic level-up.
+- Randomize eligible task variants, quantities, layouts and answer positions within a level's constraints. The first question must not always be the same. Keep the generated task stable during solving and retry.
+- Difficulty must differ in structure, reasoning and scaffolding, not only larger numbers. Use topic-first navigation and six numbered task levels, roughly covering ages 3–8. Ages are references, not gates or developmental norms.
+- Expand attractive, varied monochrome pictures and random dot arrangements. Interpret dynamic variation as changes between questions and intentional actions; do not make countable objects move while the child is solving.
+- Use concrete/pictorial/abstract progression inspired by Singapore mathematics. This is original content, not a licensed or complete Singapore curriculum.
+
+## Current implementation
+
+`index.html` contains the original Hub samples and grown-up diagnostics. `math.html` is the self-contained math app. Twelve topics offer sixty topic/level combinations: the original nine have levels 1–6; Tens Workshop starts at 4, Share Fairly at 5, Fraction Kitchen at 6.
+
+See [MATH_PLAYGROUND.md](MATH_PLAYGROUND.md) for levels 1–3 and earlier changes, and [MATH_SIX_LEVELS.md](MATH_SIX_LEVELS.md) for levels 4–6 and generator constraints. Later rules in this handoff supersede earlier gated demonstrations or multi-click hint descriptions.
+
+The 2026-10-10 interaction revision removes mandatory unlock taps from bridging through ten, bundling and regrouping. Answer choices are available immediately; reference pictures are passive; explicit smaller tool buttons perform optional demonstrations. Numeric-task pictures start visible and a single optional first-step hint replaces the three-click clue/model/step ladder. Upper-level tasks now show a concise action cue. This addresses identified implementation patterns; broader child comprehension still needs observation.
+
+## Engineering rules
+
+- Repository: `superveg/kindle-learning-lab`; deployed branch `main`; GitHub Pages serves the repository root.
+- Static HTML/CSS/Vanilla JavaScript; current script parses as ES5. Embed PNG artwork and data in the page. No runtime frameworks, backend or task-time content requests.
+- Black/white contrast, large targets, no continuous animation, per-second refresh or speed pressure in child activities.
+- Dragging and timed updates are isolated grown-up diagnostics, not assumed requirements for child tasks. The elapsed-time diagnostic uses Date differences and display updates approximately every ten seconds; this is a diagnostic exception, not permission for widespread refresh loops.
+- Preserve independent storage keys. Math uses `kindle-math-levels-v3` for played marks; earlier math keys stay intact. Hub counting uses `kindle-learning-lab.counting.v1`; marker diagnostics use `kindle-learning-lab.storage-test.v1`. Never clear all origin storage.
+- Played is not mastered. Math does not save the current generated question. No account, cloud sync, adaptive mastery, service worker or offline reopening guarantee exists.
+- Catch storage failures and keep activities playable. Same-browser/origin data is not automatically shared with an iPhone or another device.
+- Invalid attempts do not change the task. Track, tile, gift and route Undo must restore a valid state. Validate any legal construction, not just the generator's witness solution.
+- Test representation as well as arithmetic. A prior bug displayed unpacked ten/ones as a normalized bundle again: the same total is insufficient evidence of the intended visual operation.
+- Repository communication, code and documentation are English. User-facing conversation may follow the owner's Chinese.
+
+## Verified evidence and limits
+
+| Evidence | Status and scope |
+| --- | --- |
+| Original Hub and buttons | Owner reported working on Kindle, 2026-10-09; exact checklist details unknown |
+| localStorage marker | Owner reported success; unreported restart/close combinations remain unknown |
+| Four capability checks | Owner reported all four passed: real counting restore, nine-cell toggle, manual local updates, tested static SVG/PNG comparison |
+| Advanced diagnostics | Manual elapsed reading was owner-confirmed; drag behavior, low-frequency automatic refresh and delayed results still need device-specific evidence |
+| DOM checks | Legacy math exercises 1,296 questions; higher math exercises 891 questions, plus targeted checks. These are software checks, not device or pedagogical validation |
+| Published browser | Six-level navigation, bridging, regrouping, corrected unpacked representation and fraction practice exercised. Eight fraction answers led to question 9 at the same level |
+| Offline | Loaded-page continued interaction and offline reopen/reload are separate; the latter is not implemented or promised |
+
+Do not promote a successful desktop browser check to a Kindle compatibility claim. New upper-level symbols, task comprehension, touch response and E Ink rendering remain actual-device concerns. Historical documents retain old pending statements; consult STATUS.md for current evidence.
+
+## Next work priorities
+
+1. Audit the remaining tasks for understandable entry state: especially train departure arrows, pattern-repair symbols, set membership, tile origins and fraction instructions. The latest feedback does not prove the three identified optional-tool cases were the only confusing questions.
+2. Prefer simplifying or making purpose visible over adding more explanatory clicks. Observe whether a child can identify the action before tapping.
+3. Check higher-level picture density and targets on the actual Kindle. Retain tap alternatives rather than requiring drag tracking.
+4. Expand the curated task bank only after interaction clarity. Fractions are introductory; multiplication is small-group reasoning; these are not full grade curricula.
+5. Record any future device results with date, exact page/task, device details if supplied, expected/actual behavior and evidence source. Update STATUS.md and this handoff when requirements change.
+
+## Development and delivery
+
+Run `node tests/math-dom.cjs` and `node tests/math-higher-dom.cjs` for math changes. Existing Hub/storage/capability/advanced DOM tests protect diagnostics. Acorn verifies ES5; jsdom exercises logic. Tests do not replace a rendered-page interaction check.
+
+Routine changes are authorized for main publication; use a PR when useful, not as an owner approval handoff. Inspect current main before writes, preserve unrelated files, use a guarded fast-forward, inspect Pages deployment, and verify the live interaction. Persist durable requirements, validation and remaining issues in this repository rather than relying on chat context.

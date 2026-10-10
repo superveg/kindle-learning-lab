@@ -66,3 +66,7 @@ One self-contained `math.html` holds CSS, ES5 JavaScript, embedded PNG art and a
 ## Published-browser validation
 
 The live page showed twelve topics, six entries for original topics, and only the eligible upper levels for new topics. Level-5 subtraction exercised unpacking, removal, answer and same-level continuation. This caught a representation bug where unpacked ones were normalized back into tens; the fix preserves the actual unpacked tens/ones and adds exact representation assertions. Level-6 fraction checks exercised retry, half/quarter equivalence, shading and matching; after eight answers the live page remained in level 6 at question 9. Desktop browser evidence does not establish Kindle rendering or E Ink performance.
+
+## 2026-10-10: remove discovery taps
+
+The owner reported unclear prerequisite taps, without identifying exact tasks. Bridge-through-ten, bundle and regroup questions now display numeric choices immediately. Diagrams are passive and explicit optional tool buttons can demonstrate transformations. Numerical picture models start visible; one optional first-step hint replaces the three-click ladder. Upper-level tasks show an entry action cue. This supersedes earlier required manipulation and hidden-model descriptions; manipulation remains the task in sharing, placement and construction. Direct-answer regression checks supplement the existing generated-question checks. Other unclear tasks remain an audit priority.

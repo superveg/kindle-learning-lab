@@ -2,6 +2,8 @@
 
 These requirements guide the project's design and development.
 
+For current evidence and durable session decisions, read [STATUS.md](STATUS.md) and [SESSION_HANDOFF.md](SESSION_HANDOFF.md).
+
 ## Project goal
 
 Build interactive learning content for children roughly aged 3–8 using Kindle E Ink readers, including early math, literacy, shape recognition, branching stories, and simple games.
@@ -33,6 +35,7 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 - Design activities for suggested 10–15 minute sessions.
 - Math practice may continue for as many questions as the child chooses, per the owner's 2026-10-09 direction. Use manual next-question navigation and an always-available Back action; do not impose a three-question cap or use automatic advancement, clicking incentives, or complex reward systems.
 - Emphasize learning, exploration, and understanding rather than answering speed.
+- Show the task and necessary information at entry. Do not hide numerical answers behind unexplained taps on models; demonstrations are optional explicit tools. Reference pictures are passive.
 
 ## Working practices
 

@@ -4,7 +4,7 @@
 
 - Keep repository changes focused on the Kindle children's interactive learning system.
 - Use English for project communication, code, and documentation.
-- Read docs/PROJECT.md before implementation and preserve existing project decisions.
+- Read docs/PROJECT.md, docs/SESSION_HANDOFF.md and docs/STATUS.md before implementation. Preserve confirmed decisions and update these records when requirements or evidence change.
 - Do not repeatedly ask about the product purpose or target age.
 - Explain the reason before proposing a change to project scope or technical direction.
 - Distinguish confirmed requirements, proposals, and unverified assumptions.
@@ -16,6 +16,7 @@
 - Use simple interactions that aim to be usable with minimal adult help.
 - Early-level children may not yet be reading; later-level instructions still need concise visual support. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
 - Offer natural pauses after each answered question, without speed pressure or reward mechanics that encourage repeated clicking. The owner explicitly requested uncapped, manually continued random math practice on 2026-10-09; do not reintroduce a three-question limit.
+- Necessary task information and answer controls must be visible without a discovery tap on a diagram. Picture tools are optional unless manipulation is the actual task; make control purpose explicit. Reference/decorative areas remain passive.
 - Activities may use selectable answers, immediate feedback, scores, and question navigation.
 
 ## Implementation constraints
