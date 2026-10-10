@@ -30,6 +30,14 @@ See [MATH_PLAYGROUND.md](MATH_PLAYGROUND.md) for levels 1–3 and earlier change
 
 The 2026-10-10 interaction revision removes mandatory unlock taps from bridging through ten, bundling and regrouping. Answer choices are available immediately; reference pictures are passive; explicit smaller tool buttons perform optional demonstrations. Numeric-task pictures start visible and a single optional current-step hint replaces the three-click clue/model/step ladder. Upper-level tasks now show a concise action cue. This addresses identified implementation patterns; broader child comprehension still needs observation.
 
+## Current interface contract
+
+- Topic selection shows six large pictures per page, in the original order. Returning from levels preserves the topic page. Played marks belong on level selection, not on topic cards.
+- Each of the 60 available levels has a passive, representative example. Menu previews do not generate tasks, consume randomness or change saved progress. Preview CSS classes are separate from task counter/fraction classes.
+- A compact toolbar holds Home, Back, level and question number. Numeric answer choices are centered and evenly spaced with large targets; picture choices keep their task-specific layout.
+- The primary same-level continuation is a large arrow. Optional level advance is a smaller staircase with its destination number, without an arrow. Both remain manual. Level explanations and storage notes are collapsed adult content.
+- Screen breakpoints and touch dimensions are implementation targets, not verified Kindle behavior. On-device picture recognition, paging, preview meaning and fit still need checking.
+
 ## Engineering rules
 
 - Repository: `superveg/kindle-learning-lab`; deployed branch `main`; GitHub Pages serves the repository root.
@@ -75,3 +83,4 @@ The earlier targeted Chrome review covered ten themes, not every combination. It
 Run `node tests/math-usability.cjs`, `node tests/math-quality.cjs`, `node tests/math-dom.cjs` and `node tests/math-higher-dom.cjs` for math changes. Existing Hub/storage/capability/advanced DOM tests protect diagnostics. Acorn verifies ES5; jsdom exercises logic. Tests do not replace a rendered-page interaction check.
 
 Routine changes are authorized for main publication; use a PR when useful, not as an owner approval handoff. Inspect current main before writes, preserve unrelated files, use a guarded fast-forward, inspect Pages deployment, and verify the live interaction. Persist durable requirements, validation and remaining issues in this repository rather than relying on chat context.
+

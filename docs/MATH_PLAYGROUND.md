@@ -2,7 +2,7 @@
 
 ## Confirmed direction
 
-The owner found the former age 3/4/5 differences too small. On 2026-10-09 they clarified that visible progression matters more than age labels, and authorized choosing a suitable structure. The app now opens with twelve topics. The original nine offer levels 1–6; Tens Workshop starts at 4, Share Fairly at 5 and Fraction Kitchen at 6. Each level has a staircase pictogram. Levels describe tasks, not ages or developmental norms. All are selectable, with no mastery gate or forced advancement.
+The owner found the former age 3/4/5 differences too small. On 2026-10-09 they clarified that visible progression matters more than age labels, and authorized choosing a suitable structure. The app now opens with twelve topics. The original nine offer levels 1–6; Tens Workshop starts at 4, Share Fairly at 5 and Fraction Kitchen at 6. Each level has a number and a passive representative picture example; staircase symbols identify the optional level-change action. Levels describe tasks, not ages or developmental norms. All are selectable, with no mastery gate or forced advancement.
 
 ## Learning progression
 
@@ -22,8 +22,11 @@ These are original Singapore-inspired pictorial activities, not a licensed curri
 
 ## Interaction and implementation
 
-- Choose a topic, then a clearly numbered level. The filled staircase and level number remain above every round. Topic tiles show separate played marks for each level.
-- Practice has no fixed question limit. Each answered question is a manual pause. The main arrow starts another random question at the same level; the separate staircase optionally changes level. Back is always available. Back returns to the topic's levels; a second Back returns to topics. Home uses a house and Back uses an arrow.
+- Choose a topic from two pages of six picture tiles, then a clearly numbered level. Previous/More topic buttons keep the original topic order and preserve the selected page when returning. Three columns are used from 480px; smaller screens use two. Tens, sharing and fractions have distinct menu pictures. Played marks appear only beside level numbers, not on topic cards; a mark still means played, not mastered.
+- Level selection uses two columns with one passive example per available level (60 examples). Examples represent a task family, not every generated variant. They do not call the practice generator or consume its random stream. Full level explanations and storage notes remain in a collapsed adult section. Preview classes are separate from task-model classes so hidden menus cannot be mistaken for active counters or fraction parts.
+- Home, Back, current level and question number share a compact table-layout toolbar. The task-level numeral stays visible; the six-bar staircase is reserved for changing difficulty. Numeric choices use evenly spaced, large targets and 34px numerals (30px below 361px); picture and long-form choices retain their own layouts.
+- Completion gives the full-width, heavy-border arrow priority for continuing at the same level. A smaller staircase with the destination number changes level. They never share the same arrow-plus-staircase appearance. No automatic advancement or practice limit is introduced.
+- Practice has no fixed question limit. Each answered question is a manual pause. The main arrow starts another random question at the same level; the smaller, separate staircase optionally changes level. Back is always available. Back returns to the topic's levels; a second Back returns to topics. Home uses a house and Back uses an arrow.
 - Actions have immediate feedback with no submit step. Completed targets become passive. The exploratory train split remains editable and Next becomes available after a move.
 - Hidden-part questions show a whole and visible part, not an answer-sized row of empty slots. Correct numerical choices fill the hidden group and show the completed equation.
 - Multi-step tasks reveal one decision at a time: the active pattern gap, the current spatial object, and the second comparison question. Correct placements remain visible. Wrong choices preserve the scene and can be retried.
@@ -71,3 +74,4 @@ See [the implemented six-level curriculum and generator rules](MATH_SIX_LEVELS.m
 ## Current train subtraction interaction
 
 Level-3 departure questions expose numerical choices from entry. A separate optional departure tool crosses out the removed group; the pictured carriages themselves stay passive. This supersedes any earlier description of a mandatory departure tap before answering.
+
