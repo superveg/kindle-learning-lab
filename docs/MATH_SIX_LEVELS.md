@@ -13,13 +13,13 @@ Implementation order: six-level navigation; level 4 arithmetic; level 4 spatial/
 | Rabbits | Add, subtract and complete number bonds within 20 | Equal groups, multiplication and exact shares | Full servings followed by leftover count |
 | Train | Within-20 whole/part relationships | Two station changes, one answer at each step | Undo station 2, then station 1 to find the original quantity |
 | Track | Combine reusable lengths 2, 3 and 5 | Reach a target with a finite tray | Reach both target length and required piece count |
-| Counters | Move counters to bridge through ten | Bundle or unpack tens before reading arithmetic | Row/column arrays, division and hidden array counters |
+| Counters | Move counters to bridge through ten | Regroup tens/ones arithmetic with optional picture tools | Row/column arrays, division and hidden array counters |
 | Pattern | Growing quantities, alternating shapes plus growing quantities | Constant forward/backward jumps | Identify the wrong term, repair it, then fill the gap |
 | Sorting | Find all objects meeting shape AND size | Shape AND NOT a size | Four membership regions: A only, B only, both, neither |
 | Shapes | Fill a rectangle with three pieces | Reflect a 3×3 picture across a vertical mirror | Rotate and place mixed pieces without overlap |
 | Comparison | Add enough to make two quantities equal | More-than/fewer-than relationships | Find both quantities from their total and difference |
 | Position | Follow six screen-direction arrows | Reach a flag through one waypoint around walls | Reach the flag after two ordered waypoints around walls |
-| Tens Workshop | Bundle ten ones, then read leftover ones | Carry and borrow, including some two-digit additions | Find a missing quantity with a place-value picture |
+| Tens Workshop | Find leftover ones, with optional bundling | Carry and borrow arithmetic, including two-digit additions | Find a missing quantity with a place-value picture |
 | Share Fairly | Not offered | Exact fair shares and equal grouping | Largest equal whole shares, or whole groups and remainders |
 | Fraction Kitchen | Not offered | Not offered | Shade halves/thirds/quarters, match fractions, compare unit fractions, identify equal partitions, and connect one half with two quarters |
 
@@ -32,7 +32,7 @@ This is an original pictorial activity bank inspired by concrete–pictorial–a
 - Three task variants use shuffled bags with no adjacent variant repetition. Within a variant, valid quantities, positions, layouts, conditions or choice order vary. New questions never imply a forced next level.
 - The page now retains eight initial task signatures per topic/level and rerolls at most twelve times within the already selected variant to reduce recent repetition. Retry does not regenerate a question. Small fixed banks use a bounded fallback; reload clears history. See [QUESTION_QUALITY.md](QUESTION_QUALITY.md).
 - Within-20 bridge tasks use first parts 6–9 and second parts 3–9. When their total reaches ten, addition offers a concrete transfer to fill the first frame. Subtraction and missing-part variants preserve the whole/part relation.
-- Regrouping starts with 2–6 tens and 1–4 ones. Addition chooses enough added ones to require a carry; a variant adds another 1–2 tens too. Subtraction removes 6–9 ones so borrowing is necessary. Bundled/unpacked representations conserve total quantity. Subtraction includes an explicit removal action before the numerical answer.
+- Regrouping starts with 2–6 tens and 1–4 ones. Addition chooses enough added ones to require a carry; a variant adds another 1–2 tens too. Subtraction removes 6–9 ones so borrowing is necessary. Bundled/unpacked representations conserve total quantity. Subtraction offers an optional explicit removal action; numerical answers are available from entry.
 - Train starts at 10–18 with station changes 2–8. Generated departures never exceed the available passengers. Forward and reverse tasks ask one step at a time.
 - Groups use 2–5 groups of 2–5 objects. Whole-serving remainder tasks use a remainder from 1 to divisor minus 1. Fair-sharing remainder tasks instead use a remainder smaller than the recipient count. These are distinct questions.
 - Track targets are generated from an available witness combination. Finite stock is consumed at most once; reusable stock can be reused. The validator checks conditions, not the witness. Excess length and wrong piece count remain editable with Undo.
@@ -50,7 +50,7 @@ A single numerical choice, last correct selection or final placement completes t
 
 Manipulatives use large taps. Track placement, tile placement, gifts and route moves have Undo. Invalid placement changes feedback without altering the model. A correct answer freezes scene controls as passive pictures. Main Next stays in the same level indefinitely; optional advance offers the next available level, and level 6 has no advance action. Back is always present.
 
-Picture hints can be opened on demand; initial level-4 arithmetic models provide more visible scaffolding. Models stay fixed during retry. Early tasks remain pictogram-based; advanced tasks add mathematical symbols, short labels and a folded adult guide. Numerical picture hints progress from a clue to a model to a suggested first step; initial level-4 models start visible. No adaptive mastery inference is implemented.
+Numerical picture models are visible from entry; an optional first-step hint adds guidance. Models stay fixed during retry. Early tasks remain pictogram-based; advanced tasks add mathematical symbols, short labels and a folded adult guide. Models do not require discovery taps; optional hints expose one first-step suggestion. No adaptive mastery inference is implemented.
 
 ## Persistence and compatibility
 
