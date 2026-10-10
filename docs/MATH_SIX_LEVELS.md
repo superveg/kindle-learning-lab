@@ -78,6 +78,6 @@ Remainder tasks ask for full groups without claiming exact division. Completed r
 
 Tile tasks use an explicitly marked bounding anchor, tap-to-preview and a second tap at the same anchor to place. Preview footprints identify conflicts; no piece is consumed until a valid placement. Rotation, different anchors and Undo reset the preview appropriately. Membership controls lie within the overlapping-set diagram with an outside destination below. Scaled item identities are preserved in bins. Comparison models show matching unknown segments and a separate known difference.
 
-Grouping rows, classification sources and task spacing are more compact while interactive targets remain large. Smaller layouts use compact tile trays with full board-scale footprints. Actual Kindle fit, legibility and child interpretation remain to be checked.
+Grouping rows, classification sources and task spacing are more compact while interactive targets remain large. Tile trays use compact previews with full board-scale footprints on the board. Actual Kindle fit, legibility and child interpretation remain to be checked.
 
 `node tests/math-usability.cjs` checks intermediate expressions, direct train answering, stale-feedback regression, preview/place/Undo, spatial set controls, segmented comparison models and all fraction cues, alongside the existing complete math suites. Final-answer correctness and solvability alone are insufficient evidence for displayed mathematics or task clarity.
