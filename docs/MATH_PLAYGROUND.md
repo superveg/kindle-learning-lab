@@ -1,41 +1,46 @@
-# Math stories — v0.8
+# Math topics and levels — v0.9
 
-## Objective and confirmed inputs
+## Confirmed direction
 
-The owner approved a Singapore-inspired concept sequence on 2026-10-09 and requested less cumbersome input, clearer actionable objects, better illustrations and randomized/dynamic pictures. Replace the v0.6 nine-activity menu with three linked story activities, scattered-dot counting, and the remaining five curriculum domains. Preserve the original Hub samples, diagnostics, GitHub Pages hosting and browser compatibility conventions. Exact Kindle model is unknown.
+The owner found the former age 3/4/5 differences too small. On 2026-10-09 they clarified that visible progression matters more than age labels, and authorized choosing a suitable structure. The app now opens with nine topics. Each topic offers levels 1, 2 and 3 with a staircase pictogram. Levels describe tasks, not ages or developmental norms. All are selectable, with no mastery gate or forced advancement.
 
-## Implementation steps and decisions
+## Learning progression
 
-1. Offer suggested age levels 3/4/5 and nine picture tiles. Each tile ends after three rounds. Ages are starting difficulty, not developmental cutoffs.
-2. Feed rabbits: match one carrot to each rabbit. Hungry rabbits are tappable; fed rabbits are passive. Carrot inventory updates after each action. Rabbit order stays stable within a round.
-3. Train: board a fixed total; explore arbitrary splits of that total; fill the missing part given passengers in the first carriage. The split round intentionally stays editable after Next becomes available. Moving one passenger conserves the total. The last needed seat automatically completes the missing-part round.
-4. Track: younger level compares two equal-unit tracks with randomized longer side. Older levels place equal-size sleepers in gaps. Units become passive pictures; the final gap completes the round. Real-world measuring is an adult-guided extension.
-5. Dots: select a numeral for randomly scattered, nonoverlapping dots. Quantities, positions and choice order vary. A wrong answer does not regenerate the problem. Use 12 cells with bounded jitter; dots have equal diameter.
-6. Replace submit/check with immediate answer feedback and automatic detection of explicit terminal goals. Keep Next manual, allowing inspection of the result and avoiding automatic page jumps.
-7. Reference pictures are not buttons. Freeze completed controls into passive elements. Open exploration is the exception: editable passenger buttons remain visibly actionable.
-8. Embed all PNG art and scripts. Draw original conservative black-and-white rabbits, carrots, bears with varied hats, locomotive, ruler and dot icons. Art generation uses Pillow during development only. No timer, continuous animation, SVG, CSS transition, canvas, fetch or additional runtime dependencies.
-9. Use new `kindle-math-stories-v2` completion marks, with scoped clear and storage-failure fallback. Leave old marks intact. Completion denotes played, not mastery; per-question resume is not implemented.
+| Topic | Level 1: visible matching | Level 2: parts and rules | Level 3: hidden parts and multiple decisions |
+| --- | --- | --- | --- |
+| Rabbits | One carrot per rabbit | Two carrots per rabbit | Find a hidden carrot group from a total of 8–12 and a visible part |
+| Train | Board, move, and fill visible seats | Split a total; find a hidden part of 5–7 | Combine two groups, subtract departures, find hidden passengers |
+| Track | Compare aligned equal-unit lengths | Place equal units, then choose the measured length | Find missing units for a total length of 6–10 without countable gaps |
+| Counters | Count 2–4 scattered dots | Combine two visible groups totalling 4–7 | Use five/ten structure for 8–12, subtract removed counters, find hidden counters |
+| Pattern | One gap in AB | One gap in AAB, with varying stopping points | Two consecutive gaps in AAB, ABB and ABBC |
+| Sorting | Shape only | Change between shape and size | Shape AND size: four baskets |
+| Shapes | Match an unchanged shape | Match changed size/orientation | Find all three members among six varied choices |
+| Comparison | More/fewer/equal | Numeric difference, including zero | First choose the larger group, then its numeric difference |
+| Position | Copy above/below/inside from a picture model | Copy two objects in a 3×3 arrangement | Copy three objects using both row and column |
 
-## Acceptance and verification
+These are original Singapore-inspired pictorial activities, not a licensed curriculum or a validated assessment. On-screen counters are pictures; adult guides suggest related work with physical objects. Some level 1 train rounds introduce visible part-whole relationships as exploration. Task difficulty varies by topic; a number does not certify mastery.
 
-- Passed ES5 parsing and DOM checks for all 27 age/activity combinations, 81 rounds each across four seeded random streams (324 exercised rounds).
-- Passed immediate completion, Next gating, wrong answer recovery, stable rabbit order and dot layout during a round, nonoverlapping dot coordinates, varied layouts across seeds, conserved train totals, editable splits, arbitrary seat order, completed controls becoming passive, restart, completion marks and blocked storage.
-- Regression: original Hub, storage, capability and advanced diagnostics checked separately against the refreshed main-branch source, preserving the newer timer change.
-- PNG contact sheet inspected visually. Full browser layout check unavailable because no browser executable is installed. Device input, picture comprehension, clipping, touch sizes and E Ink refresh remain pending.
-- Kindle acceptance: demonstrate feeding; try a wrong dot answer then correct; verify the picture stays still; move a passenger twice and inspect total; fill a seat out of order; complete/reopen a story and inspect the played mark. Reopening offline is a separate unimplemented capability.
+## Interaction and implementation
 
-## Educational references and limits
+- Choose a topic, then a clearly numbered level. The filled staircase and level number remain above every round. Topic tiles show separate played marks for each level.
+- Three rounds provide a natural stopping point. After completion, a large arrow/staircase offers the next level, without automatically starting it. Back returns to the topic's levels; a second Back returns to topics. Home uses a house and Back uses an arrow.
+- Actions have immediate feedback with no submit step. Completed targets become passive. The exploratory train split remains editable and Next becomes available after a move.
+- Hidden-part questions show a whole and visible part, not an answer-sized row of empty slots. Correct numerical choices fill the hidden group and show the completed equation.
+- Multi-step tasks reveal one decision at a time: the active pattern gap, the current spatial object, and the second comparison question. Correct placements remain visible. Wrong choices preserve the scene and can be retried.
+- Sorting baskets are passive until an object is selected. Level 3 size references use the same physical image dimensions as the source, so size is a visible property.
+- Quantity, identity, arrangement and answer order vary on a fresh round. Models remain still while answering. No continuous animation, timer or speed pressure.
+- Static self-contained HTML, CSS and ES5 JavaScript with embedded monochrome PNG illustrations. No new runtime dependencies or modern browser APIs.
+- New completion key `kindle-math-levels-v3` avoids treating prior, easier age-based rounds as completion of the new levels. Previous keys are preserved. Browser saving is optional and marks mean played, not mastered. Per-question resume and offline reopening are not implemented.
+
+## Acceptance and validation
+
+- DOM tests cover 9 topics × 3 levels × 3 rounds × 4 seeded random streams (324 exercised rounds).
+- Verify correct equations from displayed quantities, retries without changing models, two-step gating, all three shape matches, four-bin sorting by both attributes, conserved exploratory train totals, copied model positions, passive completed objects, next-level entry, scoped marks and blocked-storage fallback.
+- ES5 parsing and original Hub, storage, capability and advanced diagnostic regression checks pass.
+- The cloud browser can directly open and operate the published GitHub Pages site. The previous local Playwright executable limitation does not prevent that route.
+- The final published layout and representative interactions are checked separately in the browser. Browser checks do not establish Kindle touch response, E Ink refresh behaviour, picture comprehension or offline reopening; those require actual device testing.
+
+## References
 
 - https://nel.moe.edu.sg/la/numeracy/how-can-you-do-it-/using-concrete-pictorial-abstract--cpa--approach/
 - https://www.singaporemath.com/pages/what-is-singapore-math
-
-These are original story activities inspired by CPA and part-whole relationships, not a complete Singapore Math curriculum. On-screen objects are pictorial, not replacements for the physical concrete stage. Adult guides connect each experience with physical toys. The current rabbit rounds practise one-to-one correspondence; they do not yet cover shortages or leftovers. Track filling models equal units; it does not assess a child's general measurement ability. Difficulty across domains is intentionally not uniform.
-
-## Remaining curriculum implemented after owner direction to continue
-
-- Patterns: AB / AAB / ABC with shuffled picture identities; final round advances within the repeated unit rather than always asking at the unit boundary. Correct choice fills the pictured gap immediately.
-- Sorting: circles and squares of both sizes. Ages 4/5 change to a size rule in the middle round, independently varying shape and size. Idle baskets are passive; they become actionable only while an object is selected. Incorrect destinations retain selection.
-- Shape matching: varied-size circles, squares and triangles, including rotated squares and triangles. Age 5 guide asks about sides/corners. This is picture matching, not an independent shape-properties assessment.
-- Group comparison: aligned same-size illustrations with random larger side, equal groups, more/fewer, and numeric differences at level 5. Alignment supports pairing and seeing leftovers.
-- Position: place a rabbit above, below or inside a solid reference box. Dashed destinations are the only interactive regions; other destinations are cleared on completion.
-- Passed added checks for pattern substitution, wrong/right selections, sorting under both rules, idle-basket controls, rotated shape matching, more/fewer/equal/difference decisions, position placement and conserved train totals.
