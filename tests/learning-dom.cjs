@@ -28,7 +28,7 @@ for(const [subject,cfg] of Object.entries(content)){
     const progress=d.getElementById('progress').textContent;
     d.getElementById('next').click();assert.equal(d.getElementById('progress').textContent,progress,'No unanswered skip');
     const hint=btn('? Hint');if(hint){hint.click();assert(d.querySelector('.hint'));}
-    solve(q);assert(d.getElementById('feedback').textContent.startsWith('✓'));assert(!d.getElementById('next').hidden);assert.equal(d.querySelectorAll('#choices button').length,0,'Completed choices become passive');assert(d.getElementById('cue').textContent.includes(subject==='chinese'?'完成':'Complete'));assert(d.getElementById('progress').textContent.includes('Level '+l));
+    solve(q);assert(d.getElementById('feedback').textContent.startsWith('✓'));assert(!d.getElementById('next').hidden);assert.equal(d.querySelectorAll('#choices button').length,0,'Completed choices become passive');assert.equal(d.getElementById('tools').children.length,0,'Completed tasks clear Undo and hints');assert(d.getElementById('cue').textContent.includes(subject==='chinese'?'完成':'Complete'));assert(d.getElementById('progress').textContent.includes('Level '+l));
     d.getElementById('next').click();questions++;
    }
    assert(seen.size>=2);tap('Back');assert(!d.getElementById('families').hidden);
