@@ -53,3 +53,5 @@ These are original Singapore-inspired pictorial activities, not a licensed curri
 - Sorting preserves the source slots after placement, so other objects do not shift into the tapped location. Vacated slots are passive and the source area disappears when sorting finishes.
 - Two-gap patterns retain the same answer order between gaps. Selected shape controls have fixed outer dimensions to avoid growing when a double border appears.
 - DOM checks additionally assert departure gating/crossed group size, source-slot conservation, stable pattern choices and the exact unmatched-extra count across all seeded rounds. These are pictorial scaffolds, not new assessed competencies.
+
+- Live browser validation confirmed whole-and-part addition, tap-to-depart gating and the passive crossed-out group. The comparison visual check identified mismatched row spacing after highlighting; both rows now use identical fixed-width pairing cells before and after selection, with no horizontal shift from the selected-row border. The whole-group accessible description is synchronized with its revealed number.
