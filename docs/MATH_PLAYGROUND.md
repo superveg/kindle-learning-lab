@@ -1,4 +1,4 @@
-# Math topics and levels — v0.9
+# Math topics and levels — v0.10
 
 ## Confirmed direction
 
@@ -44,3 +44,12 @@ These are original Singapore-inspired pictorial activities, not a licensed curri
 
 - https://nel.moe.edu.sg/la/numeracy/how-can-you-do-it-/using-concrete-pictorial-abstract--cpa--approach/
 - https://www.singaporemath.com/pages/what-is-singapore-math
+
+## v0.10: pictorial relationships and stable interaction
+
+- Hidden carrot, passenger and counter tasks show the whole above a branched pair of actual groups. The hidden part stays one undivided question mark. Train addition uses a question mark for the whole until the child answers; it never displays the answer early.
+- Train subtraction is now a concrete action followed by a number decision. Tap the arrow-bearing passenger group to let it get off. Departed passengers become crossed, passive pictures and only then do numerical choices appear. The action does not complete the question.
+- After identifying the larger comparison group, double borders mark its unmatched extras. The child then chooses their count; the complete equation appears afterward. Group sizes remain compact enough for a narrow display.
+- Sorting preserves the source slots after placement, so other objects do not shift into the tapped location. Vacated slots are passive and the source area disappears when sorting finishes.
+- Two-gap patterns retain the same answer order between gaps. Selected shape controls have fixed outer dimensions to avoid growing when a double border appears.
+- DOM checks additionally assert departure gating/crossed group size, source-slot conservation, stable pattern choices and the exact unmatched-extra count across all seeded rounds. These are pictorial scaffolds, not new assessed competencies.
