@@ -86,3 +86,7 @@ Run `node tests/math-usability.cjs`, `node tests/math-quality.cjs`, `node tests/
 
 Routine changes are authorized for main publication; use a PR when useful, not as an owner approval handoff. Inspect current main before writes, preserve unrelated files, use a guarded fast-forward, inspect Pages deployment, and verify the live interaction. Persist durable requirements, validation and remaining issues in this repository rather than relying on chat context.
 
+
+## Picture source and recognition rule
+
+The owner identified abstract everyday pictures, particularly socks. Fifteen noun pictures in the additional subjects now use release-pinned OpenMoji 17.0.0 black SVGs. Keep originals, file mapping, CC BY-SA 4.0 license and public guide attribution in sync. Rasterization/cropping/padding and composites retain that artwork license; shipped pages still embed PNGs and need no image request during interaction. Python/Pillow and Inkscape are development dependencies only. Review pictures at their actual monochrome display size, including small composition inserts. Distinct bytes do not establish recognizable objects: sock and shoe need different silhouettes, and task clues must refer to visible features. The shoe clue uses its sole because the selected picture does not show clear laces. Actual child comprehension remains unverified.

@@ -1,7 +1,7 @@
 """Build self-contained ES5 subject pages from reviewed authored banks and PNG art."""
 from pathlib import Path
 from PIL import Image,ImageDraw
-import json,re,io,base64
+import json,re,io,base64,subprocess,tempfile
 ROOT=Path(__file__).resolve().parent.parent
 raw=(ROOT/'math.html').read_text();art=json.loads(re.search(r'var art=(\{.*?\});',raw,re.S).group(1))
 assets={k:art[k] for k in ['rabbit0','bear0','engine','carrot0','circle','square','triangle']}
@@ -63,6 +63,18 @@ for name in ['cup','book','key','door','shoe','sock','umbrella','rain','sun','se
  else:
   oval((55,10,95,50));line((75,50,75,100));line((75,60,30,80));line((75,60,120,75));line((75,100,40,145));line((75,100,120,130))
  b=io.BytesIO();im.save(b,format='PNG');assets[name]='data:image/png;base64,'+base64.b64encode(b.getvalue()).decode()
+# Reviewed OpenMoji vectors replace ambiguous everyday-object placeholders.
+# Rasterization is build-time only; retain vector sources and their CC BY-SA license.
+with tempfile.TemporaryDirectory(prefix='kll-art-') as raster_dir:
+ for vector in sorted((ROOT/'assets/openmoji').glob('*.svg')):
+  target=Path(raster_dir)/(vector.stem+'.png')
+  subprocess.run(['inkscape',str(vector),'--export-type=png','--export-filename='+str(target),'--export-width=320','--export-background=white','--export-background-opacity=1'],check=True,capture_output=True)
+  source=Image.open(target).convert('RGB')
+  bounds=Image.eval(source.convert('L'),lambda pixel:255-pixel).getbbox()
+  if not bounds:raise ValueError('Empty pictogram: '+str(vector))
+  source=source.crop(bounds);source.thumbnail((132,132),Image.Resampling.LANCZOS)
+  icon=Image.new('RGB',(160,160),'white');icon.paste(source,((160-source.width)//2,(160-source.height)//2))
+  bio=io.BytesIO();icon.save(bio,format='PNG');assets[vector.stem]='data:image/png;base64,'+base64.b64encode(bio.getvalue()).decode()
 # Conventional plant-part symbols and object/location composites are embedded PNGs.
 for name in ['root','stem','flower','fruit']:
  im=Image.new('RGB',(160,160),'white');d=ImageDraw.Draw(im)
@@ -106,5 +118,6 @@ engine=(ROOT/'learning/generator.js').read_text()+'\n'+(ROOT/'learning/engine.js
 for subject,config in data.items():
  used=assets # Small complete pack keeps authorship and offline session simple.
  page='<!doctype html><html lang="'+('zh-Hans' if subject=='chinese' else 'en')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+config['title']+' — Kindle Learning Lab</title><style>'+style+'</style></head><body><main><nav><a href="subjects.html" aria-label="All subjects">⌂ <span>Subjects</span></a><button id="back" aria-label="Back">← <span>Back</span></button></nav><h1>'+config['title']+'</h1><div id="levels"></div><div id="families" hidden></div><section id="play" hidden><div id="progress"></div><h2 id="family-title"></h2><p id="cue"></p><div id="scene"></div><div id="choices"></div><div id="work"></div><div id="feedback" role="status" aria-live="polite"></div><div id="tools"></div><button id="next" hidden>→ Another question</button><details><summary>Grown-up guide</summary><p id="guide"></p></details></section><noscript>JavaScript is needed for these activities.</noscript></main><script>var CONFIG='+json.dumps(config,ensure_ascii=False)+';var ART='+json.dumps(used)+';'+engine+'</script></body></html>'
+ page=page.replace('</details>', '<p class="art-credit">Object pictures by <a href="art-credits.html">OpenMoji · CC BY-SA 4.0</a>.</p></details>')
  (ROOT/(subject+'.html')).write_text(page)
 print('Built:',', '.join(data))

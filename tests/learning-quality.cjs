@@ -35,7 +35,7 @@ for(const subject of ['chinese','english']){
 for(const id of Object.keys(data)){
  const html=fs.readFileSync(id+'.html','utf8');const art=JSON.parse(html.match(/var ART=(\{.*?\});/s)[1]);
  function check(x){if(x&&typeof x==='object'){if(x.art)assert(art[x.art],x.art);for(const v of Object.values(x))check(v);}}
- check(data[id]);assert.notEqual(art.wash,art.dry);assert.notEqual(art.eat,art.run);assert.notEqual(art.mountain,art.ramp);
+ check(data[id]);assert.notEqual(art.sock,art.shoe);assert.notEqual(art.cat,art.dog);assert(html.includes('href="art-credits.html"'));assert.notEqual(art.wash,art.dry);assert.notEqual(art.eat,art.run);assert.notEqual(art.mountain,art.ramp);
  assert(!/<script[^>]+src=/.test(html),'No task-time JS requests');
 }
 console.log('PASS: independent picture/feature oracles, authored answer ambiguity, all',branches,'story ending paths, rejected ordering/Undo/repeated letters, and distinct complete asset references.');

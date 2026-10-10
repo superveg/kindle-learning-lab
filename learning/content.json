@@ -6545,7 +6545,7 @@
               {
                 "id": "task-507",
                 "mode": "choice",
-                "prompt": "Has laces AND is worn on feet. Which pictured object meets both clues?",
+                "prompt": "Has a sole AND is worn on feet. Which pictured object meets both clues?",
                 "cue": "Choose the answer.",
                 "options": [
                   {
@@ -9221,8 +9221,8 @@
                 "cue": "Choose the answer.",
                 "options": [
                   {
-                    "label": "Have the pictured laces?",
-                    "text": "Have the pictured laces?"
+                    "label": "Have the pictured sole?",
+                    "text": "Have the pictured sole?"
                   },
                   {
                     "label": "Go on a foot?",

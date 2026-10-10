@@ -26,3 +26,7 @@ The child is not yet reading. Use pictures as the primary way to choose activiti
 - Inspected the generated pictograms visually as a contact sheet.
 - Pending: full browser layout checks and actual Kindle rendering of v0.2, including PNG data URLs, icon-button layout, selected borders, and the child's understanding of each icon.
 - Offline reload, persistent progress, and the formal disconnection checklist remain unverified.
+
+## Current additional-subject artwork
+
+The five additional subjects keep embedded monochrome PNGs, with 15 recognizable noun pictures rasterized from OpenMoji 17.0.0 black SVGs. The vector sources, original file mapping and CC BY-SA 4.0 license are retained in `assets/openmoji/`; public credits are available in each grown-up guide and `art-credits.html`. This is a build-time representation choice, not a new runtime SVG dependency. Python/Pillow and Inkscape rebuild the pages. Review depicted features against clues and inspect pictures at actual displayed sizes. Sock/shoe must remain distinguishable by silhouette. Desktop contact-sheet inspection is not evidence of child recognition or Kindle rendering.
