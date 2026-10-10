@@ -12,17 +12,13 @@ Updated: 2026-10-10. For decisions and continuity, read [SESSION_HANDOFF.md](SES
 - Levels 4–6 include tens, regrouping, grouping/remainders, multistep stories, constraint-based construction, spatial reasoning and introductory fractions.
 - Latest interaction revision: immediate numeric answers, passive reference models and optional explicit tools in bridge/bundle/regroup questions; visible upper-level task cues; one optional hint instead of a discovery ladder.
 - Runtime question quality: eight recent initial tasks per topic/level retained in page memory; up to twelve candidate generations preserve balanced variants while reducing recent repeats. Small banks repeat safely. See QUESTION_QUALITY.md.
-- Every delivered project change includes a dated CHANGELOG.md entry and relevant status/feature/decision documentation updates.
+- After changes, maintain useful long-term project knowledge in place; no chronological change log or mandatory per-change report.
 
 ## Checks and remaining uncertainty
 
-Pages successfully deployed implementation `80af5fe71629552c320d54f337bd5c5739c54534`. Live Chrome completed nine distinct Tens Workshop level-5 expressions, with each block of three using all three variants and no adjacent variant repeat; question 10 remained at level 5 with immediate answers and an optional picture tool. This is browser evidence, not Kindle or child-comprehension validation.
+Current math verification (2026-10-10): 1,296 legacy and 891 higher-level solved questions, direct-answer checks, ES5 parsing and 1,080 quality samples across all sixty combinations passed. Checks cover arithmetic, legal construction, retries, Undo, bounded history, menu continuity, balanced variants, constant-random fallback and structural constraints.
 
-The runtime-quality revision passed both math regression suites (1,296 legacy and 891 higher-level solved questions), direct-answer checks, ES5 parsing, and 1,080 initial quality samples across all sixty combinations. Seeded variety, bounded history, menu return, balanced variants, constant-random fallback and structural constraints were checked.
-
-Math checks passed on 2026-10-10: 1,296 legacy plus 891 higher-level generated questions, including retry stability, correct arithmetic, legal construction, Undo, progression and storage fallback. Additional checks assert that bridge, bundle and regroup questions can be answered without a preliminary tool click.
-
-GitHub Pages successfully deployed implementation commit `1268f4ec04cfa5734687c620757adf3ed3b888a3`. Live Chrome validation confirmed that `63 − 7` at Tens Workshop level 5 could be answered immediately, without unpacking first; the next question stayed at level 5. For `31 + 9`, the optional bundle tool changed the model while preserving the answer options, and completing the question worked. A third initial question visibly showed its passive model, optional tool and answers together. These browser observations do not establish actual Kindle or child comprehension.
+GitHub Pages deployment succeeded. Live Chrome verified direct answers and optional regrouping with stable choices, then nine distinct level-5 expressions with balanced variants and same-level continuation to question 10. Browser checks do not establish Kindle performance or child comprehension.
 
 The owner reported unclear prerequisite clicks on 2026-10-10 without naming exact questions. Identified patterns have been simplified; other confusing tasks remain an audit priority. Automated correctness does not establish task intuitiveness.
 
@@ -32,7 +28,6 @@ Exact Kindle model/firmware, advanced diagnostic device behavior, upper-level pi
 
 | Document | Purpose |
 | --- | --- |
-| [CHANGELOG.md](CHANGELOG.md) | Dated changes, reasons, checks and unresolved limits |
 | [QUESTION_QUALITY.md](QUESTION_QUALITY.md) | Runtime generation, recent repeats, balance and structural level boundaries |
 | [PROJECT.md](PROJECT.md) | Product and implementation constraints |
 | [SESSION_HANDOFF.md](SESSION_HANDOFF.md) | Durable owner decisions, engineering context, evidence and next priorities |

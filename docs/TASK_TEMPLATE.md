@@ -20,7 +20,7 @@ Implement [one bounded learning activity or repository change] for children roug
 2. Implement [specific UI and behavior] in [specific files], using static HTML, CSS, and Vanilla JavaScript.
 3. Define [answer handling, feedback, score rules, navigation, and completion behavior] where relevant.
 4. Load the active session's required data/assets up front where feasible.
-5. Append docs/CHANGELOG.md and update relevant status, feature and durable-decision documents with rationale and verification limits.
+5. Review what deserves long-term retention and update the relevant existing project/feature/handoff documents in place; replace superseded rules and keep status concise. Do not add a change log or preserve transient details.
 6. Verify the relevant interactions and report remaining actual-device checks.
 
 ## Acceptance criteria

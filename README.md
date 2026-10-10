@@ -2,7 +2,7 @@
 
 Start with [current status](docs/STATUS.md) and [durable session handoff](docs/SESSION_HANDOFF.md). Historical sections below retain their version-specific context.
 
-Each delivered change is recorded in [CHANGELOG.md](docs/CHANGELOG.md), with its purpose, checks and limitations. See [question quality](docs/QUESTION_QUALITY.md) for runtime generation, recent-repeat handling and level boundaries.
+Project documents maintain current rules, durable decisions and reusable lessons in place; Git retains implementation history. See [question quality](docs/QUESTION_QUALITY.md) for runtime generation, recent-repeat handling and level boundaries.
 
 # Kindle Learning Lab
 
