@@ -21,11 +21,11 @@ for(const [subject,cfg] of Object.entries(content)){
   for(let f=0;f<3;f++){
    tap('Activity '+(f+1)+': '+cfg.levels[l-1].families[f].name);
    // Observe bank without relying on closure state: choices/prompts identify the displayed authored sample.
-   let last=null,seen=new Set();
+   let last=null,seen=new Set(),recentContent=[];
    for(let n=0;n<100;n++){
     let q=cfg.levels[l-1].families[f].tasks.find(q=>q.id===d.getElementById('play').getAttribute('data-task-id'));assert(q,'Rendered task matches its authored bank');
     assert.notEqual(q.id,last,'Avoid adjacent repeats where bank has alternatives');last=q.id;seen.add(q.id);
-    const progress=d.getElementById('progress').textContent;
+    const materialized=w.LearningGenerator.materialize(q,Number(d.getElementById('play').getAttribute('data-variant'))),sig=w.LearningGenerator.signature(materialized);assert(!recentContent.slice(-10).includes(sig),'No content repeats in previous ten');recentContent.push(sig);const progress=d.getElementById('progress').textContent;
     d.getElementById('next').click();assert.equal(d.getElementById('progress').textContent,progress,'No unanswered skip');
     const hint=btn('? Hint');if(hint){hint.click();assert(d.querySelector('.hint'));}
     solve(q);assert(d.getElementById('feedback').textContent.startsWith('✓'));assert(!d.getElementById('next').hidden);assert.equal(d.querySelectorAll('#choices button').length,0,'Completed choices become passive');assert.equal(d.getElementById('tools').children.length,0,'Completed tasks clear Undo and hints');assert(d.getElementById('cue').textContent.includes(subject==='chinese'?'完成':'Complete'));assert(d.getElementById('progress').textContent.includes('Level '+l));

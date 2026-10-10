@@ -6,7 +6,7 @@ Status: first usable release implemented for all five subjects, six levels each 
 
 The owner approved exploring five additional subjects in this order: **Logic → Chinese → English → Everyday Science → Stories and Social Situations**. The outline now has a working first release; retain this document as the curriculum direction. The immediate learner is three years old. Keep six freely selectable levels, with a broad planning envelope of roughly ages 3–8/9. Levels are task structures, not age norms, grades, diagnoses or locks. Reading level may differ between Chinese and English, and logic must not depend on reading ability.
 
-Existing mathematics stays available. The original Hub's shape, letter and story samples are diagnostics/prototypes, not completed versions of these curricula. The release contains five subject modules, thirty subject/level combinations and ninety activity families, supported by 201 authored examples. These are introductory strands, not complete academic curricula.
+Existing mathematics stays available. The original Hub's shape, letter and story samples are diagnostics/prototypes, not completed versions of these curricula. The release contains five subject modules, thirty subject/level combinations and ninety activity families, supported by 1,252 authored seeds. These are introductory strands, not complete academic curricula.
 
 ## Common child experience
 
@@ -180,7 +180,7 @@ A common authored-task contract should contain:
 - phase-specific cues/hints, Undo state, completion summary and adult narration;
 - randomization constraints, canonical signature and fact/editorial source where needed.
 
-Runtime generators select and combine reviewed banks. No live AI-generated child content. The first release shuffles each reviewed family bank and avoids immediately repeating the same task; choice order varies. Recent IDs are retained in memory, but this does not enforce an eight-task exclusion window. Finite banks repeat gracefully. Signatures ignore layout/art/option order and represent the actual task. Keep a generated task stable through hint, retry and Undo.
+Runtime generators select and combine reviewed banks. No live AI-generated child content. Each family contains at least twelve substantive seeds. A recent-ten content exclusion persists when local storage works; choice-position and ID changes do not count as new content. Bounded science record values materialize in frontend JavaScript. Finite narrative banks still eventually repeat. Signatures ignore layout/art/option order and represent the actual task. Keep a generated task stable through hint, retry and Undo.
 
 Navigation, feedback and choice widgets can be shared in source, but subject-specific validators stay explicit. Do not refactor the entire math app merely to add the first subject. Keep separate storage namespaces; failures fall back to a working session. Marks record played subject/family/level only. No accounts, cross-device sync, adaptive mastery, required saved question state or offline reopening promise.
 

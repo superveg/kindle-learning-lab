@@ -63,6 +63,27 @@ for name in ['cup','book','key','door','shoe','sock','umbrella','rain','sun','se
  else:
   oval((55,10,95,50));line((75,50,75,100));line((75,60,30,80));line((75,60,120,75));line((75,100,40,145));line((75,100,120,130))
  b=io.BytesIO();im.save(b,format='PNG');assets[name]='data:image/png;base64,'+base64.b64encode(b.getvalue()).decode()
+# Conventional plant-part symbols and object/location composites are embedded PNGs.
+for name in ['root','stem','flower','fruit']:
+ im=Image.new('RGB',(160,160),'white');d=ImageDraw.Draw(im)
+ if name=='root':
+  d.line((10,45,150,45),fill='black',width=4);d.line((80,10,80,145),fill='black',width=6)
+  for y in [65,90,115]:d.line((80,y,35,y+25),fill='black',width=5);d.line((80,y,125,y+25),fill='black',width=5)
+ elif name=='stem':d.line((80,10,80,150),fill='black',width=12);d.line((80,65,120,35),fill='black',width=7)
+ elif name=='flower':
+  d.line((80,90,80,155),fill='black',width=5)
+  for x,y in [(80,25),(110,55),(80,85),(50,55)]:d.ellipse((x-25,y-25,x+25,y+25),fill='white',outline='black',width=4)
+  d.ellipse((63,38,97,72),fill='white',outline='black',width=4)
+ else:d.ellipse((35,50,125,140),fill='white',outline='black',width=5);d.line((80,50,90,20),fill='black',width=6);d.ellipse((90,10,130,35),outline='black',width=4)
+ bio=io.BytesIO();im.save(bio,format='PNG');assets[name]='data:image/png;base64,'+base64.b64encode(bio.getvalue()).decode()
+for obj in ['cup','book','key','cat','dog','engine']:
+ icon=Image.open(io.BytesIO(base64.b64decode(assets[obj].split(',')[1]))).convert('RGB').resize((48,48))
+ for pos in ['on','under','in','out']:
+  im=Image.new('RGB',(160,160),'white');d=ImageDraw.Draw(im)
+  if pos in ['on','under']:
+   d.rectangle((10,70,150,80),outline='black',width=4);d.line((25,80,25,150),fill='black',width=5);d.line((135,80,135,150),fill='black',width=5);xy=(56,18) if pos=='on' else (56,96)
+  else:d.rectangle((10,35,105,145),outline='black',width=5);xy=(34,72) if pos=='in' else (110,78)
+  im.paste(icon,xy);bio=io.BytesIO();im.save(bio,format='PNG');assets[obj+'-'+pos]='data:image/png;base64,'+base64.b64encode(bio.getvalue()).decode()
 # Feature cards are deterministic PNGs, avoiding SVG/CSS-only answer distinctions.
 for shape in ['circle','square','triangle']:
  for fill in ['plain','striped','filled']:
@@ -81,7 +102,7 @@ for shape in ['circle','square','triangle']:
    elif shape=='square':d.rectangle((a,a,b,b),outline='black',width=5)
    else:d.polygon([(80,a),(b,b),(a,b)],outline='black',width=5)
    bts=io.BytesIO();im.save(bts,format='PNG');assets[shape+'-'+fill+'-'+size]='data:image/png;base64,'+base64.b64encode(bts.getvalue()).decode()
-engine=(ROOT/'learning/engine.js').read_text();style=(ROOT/'learning/style.css').read_text();data=json.loads((ROOT/'learning/content.json').read_text())
+engine=(ROOT/'learning/generator.js').read_text()+'\n'+(ROOT/'learning/engine.js').read_text();style=(ROOT/'learning/style.css').read_text();data=json.loads((ROOT/'learning/content.json').read_text())
 for subject,config in data.items():
  used=assets # Small complete pack keeps authorship and offline session simple.
  page='<!doctype html><html lang="'+('zh-Hans' if subject=='chinese' else 'en')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+config['title']+' — Kindle Learning Lab</title><style>'+style+'</style></head><body><main><nav><a href="subjects.html" aria-label="All subjects">⌂ <span>Subjects</span></a><button id="back" aria-label="Back">← <span>Back</span></button></nav><h1>'+config['title']+'</h1><div id="levels"></div><div id="families" hidden></div><section id="play" hidden><div id="progress"></div><h2 id="family-title"></h2><p id="cue"></p><div id="scene"></div><div id="choices"></div><div id="work"></div><div id="feedback" role="status" aria-live="polite"></div><div id="tools"></div><button id="next" hidden>→ Another question</button><details><summary>Grown-up guide</summary><p id="guide"></p></details></section><noscript>JavaScript is needed for these activities.</noscript></main><script>var CONFIG='+json.dumps(config,ensure_ascii=False)+';var ART='+json.dumps(used)+';'+engine+'</script></body></html>'

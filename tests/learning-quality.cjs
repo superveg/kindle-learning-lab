@@ -16,7 +16,7 @@ for(const [id,cfg] of Object.entries(data)){
 // Independent visible-image equality oracle for exact-match activities.
 for(const q of data.logic.levels[0].families[0].tasks){const expected=q.options.map((o,i)=>o.art===q.scene[0].art?i:-1).filter(i=>i>=0);assert.deepEqual(q.answers,expected);}
 // Independent logical-feature predicates for representative two-clue deduction.
-for(const q of data.logic.levels[3].families[0].tasks){const expected=q.options.map((o,i)=>{let [shape,pattern]=o.art.split('-');return (q.prompt.includes('Round')?shape==='circle'&&pattern!=='filled':pattern==='striped'&&shape!=='circle')?i:-1;}).filter(i=>i>=0);assert.deepEqual(q.answers,expected);}
+for(const q of data.logic.levels[3].families[0].tasks){const clue=q.prompt.match(/(circle|square|triangle) outline AND NOT (plain|striped|filled)/);assert(clue);const expected=q.options.map((o,i)=>{let [shape,pattern]=o.art.split('-');return shape===clue[1]&&pattern!==clue[2]?i:-1;}).filter(i=>i>=0);assert.deepEqual(q.answers,expected);}
 const dom=new JSDOM(fs.readFileSync('english.html','utf8'),{runScripts:'dangerously',url:'https://example.test'}),w=dom.window,d=w.document;
 function tap(prefix){let b=[...d.querySelectorAll('button')].find(b=>(b.getAttribute('aria-label')||b.textContent).startsWith(prefix));assert(b,prefix);b.click();}
 tap('Level 3:');tap('Activity 1:');
@@ -24,7 +24,7 @@ tap('Level 3:');tap('Activity 1:');
 const id=d.getElementById('play').getAttribute('data-task-id'),q=data.english.levels[2].families[0].tasks.find(q=>q.id===id);
 for(let i=q.items.length-1;i>=0;i--)tap('Add card '+(i+1)+':');assert(d.getElementById('feedback').textContent.startsWith('↺'));assert(d.getElementById('next').hidden);tap('↶ Undo');assert.equal(d.getElementById('feedback').textContent,'');assert.equal(d.querySelectorAll('#work .card').length,q.items.length-1);
 // Undo the whole attempt; put duplicate o tiles in interchangeable positions.
-while(d.querySelectorAll('#work .card').length)tap('↶ Undo');let sequence=q.items.map((_,i)=>i);if(q.items.length===4)sequence=[0,2,1,3];for(const i of sequence)tap('Add card '+(i+1)+':');assert(d.getElementById('feedback').textContent.startsWith('✓'));dom.window.close();
+while(d.querySelectorAll('#work .card').length)tap('↶ Undo');let sequence=q.items.map((_,i)=>i);if(q.items.length===4&&q.items[1].label==='o'&&q.items[2].label==='o')sequence=[0,2,1,3];for(const i of sequence)tap('Add card '+(i+1)+':');assert(d.getElementById('feedback').textContent.startsWith('✓'));dom.window.close();
 // The evidence stage keeps the story visible instead of turning reading into recall.
 for(const subject of ['chinese','english']){
  const page=new JSDOM(fs.readFileSync(subject+'.html','utf8'),{runScripts:'dangerously',url:'https://example.test'}),doc=page.window.document;

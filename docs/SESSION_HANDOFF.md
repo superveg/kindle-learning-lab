@@ -18,9 +18,11 @@ Updated: 2026-10-10 (America/Denver). Start with this document, [PROJECT.md](PRO
 - Expand attractive, varied monochrome pictures and random dot arrangements. Interpret dynamic variation as changes between questions and intentional actions; do not make countable objects move while the child is solving.
 - Use concrete/pictorial/abstract progression inspired by Singapore mathematics. This is original content, not a licensed or complete Singapore curriculum.
 
+- Owner feedback confirms that two-sample banks repeat too quickly. Each additional-subject family now requires at least twelve substantive content seeds, recent-ten content exclusions and a repeat-focused continuity test; cosmetic variation alone is insufficient.
+
 ## Additional subjects
 
-The approved order Logic → Chinese → English → Everyday Science → Stories/Social Situations now has a first usable release: five pages, six levels each, eighteen families per subject and 201 authored examples. Use [LEARNING_MODULES.md](LEARNING_MODULES.md) for current implementation, build and testing, and [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for academic direction. The immediate learner is three; levels are task structures, not age norms. Early language prompts and written logic clues may be narrated by an adult. English visual spelling is not systematic phonics; audio and actual Kindle Chinese glyph support remain unverified. Framework references inform original tasks; their effectiveness does not transfer automatically to this app.
+The approved order Logic → Chinese → English → Everyday Science → Stories/Social Situations now has a first usable release: five pages, six levels each, eighteen families per subject and 1,252 authored seeds. Use [LEARNING_MODULES.md](LEARNING_MODULES.md) for current implementation, build and testing, and [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for academic direction. The immediate learner is three; levels are task structures, not age norms. Early language prompts and written logic clues may be narrated by an adult. English visual spelling is not systematic phonics; audio and actual Kindle Chinese glyph support remain unverified. Framework references inform original tasks; their effectiveness does not transfer automatically to this app.
 
 ## Current implementation
 
