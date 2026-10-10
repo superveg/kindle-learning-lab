@@ -50,7 +50,7 @@ A single numerical choice, last correct selection or final placement completes t
 
 Manipulatives use large taps. Track placement, tile placement, gifts and route moves have Undo. Invalid placement changes feedback without altering the model. A correct answer freezes scene controls as passive pictures. Main Next stays in the same level indefinitely; optional advance offers the next available level, and level 6 has no advance action. Back is always present.
 
-Numerical picture models are visible from entry; an optional first-step hint adds guidance. Models stay fixed during retry. Early tasks remain pictogram-based; advanced tasks add mathematical symbols, short labels and a folded adult guide. Models do not require discovery taps; optional hints expose one first-step suggestion. No adaptive mastery inference is implemented.
+Numerical picture models are visible from entry; an optional current-step hint adds guidance. Models stay fixed during retry. Early tasks remain pictogram-based; advanced tasks add mathematical symbols, short labels and a folded adult guide. Models do not require discovery taps; optional hints explain the current step. No adaptive mastery inference is implemented.
 
 ## Persistence and compatibility
 
@@ -70,7 +70,7 @@ The live page showed twelve topics, six entries for original topics, and only th
 
 ## 2026-10-10: remove discovery taps
 
-The owner reported unclear prerequisite taps, without identifying exact tasks. Bridge-through-ten, bundle and regroup questions now display numeric choices immediately. Diagrams are passive and explicit optional tool buttons can demonstrate transformations. Numerical picture models start visible; one optional first-step hint replaces the three-click ladder. Upper-level tasks show an entry action cue. This supersedes earlier required manipulation and hidden-model descriptions; manipulation remains the task in sharing, placement and construction. Direct-answer regression checks supplement the existing generated-question checks. Other unclear tasks remain an audit priority.
+The owner reported unclear prerequisite taps, without identifying exact tasks. Bridge-through-ten, bundle and regroup questions now display numeric choices immediately. Diagrams are passive and explicit optional tool buttons can demonstrate transformations. Numerical picture models start visible; one optional current-step hint replaces the three-click ladder. Upper-level tasks show a current action cue. This supersedes earlier required manipulation and hidden-model descriptions; manipulation remains the task in sharing, placement and construction. Direct-answer regression checks supplement the existing generated-question checks. Other unclear tasks remain an audit priority.
 
 ## Current representation and interaction contracts
 
@@ -81,3 +81,5 @@ Tile tasks use an explicitly marked bounding anchor, tap-to-preview and a second
 Grouping rows, classification sources and task spacing are more compact while interactive targets remain large. Tile trays use compact previews with full board-scale footprints on the board. Actual Kindle fit, legibility and child interpretation remain to be checked.
 
 `node tests/math-usability.cjs` checks intermediate expressions, direct train answering, stale-feedback regression, preview/place/Undo, spatial set controls, segmented comparison models and all fraction cues, alongside the existing complete math suites. Final-answer correctness and solvability alone are insufficient evidence for displayed mathematics or task clarity.
+
+Task guidance follows state: multistep arithmetic identifies the current step, an opened hint refreshes when advancing, route cues name the next arrow/star/flag and follow Undo, and solved comparison portions display the known B value. Completion replaces action instructions with an explicit same-level continuation or Back option, retains remainder/fraction summaries, and removes obsolete hint text. Completion cues must not borrow state from an earlier question or level.

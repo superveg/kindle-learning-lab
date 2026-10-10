@@ -18,7 +18,7 @@
 - Offer natural pauses after each answered question, without speed pressure or reward mechanics that encourage repeated clicking. The owner explicitly requested uncapped, manually continued random math practice on 2026-10-09; do not reintroduce a three-question limit.
 - Necessary task information and answer controls must be visible without a discovery tap on a diagram. Picture tools are optional unless manipulation is the actual task; make control purpose explicit. Reference/decorative areas remain passive.
 - Activities may use selectable answers, immediate feedback, scores, and question navigation.
-- Validate displayed intermediate mathematics as well as final answers. Clear obsolete failure feedback on new valid actions/phases. Each task mode needs a cue for its current action; diagram navigation and spatial anchors need explicit visual meaning.
+- Validate displayed intermediate mathematics as well as final answers. Clear obsolete failure feedback on new valid actions/phases. Each task mode needs a cue for its current action; hints must follow the current phase, and completion must replace obsolete action instructions; diagram navigation and spatial anchors need explicit visual meaning.
 
 ## Implementation constraints
 

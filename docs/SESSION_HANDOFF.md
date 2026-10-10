@@ -24,7 +24,7 @@ Updated: 2026-10-10 (America/Denver). Start with this document, [PROJECT.md](PRO
 
 See [MATH_PLAYGROUND.md](MATH_PLAYGROUND.md) for levels 1–3 and earlier changes, and [MATH_SIX_LEVELS.md](MATH_SIX_LEVELS.md) for levels 4–6 and generator constraints. Later rules in this handoff supersede earlier gated demonstrations or multi-click hint descriptions.
 
-The 2026-10-10 interaction revision removes mandatory unlock taps from bridging through ten, bundling and regrouping. Answer choices are available immediately; reference pictures are passive; explicit smaller tool buttons perform optional demonstrations. Numeric-task pictures start visible and a single optional first-step hint replaces the three-click clue/model/step ladder. Upper-level tasks now show a concise action cue. This addresses identified implementation patterns; broader child comprehension still needs observation.
+The 2026-10-10 interaction revision removes mandatory unlock taps from bridging through ten, bundling and regrouping. Answer choices are available immediately; reference pictures are passive; explicit smaller tool buttons perform optional demonstrations. Numeric-task pictures start visible and a single optional current-step hint replaces the three-click clue/model/step ladder. Upper-level tasks now show a concise action cue. This addresses identified implementation patterns; broader child comprehension still needs observation.
 
 ## Engineering rules
 
@@ -58,6 +58,7 @@ Do not promote a successful desktop browser check to a Kindle compatibility clai
 - Displayed intermediate statements must be mathematically valid, not just lead to the expected answer. Whole-serving questions ask for a count of full groups; remainder completion uses `total = divisor × quotient + remainder`. Subtraction models show an unknown remaining part plus the removed part, not the whole as an additional part.
 - Clear previous error feedback when a new valid action or phase begins. Invalid attempts identify edge/obstacle, overlap or waypoint order where appropriate without giving away a complete solution.
 - Train level-3 subtraction exposes answers immediately and provides a separate optional departure demonstration. Reference carriages stay passive.
+- Guidance follows the current phase, including already-opened hints and route Undo. Completion replaces obsolete action cues, clears instructional hints and offers manual same-level continuation or Back; retain useful result summaries without leaking an earlier task's state.
 - Fraction shading, matching, comparison, equal partitions and half-to-quarter equivalence each have a specific action cue. Shading shows progress; pattern repair names the current phase.
 - Tile selection marks a top-left bounding anchor. First tap previews the footprint, another tap on the same anchor places it. Different anchors replace the preview; invalid previews mark conflicts without consuming a piece. Rotation clears the preview; Undo restores placed pieces. No separate correctness submission is needed. The compact tray shows the shape and anchor; the actual footprint is previewed at board scale.
 - Membership destinations occupy the overlapping set diagram: A only / both / B only, with outside below. The selection and size-preserving placed objects remain visible; destination panels are passive until an object is selected.
