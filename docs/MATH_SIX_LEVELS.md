@@ -62,3 +62,7 @@ One self-contained `math.html` holds CSS, ES5 JavaScript, embedded PNG art and a
 - Independent checks calculate arithmetic from displayed expressions, conserve regrouped quantities, search legal track combinations and tilings, find routes through visible conditions, check reflected cells, fraction widths, multi-step gating, retries and Undo.
 - Every completed scene becomes passive, each topic stays active beyond question 3, and each question keeps its current level.
 - Full script parses as ES5. Published-browser checks follow deployment; actual Kindle touch response, picture comprehension, layout and E Ink behavior remain device tests.
+
+## Published-browser validation
+
+The live page showed twelve topics, six entries for original topics, and only the eligible upper levels for new topics. Level-5 subtraction exercised unpacking, removal, answer and same-level continuation. This caught a representation bug where unpacked ones were normalized back into tens; the fix preserves the actual unpacked tens/ones and adds exact representation assertions. Level-6 fraction checks exercised retry, half/quarter equivalence, shading and matching; after eight answers the live page remained in level 6 at question 9. Desktop browser evidence does not establish Kindle rendering or E Ink performance.
