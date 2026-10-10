@@ -45,7 +45,8 @@ The 2026-10-10 interaction revision removes mandatory unlock taps from bridging 
 | localStorage marker | Owner reported success; unreported restart/close combinations remain unknown |
 | Four capability checks | Owner reported all four passed: real counting restore, nine-cell toggle, manual local updates, tested static SVG/PNG comparison |
 | Advanced diagnostics | Manual elapsed reading was owner-confirmed; drag behavior, low-frequency automatic refresh and delayed results still need device-specific evidence |
-| DOM checks | Legacy math exercises 1,296 questions; higher math exercises 891 questions, plus targeted checks. These are software checks, not device or pedagogical validation |
+| DOM checks | On 2026-10-10, legacy math passed 1,296 questions and higher math passed 891 questions plus direct-answer checks. These are software checks, not device or pedagogical validation |
+| Latest live browser check | Pages deployed implementation `1268f4ec04cfa5734687c620757adf3ed3b888a3`. Chrome confirmed direct level-5 subtraction without a preliminary tool click, same-level continuation, and optional regrouping with stable choices. Actual Kindle and child comprehension remain unverified |
 | Published browser | Six-level navigation, bridging, regrouping, corrected unpacked representation and fraction practice exercised. Eight fraction answers led to question 9 at the same level |
 | Offline | Loaded-page continued interaction and offline reopen/reload are separate; the latter is not implemented or promised |
 
