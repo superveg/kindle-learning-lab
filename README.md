@@ -91,3 +91,9 @@ The pictorial refinement adds whole-and-part diagrams, tap-to-depart subtraction
 In v0.11 the fixed three-question sequence is removed. Each session shuffles eligible task variants, balances their coverage, avoids an immediately repeated variant, and generates fresh quantities, arrangements and answer orders. Pattern stopping positions also vary. Questions stay fixed while solving or retrying. A question number replaces the three-dot ending indicator. Played marks record having practised a level, not completion of a bounded set or mastery.
 
 Levels 4–6 now add bridging through ten, place value with carrying/borrowing, equal groups and remainders, two-station forward/reverse stories, stock-constrained tracks, reflected/rotated puzzles, set membership, ordered waypoints and introductory fractions. See [six-level implementation details](docs/MATH_SIX_LEVELS.md). Run `node tests/math-higher-dom.cjs` alongside the legacy math check.
+
+## Additional learning subjects
+
+The More Learning tile opens `subjects.html`, with Logic, Chinese, English, Everyday Science and Stories & Feelings. Each has six selectable levels and three real activity families per level. Reviewed finite banks shuffle and repeat; practice has no three-question cap. Early language tasks need adult narration. Silent spelling is not a phonics curriculum. See [current module coverage](docs/LEARNING_MODULES.md) and [academic direction](docs/LEARNING_EXPANSION_PLAN.md).
+
+Author/build: `python tools/author_learning.py`, then `python tools/build_learning.py` (Pillow required; existing math artwork is embedded). Run `node tests/learning-dom.cjs` and `node tests/learning-quality.cjs` using the same jsdom/Acorn dependencies as the math suites. Preserve math and independent diagnostic tests.

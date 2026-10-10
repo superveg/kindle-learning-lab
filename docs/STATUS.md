@@ -27,9 +27,11 @@ Exact Kindle model/firmware, advanced diagnostic device behavior, upper-level pi
 
 The interface navigation check covers topic paging and return continuity, all 60 previews without random-number consumption, toolbar state, played marks, same-level continuation and explicit level change. Live Chrome verified both topic pages, preserved paging after Back, rabbit and Tens level previews, compact task navigation, evenly spaced numeric choices, stable wrong-answer retries and distinct continuation/advance controls. Desktop layout does not establish small-screen or Kindle fit; actual Kindle layout and comprehension remain pending.
 
-## Planned expansion
+## Beyond-math release
 
-The complete beyond-math planning specification is recorded in [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md). Delivery order: Logic → Chinese → English → Everyday Science → Stories/Social Situations. Each has six proposed capability levels and three initial activity families per level. Planning includes candidate academic foundations and their evidence/adaptation limits; the owner has not selected a licensed curriculum. These five subject modules and their content banks are not implemented. The current task makes no learning-page changes.
+Logic, Chinese, English, Everyday Science and Stories/Social Situations are implemented through `subjects.html`: six freely selectable levels per subject, three families per level, 201 reviewed authored examples. Every family supports uncapped manual continuation, shuffled banks and stable retries. See [LEARNING_MODULES.md](LEARNING_MODULES.md) for current contracts, coverage and verification limits; [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) retains the detailed academic direction.
+
+Software checks exercise 9,000 continuous questions across all 90 families, independent picture/feature predicates, alternate legal orders, wrong-order Undo, repeated letters, 60 authored story-ending paths, storage failure and ES5 parsing. This establishes implementation behavior, not educational effectiveness. English audio/phonics and actual Kindle Chinese glyphs are unverified; early language and text-based logic tasks need adult narration. Banks are finite and repeat; no unique-question guarantee is made.
 
 ## Documentation map
 

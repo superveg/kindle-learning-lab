@@ -1,12 +1,12 @@
 # Learning expansion plan — six levels beyond mathematics
 
-Status: planning specification; new subject modules are not implemented. Maintain this plan in place as designs become implemented or evidence changes. This is not a change log or a claim of educational effectiveness.
+Status: first usable release implemented for all five subjects, six levels each and three activity families per level. See [LEARNING_MODULES.md](LEARNING_MODULES.md) for actual coverage and evidence. Maintain this plan in place as designs become implemented or evidence changes. This is not a change log or a claim of educational effectiveness.
 
 ## Confirmed scope and delivery order
 
-The owner approved exploring five additional subjects in this order: **Logic → Chinese → English → Everyday Science → Stories and Social Situations**. First document the complete outline and details; implement separately in later work. The immediate learner is three years old. Keep six freely selectable levels, with a broad planning envelope of roughly ages 3–8/9. Levels are task structures, not age norms, grades, diagnoses or locks. Reading level may differ between Chinese and English, and logic must not depend on reading ability.
+The owner approved exploring five additional subjects in this order: **Logic → Chinese → English → Everyday Science → Stories and Social Situations**. The outline now has a working first release; retain this document as the curriculum direction. The immediate learner is three years old. Keep six freely selectable levels, with a broad planning envelope of roughly ages 3–8/9. Levels are task structures, not age norms, grades, diagnoses or locks. Reading level may differ between Chinese and English, and logic must not depend on reading ability.
 
-Existing mathematics stays available. The original Hub's shape, letter and story samples are diagnostics/prototypes, not completed versions of these curricula. The new plan proposes five subject modules, thirty subject/level combinations and three initial activity families per combination (ninety template specifications, not ninety fixed questions). This is a staged target; do not publish placeholders as working activities.
+Existing mathematics stays available. The original Hub's shape, letter and story samples are diagnostics/prototypes, not completed versions of these curricula. The release contains five subject modules, thirty subject/level combinations and ninety activity families, supported by 201 authored examples. These are introductory strands, not complete academic curricula.
 
 ## Common child experience
 
@@ -170,7 +170,7 @@ Acceptance: all branches terminate; reasonable alternatives are acknowledged; fe
 
 ## Shared content and implementation architecture
 
-Proposed structure: keep `math.html` stable; add `logic.html`, `chinese.html`, `english.html`, `science.html`, `stories.html` one at a time. These are proposed paths, not existing live links. Each deployed page contains the assets/data needed for its session; no question-time network dependency. Use authoring sources plus a simple build script only if duplication warrants it; generated pages stay inspectable static HTML with conservative JavaScript. Avoid a new framework or a mandatory bundler for the site.
+Implemented structure: keep `math.html` stable; add `logic.html`, `chinese.html`, `english.html`, `science.html`, `stories.html` as self-contained pages, reached through `subjects.html`. Each deployed page contains the assets/data needed for its session; no question-time network dependency. Use authoring sources plus a simple build script only if duplication warrants it; generated pages stay inspectable static HTML with conservative JavaScript. Avoid a new framework or a mandatory bundler for the site.
 
 A common authored-task contract should contain:
 
@@ -180,13 +180,13 @@ A common authored-task contract should contain:
 - phase-specific cues/hints, Undo state, completion summary and adult narration;
 - randomization constraints, canonical signature and fact/editorial source where needed.
 
-Runtime generators select and combine reviewed banks. No live AI-generated child content. Reuse math's balanced shuffled variants and recent-eight signature approach where the eligible bank permits it; finite stories repeat gracefully. Signatures ignore layout/art/option order and represent the actual task. Keep a generated task stable through hint, retry and Undo.
+Runtime generators select and combine reviewed banks. No live AI-generated child content. The first release shuffles each reviewed family bank and avoids immediately repeating the same task; choice order varies. Recent IDs are retained in memory, but this does not enforce an eight-task exclusion window. Finite banks repeat gracefully. Signatures ignore layout/art/option order and represent the actual task. Keep a generated task stable through hint, retry and Undo.
 
-Navigation, feedback and choice widgets can be shared in source, but subject-specific validators stay explicit. Do not refactor the entire math app merely to add the first subject. Keep separate storage namespaces; failures fall back to a working session. Proposed marks record played subject/family/level only. No accounts, cross-device sync, adaptive mastery, required saved question state or offline reopening promise.
+Navigation, feedback and choice widgets can be shared in source, but subject-specific validators stay explicit. Do not refactor the entire math app merely to add the first subject. Keep separate storage namespaces; failures fall back to a working session. Marks record played subject/family/level only. No accounts, cross-device sync, adaptive mastery, required saved question state or offline reopening promise.
 
 ## Implementation sequence and review gates
 
-Complete one subject before moving to the next; within it, ship small usable slices. This sequence is a plan, not an instruction to implement during the planning task.
+Complete one subject before moving to the next; within it, ship small usable slices. All five implementation stages now have playable first-release content; deeper content and device review remain ongoing.
 
 | Step | Concrete work | Exit condition before the next step |
 | --- | --- | --- |

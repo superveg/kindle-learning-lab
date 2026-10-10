@@ -39,7 +39,7 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 
 ## Planned subject expansion
 
-The owner approved a detailed planning phase for Logic, Chinese, English, Everyday Science and Stories/Social Situations, in that order. Each subject uses six freely selectable capability levels, broadly aimed at ages 3–8/9; age is a reference, not a lock or developmental norm. The immediate learner is three. Preserve picture-led entry and honestly labeled adult narration for nonreaders. See [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for proposed content, interaction contracts and staged acceptance. New modules are not yet implemented; complete planning before later implementation work.
+The owner approved a detailed planning phase for Logic, Chinese, English, Everyday Science and Stories/Social Situations, in that order. Each subject uses six freely selectable capability levels, broadly aimed at ages 3–8/9; age is a reference, not a lock or developmental norm. The immediate learner is three. Preserve picture-led entry and honestly labeled adult narration for nonreaders. See [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for curriculum direction. All five modules now contain six levels and three initial families per level; see [LEARNING_MODULES.md](LEARNING_MODULES.md) for delivered content, contracts and verification limits.
 
 ## Working practices
 
