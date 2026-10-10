@@ -71,3 +71,7 @@ The live page showed twelve topics, six entries for original topics, and only th
 ## 2026-10-10: remove discovery taps
 
 The owner reported unclear prerequisite taps, without identifying exact tasks. Bridge-through-ten, bundle and regroup questions now display numeric choices immediately. Diagrams are passive and explicit optional tool buttons can demonstrate transformations. Numerical picture models start visible; one optional first-step hint replaces the three-click ladder. Upper-level tasks show an entry action cue. This supersedes earlier required manipulation and hidden-model descriptions; manipulation remains the task in sharing, placement and construction. Direct-answer regression checks supplement the existing generated-question checks. Other unclear tasks remain an audit priority.
+
+## Current representation and interaction gaps
+
+Live review identified exact-looking whole-serving division equalities before the remainder is included, stale retry feedback after correct intermediate actions, generic cues shared by distinct fraction tasks, tile previews without a board-scale anchor/footprint, separate abstract set bins, and sum/difference hints that box expressions without a useful segmented quantity model. These remain open implementation work; see SESSION_HANDOFF.md for current priorities. Acceptance checks must verify intermediate displayed mathematics and feedback transitions, not only final answers and solvability.

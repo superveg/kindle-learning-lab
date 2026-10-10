@@ -54,13 +54,18 @@ The 2026-10-10 interaction revision removes mandatory unlock taps from bridging 
 
 Do not promote a successful desktop browser check to a Kindle compatibility claim. New upper-level symbols, task comprehension, touch response and E Ink rendering remain actual-device concerns. Historical documents retain old pending statements; consult STATUS.md for current evidence.
 
-## Next work priorities
+## Current usability priorities
 
-1. Audit the remaining tasks for understandable entry state: especially train departure arrows, pattern-repair symbols, set membership, tile origins and fraction instructions. The latest feedback does not prove the three identified optional-tool cases were the only confusing questions.
-2. Prefer simplifying or making purpose visible over adding more explanatory clicks. Observe whether a child can identify the action before tapping.
-3. Check higher-level picture density and targets on the actual Kindle. Retain tap alternatives rather than requiring drag tracking.
-4. Expand the curated task bank only after interaction clarity. Fractions are introductory; multiplication is small-group reasoning; these are not full grade curricula.
-5. Record any future device results with date, exact page/task, device details if supplied, expected/actual behavior and evidence source. Update STATUS.md and this handoff when requirements change.
+Live desktop Chrome review covered ten themes and levels 1, 2, 3 and 6. Some tasks were completed, others inspected through selection, invalid attempts, Undo or phase changes. This is a targeted review, not all sixty combinations, device testing or child observation. Preserve the following open issues until verified fixes replace them:
+
+1. **Mathematical representation:** whole-serving questions display an intermediate exact-looking equality such as `17 ÷ 3 = 5` before asking for remainder 2. Ask for full groups without asserting exact division; use `17 = 3 × 5 + 2` or explicitly labeled quotient/remainder. Tests must check displayed intermediate statements as well as expected answers.
+2. **Feedback lifecycle:** after a wrong attempt, correct phase changes in pattern repair and valid placements/moves in tiling and routes retain the old retry arrow. Clear obsolete failure feedback on a valid action; identify conflict/boundary where possible without giving away the solution.
+3. **Unexplained answer gates:** train level-3 subtraction still hides number choices until its departure carriage is tapped. Addition and missing-part variants answer directly. Make departure optional or make it an explicit meaningful task with visible action guidance.
+4. **Concrete task cues:** fraction shading, equivalence and comparison share a generic equal-parts cue despite requiring different actions. Show the current verb/goal. Pattern repair's visual `↺ ?` alone is insufficient for a non-reader. Keep adult guides supplemental.
+5. **Spatial and set models:** selected tile previews use a different scale from board cells and do not mark the top-left anchor or preview an invalid footprint. Set membership uses passive overlapping circles plus four separate abstract bins (`∅`, `A`, `B`, `A ∩ B`); show the selection's actual destination/relationship instead of requiring two representation mappings.
+6. **Useful pictorial scaffolding and density:** sum/difference hints show boxed expressions (`B`, `B + 4`) rather than a segmented relationship model. Some classification/grouping screens require scrolling even in a 936-pixel-high desktop viewport; keep goal, active object and relevant actions together. Compact pages without shrinking touch targets. Kindle layout remains unverified.
+
+Basic rabbit allocation, remainder sharing, valid alternative track combinations, route constraints and manual same-level continuation were exercised successfully. Prioritize these observed problems before adding more themes. Fractions and small-group arithmetic remain introductory strands, not complete grade curricula.
 
 ## Development and delivery
 
