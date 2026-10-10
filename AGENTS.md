@@ -15,7 +15,7 @@
 - Support early math, literacy, shape recognition, branching stories, and simple games.
 - Use simple interactions that aim to be usable with minimal adult help.
 - The child is not yet reading. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
-- Design natural stopping points for suggested 10–15 minute sessions, without speed pressure, endless questions, or reward mechanics that encourage repeated clicking.
+- Offer natural pauses after each answered question, without speed pressure or reward mechanics that encourage repeated clicking. The owner explicitly requested uncapped, manually continued random math practice on 2026-10-09; do not reintroduce a three-question limit.
 - Activities may use selectable answers, immediate feedback, scores, and question navigation.
 
 ## Implementation constraints

@@ -68,9 +68,9 @@ The owner reported that v0.1 worked well on their Kindle and that the buttons wo
 - [Advanced device checks](docs/ADVANCED_TESTS.md): drag/release and movement modes, timestamp timing, and delayed feedback.
 
 
-## Math topics and levels (v0.10)
+## Math topics and levels (v0.11)
 
-The picture tile opens self-contained `math.html`. Choose one of nine topics, then level 1, 2 or 3. Staircase pictograms and persistent level numbers make the progression visible without tying it to age. Every level has three rounds; finishing offers the next level without forcing it to start.
+The picture tile opens self-contained `math.html`. Choose one of nine topics, then level 1, 2 or 3. Staircase pictograms and persistent level numbers make the progression visible without tying it to age. Every level offers uncapped random practice. A manual next-question arrow stays at the same level; after answering, an optional staircase offers the next level. Back can leave at any time.
 
 Level 1 uses visible matching and counting. Level 2 introduces groups, hidden train parts, numerical measurement, changed sorting rules and two-object spatial models. Level 3 adds hidden number parts up to 12, departures/subtraction, two pattern gaps, simultaneous shape-and-size sorting, finding all matching shapes, two-step comparison and three-object spatial models. See `docs/MATH_PLAYGROUND.md` for the topic-by-topic map.
 
@@ -78,4 +78,6 @@ No submit button: answers and final required placements produce immediate feedba
 
 Run `node tests/math-dom.cjs` and the existing DOM checks. New played marks use `kindle-math-levels-v3`; earlier marks remain intact. Browser interaction checks are available; Kindle picture comprehension, touch response and refresh behaviour still require actual device verification.
 
-The v0.10 refinement adds whole-and-part diagrams, tap-to-depart subtraction before the number decision, outlined comparison leftovers, stable sorting source slots, and fixed answer order across pattern gaps.
+The pictorial refinement adds whole-and-part diagrams, tap-to-depart subtraction before the number decision, outlined comparison leftovers, stable sorting source slots, and fixed answer order across pattern gaps.
+
+In v0.11 the fixed three-question sequence is removed. Each session shuffles eligible task variants, balances their coverage, avoids an immediately repeated variant, and generates fresh quantities, arrangements and answer orders. Pattern stopping positions also vary. Questions stay fixed while solving or retrying. A question number replaces the three-dot ending indicator. Played marks record having practised a level, not completion of a bounded set or mastery.

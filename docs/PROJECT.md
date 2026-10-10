@@ -31,7 +31,7 @@ Build interactive learning content for children aged 3–5 using Kindle E Ink re
 - Keep operation simple and minimize the need for adult assistance.
 - The child is not yet reading. Use pictograms for activity selection, navigation, feedback, and story choices; minimize visible text while retaining numerals and letters as learning content.
 - Design activities for suggested 10–15 minute sessions.
-- Avoid endless question flows, incentives for repeated clicking, and complex reward systems.
+- Math practice may continue for as many questions as the child chooses, per the owner's 2026-10-09 direction. Use manual next-question navigation and an always-available Back action; do not impose a three-question cap or use automatic advancement, clicking incentives, or complex reward systems.
 - Emphasize learning, exploration, and understanding rather than answering speed.
 
 ## Working practices

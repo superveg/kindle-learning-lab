@@ -1,4 +1,4 @@
-# Math topics and levels — v0.10
+# Math topics and levels — v0.11
 
 ## Confirmed direction
 
@@ -23,7 +23,7 @@ These are original Singapore-inspired pictorial activities, not a licensed curri
 ## Interaction and implementation
 
 - Choose a topic, then a clearly numbered level. The filled staircase and level number remain above every round. Topic tiles show separate played marks for each level.
-- Three rounds provide a natural stopping point. After completion, a large arrow/staircase offers the next level, without automatically starting it. Back returns to the topic's levels; a second Back returns to topics. Home uses a house and Back uses an arrow.
+- Practice has no fixed question limit. Each answered question is a manual pause. The main arrow starts another random question at the same level; the separate staircase optionally changes level. Back is always available. Back returns to the topic's levels; a second Back returns to topics. Home uses a house and Back uses an arrow.
 - Actions have immediate feedback with no submit step. Completed targets become passive. The exploratory train split remains editable and Next becomes available after a move.
 - Hidden-part questions show a whole and visible part, not an answer-sized row of empty slots. Correct numerical choices fill the hidden group and show the completed equation.
 - Multi-step tasks reveal one decision at a time: the active pattern gap, the current spatial object, and the second comparison question. Correct placements remain visible. Wrong choices preserve the scene and can be retried.
@@ -34,7 +34,7 @@ These are original Singapore-inspired pictorial activities, not a licensed curri
 
 ## Acceptance and validation
 
-- DOM tests cover 9 topics × 3 levels × 3 rounds × 4 seeded random streams (324 exercised rounds).
+- DOM tests cover 9 topics × 3 levels × 12 questions × 4 seeded random streams (1,296 exercised questions, plus restart and next-level checks).
 - Verify correct equations from displayed quantities, retries without changing models, two-step gating, all three shape matches, four-bin sorting by both attributes, conserved exploratory train totals, copied model positions, passive completed objects, next-level entry, scoped marks and blocked-storage fallback.
 - ES5 parsing and original Hub, storage, capability and advanced diagnostic regression checks pass.
 - The cloud browser can directly open and operate the published GitHub Pages site. The previous local Playwright executable limitation does not prevent that route.
@@ -55,3 +55,11 @@ These are original Singapore-inspired pictorial activities, not a licensed curri
 - DOM checks additionally assert departure gating/crossed group size, source-slot conservation, stable pattern choices and the exact unmatched-extra count across all seeded rounds. These are pictorial scaffolds, not new assessed competencies.
 
 - Live browser validation confirmed whole-and-part addition, tap-to-depart gating and the passive crossed-out group. The comparison visual check identified mismatched row spacing after highlighting; both rows now use identical fixed-width pairing cells before and after selection, with no horizontal shift from the selected-row border. The whole-group accessible description is synchronized with its revealed number.
+
+## v0.11: uncapped random practice
+
+The owner explicitly requested more than three questions per level and a variable first/second/third question. This supersedes the former bounded-set design. Each level now remains active until the child chooses Back or a different level. There is no automatic advance, timer, session limit, or escalating reward loop.
+
+Task variants are drawn from shuffled bags. A bag balances coverage of its three variants; a boundary swap prevents identical adjacent variants. The first question is shuffled too. Quantities, layouts, identities and choice orders retain their level-specific ranges. A new bag does not mean a completed set and has no child-facing boundary. Pattern interruptions are randomized within the unit. A question number is separate from its random task variant.
+
+Each correct answer can record a played mark immediately. The existing key remains valid because the mark still means practised, not mastered. Restarting a session resets its question counter and variant bag; browser marks remain. There is no per-question resume. Tests exercise 12 consecutive questions in all 27 topic/level combinations across four seeded streams, confirm that question 4 and later remain at the same level, verify varied first questions and scenes, and preserve retry stability, task correctness, and next-level navigation.
