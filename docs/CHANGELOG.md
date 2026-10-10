@@ -8,7 +8,7 @@ Use this file for every delivered project change. Keep entries concise: date, co
 - Reason: random generation alone can repeat a recent task; balanced variants alone do not ensure varied quantities. Small banks retain a bounded repeat fallback instead of hanging.
 - Reviewed structural level progression; retained the existing curriculum boundaries rather than treating larger numbers as a new level. Added QUESTION_QUALITY.md and checks for task constraints, recent variety, menu continuity and constant-random fallback.
 - Recorded the owner's requirement to document every delivered ChatGPT Work change in AGENTS.md, PROJECT.md and SESSION_HANDOFF.md; linked this log in README and refreshed the task template's outdated age/session defaults.
-- Verification: passed 1,296 legacy and 891 higher-level solved questions, direct-answer checks, ES5 parsing and 1,080 quality samples across all sixty combinations. Deployment/live-browser evidence will be recorded after publication. Actual Kindle performance and child comprehension remain unverified.
+- Verification: passed 1,296 legacy and 891 higher-level solved questions, direct-answer checks, ES5 parsing and 1,080 quality samples across all sixty combinations. Pages successfully deployed implementation `80af5fe71629552c320d54f337bd5c5739c54534`. Live Chrome completed nine distinct Tens Workshop level-5 expressions, with each block of three using all three variants and no adjacent variant repeat; question 10 remained at level 5 with immediate answers and an optional picture tool. This is browser evidence, not Kindle or child-comprehension validation. Actual Kindle performance and child comprehension remain unverified.
 
 ## 2026-10-10 — remove discovery taps and preserve handoff
 

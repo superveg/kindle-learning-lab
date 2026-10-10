@@ -16,6 +16,8 @@ Updated: 2026-10-10. For decisions and continuity, read [SESSION_HANDOFF.md](SES
 
 ## Checks and remaining uncertainty
 
+Pages successfully deployed implementation `80af5fe71629552c320d54f337bd5c5739c54534`. Live Chrome completed nine distinct Tens Workshop level-5 expressions, with each block of three using all three variants and no adjacent variant repeat; question 10 remained at level 5 with immediate answers and an optional picture tool. This is browser evidence, not Kindle or child-comprehension validation.
+
 The runtime-quality revision passed both math regression suites (1,296 legacy and 891 higher-level solved questions), direct-answer checks, ES5 parsing, and 1,080 initial quality samples across all sixty combinations. Seeded variety, bounded history, menu return, balanced variants, constant-random fallback and structural constraints were checked.
 
 Math checks passed on 2026-10-10: 1,296 legacy plus 891 higher-level generated questions, including retry stability, correct arithmetic, legal construction, Undo, progression and storage fallback. Additional checks assert that bridge, bundle and regroup questions can be answered without a preliminary tool click.
