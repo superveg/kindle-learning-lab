@@ -4,6 +4,8 @@ Start with [current status](docs/STATUS.md) and [durable session handoff](docs/S
 
 Project documents maintain current rules, durable decisions and reusable lessons in place; Git retains implementation history. See [question quality](docs/QUESTION_QUALITY.md) for runtime generation, recent-repeat handling and level boundaries.
 
+The next curriculum expansion is specified in [Learning expansion plan](docs/LEARNING_EXPANSION_PLAN.md): Logic → Chinese → English → Everyday Science → Stories/Social Situations, with six capability levels per subject. It is planned content, not yet implemented.
+
 # Kindle Learning Lab
 
 A small, static learning Hub for children aged 3–4, designed for testing on Kindle E Ink readers.

@@ -24,10 +24,15 @@ Prior live Chrome verification covered nine themes and tile preview/rotation/Und
 
 Exact Kindle model/firmware, advanced diagnostic device behavior, upper-level picture comprehension, touch response and E Ink refresh are not fully verified. No offline reload/reopen, cross-device synchronization or per-question math resume is promised.
 
+## Planned expansion
+
+The complete beyond-math planning specification is recorded in [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md). Delivery order: Logic → Chinese → English → Everyday Science → Stories/Social Situations. Each has six proposed capability levels and three initial activity families per level. Planning/documentation is complete; these five subject modules and their content banks are not implemented. The current task makes no learning-page changes.
+
 ## Documentation map
 
 | Document | Purpose |
 | --- | --- |
+| [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) | Five subject outlines, six-level details, interaction and delivery plan |
 | [QUESTION_QUALITY.md](QUESTION_QUALITY.md) | Runtime generation, recent repeats, balance and structural level boundaries |
 | [PROJECT.md](PROJECT.md) | Product and implementation constraints |
 | [SESSION_HANDOFF.md](SESSION_HANDOFF.md) | Durable owner decisions, engineering context, evidence and next priorities |

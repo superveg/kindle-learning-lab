@@ -37,6 +37,10 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 - Emphasize learning, exploration, and understanding rather than answering speed.
 - Show the task and necessary information at entry. Do not hide numerical answers behind unexplained taps on models; demonstrations are optional explicit tools. Reference pictures are passive.
 
+## Planned subject expansion
+
+The owner approved a detailed planning phase for Logic, Chinese, English, Everyday Science and Stories/Social Situations, in that order. Each subject uses six freely selectable capability levels, broadly aimed at ages 3–8/9; age is a reference, not a lock or developmental norm. The immediate learner is three. Preserve picture-led entry and honestly labeled adult narration for nonreaders. See [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for proposed content, interaction contracts and staged acceptance. New modules are not yet implemented; complete planning before later implementation work.
+
 ## Working practices
 
 - Use English for project communication, code, and documentation.

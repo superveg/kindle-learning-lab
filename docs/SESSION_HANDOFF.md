@@ -18,6 +18,10 @@ Updated: 2026-10-10 (America/Denver). Start with this document, [PROJECT.md](PRO
 - Expand attractive, varied monochrome pictures and random dot arrangements. Interpret dynamic variation as changes between questions and intentional actions; do not make countable objects move while the child is solving.
 - Use concrete/pictorial/abstract progression inspired by Singapore mathematics. This is original content, not a licensed or complete Singapore curriculum.
 
+## Planned next subjects
+
+The owner approved expanding beyond math in this order: Logic → Chinese → English → Everyday Science → Stories/Social Situations. First produce a complete detailed plan, then implement incrementally in later work. [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) is the maintained specification: five subjects, six capability levels each, task families/examples, generation constraints, interactions and acceptance gates. The immediate learner is three; the broad upper planning range is 8/9. Level numbers are not age norms. Language narration/audio and Chinese glyph support must be distinguished from independent visual tasks. This is planned scope; the existing Hub samples do not count as delivered curricula.
+
 ## Current implementation
 
 `index.html` contains the original Hub samples and grown-up diagnostics. `math.html` is the self-contained math app. Twelve topics offer sixty topic/level combinations: the original nine have levels 1–6; Tens Workshop starts at 4, Share Fairly at 5, Fraction Kitchen at 6.
