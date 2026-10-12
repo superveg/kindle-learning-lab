@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: 2026-10-10. For decisions and continuity, read [SESSION_HANDOFF.md](SESSION_HANDOFF.md). Historical v0.x notes explain earlier implementations; their pending statements do not supersede newer evidence here.
+Updated: 2026-10-12. For decisions and continuity, read [SESSION_HANDOFF.md](SESSION_HANDOFF.md). Historical v0.x notes explain earlier implementations; their pending statements do not supersede newer evidence here.
 
 ## Delivered
 
@@ -14,6 +14,12 @@ Updated: 2026-10-10. For decisions and continuity, read [SESSION_HANDOFF.md](SES
 - Picture-led interface: six topics per page, 60 passive level examples, played marks on level selection, compact toolbar, evenly spaced numeric answers and distinct Continue/level-change controls.
 - Runtime question quality: eight recent initial tasks per topic/level retained in page memory; up to twelve candidate generations preserve balanced variants while reducing recent repeats. Small banks repeat safely. See QUESTION_QUALITY.md.
 - After changes, maintain useful long-term project knowledge in place; no chronological change log or mandatory per-change report.
+
+## Current delivery and device decisions
+
+Routine changes are tested and committed directly to `main`, then published and checked in the live application; no PR or another manual review is requested unless the owner explicitly asks. Use guarded fast-forward updates and preserve unrelated work.
+
+The owner reports that iOS Home Screen web-app use avoids unwanted zoom in their setup. PR #4 for application-level zoom suppression was declined and closed without merging; its viewport and touch-guard changes are not deployed. This does not establish Kindle behavior.
 
 ## Checks and remaining uncertainty
 

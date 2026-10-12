@@ -21,7 +21,8 @@ Implement [one bounded learning activity or repository change] for children roug
 3. Define [answer handling, feedback, score rules, navigation, and completion behavior] where relevant.
 4. Load the active session's required data/assets up front where feasible.
 5. Review what deserves long-term retention and update the relevant existing project/feature/handoff documents in place; replace superseded rules and keep status concise. Do not add a change log or preserve transient details.
-6. Verify the relevant interactions and report remaining actual-device checks.
+6. Run appropriate checks and open the application to verify affected interactions; report concrete blockers and remaining actual-device checks.
+7. Commit routine changes directly to `main` with a guarded fast-forward and publish without a PR or another manual review. Inspect Pages deployment and verify the live application. Create a PR only when explicitly requested.
 
 ## Acceptance criteria
 

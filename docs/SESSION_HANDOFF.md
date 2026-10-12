@@ -1,11 +1,11 @@
 # Project handoff and durable session decisions
 
-Updated: 2026-10-10 (America/Denver). Start with this document, [PROJECT.md](PROJECT.md), and [STATUS.md](STATUS.md). This is a maintained handoff, not a transcript or a child assessment.
+Updated: 2026-10-12 (America/Los_Angeles). Start with this document, [PROJECT.md](PROJECT.md), and [STATUS.md](STATUS.md). This is a maintained handoff, not a transcript or a child assessment.
 
 ## Confirmed owner requirements
 
 - Build Kindle Learning Lab for a Kindle E Ink reader's built-in browser. The exact model and firmware remain unknown. The owner works primarily through iPhone and ChatGPT and tests the deployed site on their device.
-- Continue routine implementation, testing, pushing, merging and publication autonomously. Do not repeatedly stop for confirmation or ask again about purpose, target age or settled design decisions. This authorization does not establish untested capabilities or override unrelated action safeguards.
+- The owner explicitly authorizes routine implementation, testing, direct commits to `main` and publication without a PR or another manual review/confirmation. Open and test affected application interactions and verify the live deployment. Create a PR only when explicitly requested. Do not ask again about purpose, target age or settled design decisions. This authorization does not establish untested capabilities or override unrelated action safeguards.
 - Children need intuitive, large-target interactions with minimal adult explanation. Pictures lead early tasks; short text and mathematical symbols can support later tasks.
 - No submit button when the answer or final required placement already establishes completion. Completed objects are passive. Decorative/reference areas must not behave like unexplained controls.
 - The owner's 2026-10-10 feedback: some questions require tapping an unexplained place before their meaning or next action is clear. The exact examples were not identified. This is a confirmed usability concern, not evidence of a particular Kindle API failure.
@@ -39,6 +39,10 @@ The 2026-10-10 interaction revision removes mandatory unlock taps from bridging 
 - A compact toolbar holds Home, Back, level and question number. Numeric answer choices are centered and evenly spaced with large targets; picture choices keep their task-specific layout.
 - The primary same-level continuation is a large arrow. Optional level advance is a smaller staircase with its destination number, without an arrow. Both remain manual. Level explanations and storage notes are collapsed adult content.
 - Screen breakpoints and touch dimensions are implementation targets, not verified Kindle behavior. On-device picture recognition, paging, preview meaning and fit still need checking.
+
+## iOS Home Screen use and zoom decision
+
+The owner reports that opening the site as an iOS Home Screen web app avoids unwanted browser zoom in their current setup. They declined application-level zoom suppression and requested closing PR #4 without merging. The proposed fixed-scale viewport and gesture interception were not deployed; do not reintroduce them unless requested. This is owner-reported iOS evidence, not a universal iOS guarantee or Kindle compatibility evidence.
 
 ## Engineering rules
 
@@ -84,7 +88,7 @@ The earlier targeted Chrome review covered ten themes, not every combination. It
 
 Run `node tests/math-usability.cjs`, `node tests/math-quality.cjs`, `node tests/math-dom.cjs` and `node tests/math-higher-dom.cjs` for math changes. Existing Hub/storage/capability/advanced DOM tests protect diagnostics. Acorn verifies ES5; jsdom exercises logic. Tests do not replace a rendered-page interaction check.
 
-Routine changes are authorized for main publication; use a PR when useful, not as an owner approval handoff. Inspect current main before writes, preserve unrelated files, use a guarded fast-forward, inspect Pages deployment, and verify the live interaction. Persist durable requirements, validation and remaining issues in this repository rather than relying on chat context.
+Routine changes are explicitly authorized for direct `main` publication without a PR. Inspect current remote main before writes, preserve unrelated files, run appropriate checks and open the application to test affected interactions. Commit and publish with a guarded fast-forward, inspect Pages deployment, and verify the live interaction. Report browser/environment blockers and actual-device limits accurately. Persist durable requirements, validation and remaining issues in this repository rather than relying on chat context.
 
 
 ## Picture source and recognition rule

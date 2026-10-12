@@ -44,9 +44,9 @@
 
 ## Delivery workflow
 
-- The owner has authorized routine project changes to be implemented, checked, pushed, and merged without a manual PR review or another confirmation request.
-- Use a feature branch and PR when useful for change history, then merge it autonomously after appropriate checks. A PR is not a handoff requiring the owner to act.
-- Let the existing GitHub Pages deployment run after merging; inspect deployment status and report the live page link.
+- The owner explicitly authorized direct updates to `main` on 2026-10-12. For routine project changes, implement, run appropriate checks, commit directly to `main`, and publish without creating a PR or requesting another manual review or confirmation. Create a PR only if the owner explicitly asks for one.
+- Inspect current remote `main` before writing, preserve unrelated work, and use a guarded fast-forward; never force-push over another change.
+- Open the application and verify the affected interactions as part of delivery. After the direct main update, inspect GitHub Pages deployment and verify the deployed application; report the live page link and any concrete verification blocker.
 - The owner validates the result by opening the deployed page on their device and providing feedback.
 - Report development checks and device-testing limitations accurately. Continue to explain changes to project scope or technical direction before implementing them.
 
