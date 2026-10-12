@@ -44,6 +44,9 @@
 
 ## Delivery workflow
 
+Use the `maintain-kindle-learning-lab` skill for reusable execution and verification procedures when it is available. Keep changing curriculum, architecture and validation evidence in the repository documents; the skill does not replace those sources or platform permission settings.
+
+
 - The owner explicitly authorized direct updates to `main` on 2026-10-12. For routine project changes, implement, run appropriate checks, commit directly to `main`, and publish without creating a PR or requesting another manual review or confirmation. Create a PR only if the owner explicitly asks for one.
 - Inspect current remote `main` before writing, preserve unrelated work, and use a guarded fast-forward; never force-push over another change.
 - Open the application and verify the affected interactions as part of delivery. After the direct main update, inspect GitHub Pages deployment and verify the deployed application; report the live page link and any concrete verification blocker.
