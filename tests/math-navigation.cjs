@@ -7,11 +7,11 @@ id('topic-next').click();assert.equal(id('topic-page').textContent,'2 / 2');asse
 assert(!d.querySelector('.topic-progress'));assert.equal(randomCalls,0,'Menu navigation must not consume practice randomness');
 let examples=0;
 for(let k=0;k<12;k++){
- topics()[k].click();const levels=[...d.querySelectorAll('#levels button')];assert.equal(levels.length,k<9?6:12-k);
+ topics()[k].click();const levels=[...d.querySelectorAll('#levels button')];assert.equal(levels.length,k<9?12:18-k);
  for(const b of levels){const picture=b.querySelector('.level-preview');assert(picture);assert(picture.getAttribute('aria-label').startsWith('Example: '));assert(picture.textContent.trim()||picture.querySelector('img,.preview-board'));assert(!picture.querySelector('button,a,input'));examples++;}
  assert(id('level-note').closest('details'),'Adult explanations are collapsed');id('back').click();assert.equal(id('topic-page').textContent,'2 / 2');
 }
-assert.equal(examples,60);assert.equal(randomCalls,0);
+assert.equal(examples,132);assert.equal(randomCalls,0);
 id('topic-prev').click();topics()[0].click();d.querySelector('#levels button').click();assert.equal(id('session-meta').style.display,'table-cell');assert(id('stage').closest('#toolbar'));assert(id('progress').closest('#toolbar'));
 assert.equal(d.querySelectorAll('#stage').length,1);assert.equal(d.querySelectorAll('#progress').length,1);
 while(d.querySelector('#scene button'))d.querySelector('#scene button').click();
@@ -19,4 +19,4 @@ assert.equal(id('feedback').textContent,'✓');assert.equal(id('next').textConte
 id('next').click();assert.equal(id('stage').getAttribute('aria-label'),'Level 1');assert.match(id('progress').getAttribute('aria-label'),/^Question 2;/);
 while(d.querySelector('#scene button'))d.querySelector('#scene button').click();id('advance').click();assert.equal(id('stage').getAttribute('aria-label'),'Level 2');assert.match(id('progress').getAttribute('aria-label'),/^Question 1;/);
 id('back').click();assert.equal(id('session-meta').style.display,'none');assert(d.querySelector('#levels .played-mark'));
-dom.window.close();console.log('PASS: six-topic paging, 60 passive level examples without RNG consumption, played marks, compact toolbar, distinct continuation and level advance.');
+dom.window.close();console.log('PASS: six-topic paging, 132 passive level examples without RNG consumption, played marks, compact toolbar, distinct continuation and level advance.');

@@ -1,6 +1,24 @@
-# Six-level math implementation — v0.12
+# Math levels 1–12: implementation and original 1–6 foundations
 
-## Owner direction and delivery order
+## Current levels 7–12
+
+All twelve topics now expose levels through 12; the three later-starting topics keep their original minimum levels (4, 5 and 6). There are 132 available topic/level entries. Six picture previews appear per menu page; 7–12 use a second page. Played marks keep the existing storage key and legacy `level + 2` index. Manual Next stays at the current level, and optional advance ends at 12. Levels are independently selectable skills, not age or grade assignments.
+
+`learning/higher-math.js` provides bounded generators, and `learning/pictures.js` renders exact static grids, rule diagrams and equal-part fraction strips. `tools/build_math_extensions.py` embeds both in self-contained `math.html`; commit sources and page together. Arithmetic extensions share small-operand symbolic challenges across the original arithmetic topic contexts: multiplication/addition, distributive grouping, missing factors, balance equations, ratios and inverse expressions. They increase relationship complexity rather than assigning every child larger addition/subtraction.
+
+| Strand | 7 | 8 | 9 | 10 | 11 | 12 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Shapes | Rotate then reflect | Composed reflection | Several operations | Inverse composition | Transform then combine two grids by XOR | Another composed grid/XOR condition |
+| Position | Turn relative to current facing | Reverse turns from an endpoint | Shortest path around walls | Shortest path through a waypoint | Get a key, visit a locked door, then reach the flag | Key plus ordered waypoint/door conditions |
+| Patterns | Alternating increments | Two interleaved sequences | Transformed grid/XOR | Increasing differences | Inverse affine relation | Increasing step size |
+| Sorting | Exactly one of two features | Three features together | OR within a negative condition | Two alternative conjunctions | Counterexample to an implication | Combine features while excluding one exact card |
+| Fractions | Like-denominator addition | Like-denominator subtraction | Equivalent numerators | Groups of a fraction | Complete one whole | Missing addend |
+
+Every route is constructed from a witness satisfying its conditions; obstacles stay off that witness. An independent state-space search verifies shortest distances. All matching selection cards are checked; wrong attempts preserve task state and completion makes choices passive. Math action prose is visually replaced by phase-specific symbols while full text remains accessible and in the adult guide. Essential equations and model quantities stay visible. These are initial original challenge strands, not comprehensive later-grade curricula.
+
+Verification: `tests/extended-quality.cjs` uses independent coordinate transformations, set predicates, arithmetic/fraction calculations and a route-state search across 4,320 new generated tasks; it exercises all 72 new entry lifecycles and the level-12 boundary. The original math DOM, higher-level, quality, usability and navigation checks still protect 1–6. `tests/math-navigation.cjs` verifies 132 passive previews without consuming practice randomness. Actual child understanding of composed rules, symbols, relative turns and minimum-path counting remains a device/use check.
+
+## Original levels 1–6: direction and delivery order
 
 On 2026-10-09 the owner approved extending the existing topic-first math page to six task levels, roughly corresponding to ages 3–8, and authorized autonomous implementation, verification and publication. Age references are not gates or developmental assessments. Each topic has its own progression. Existing uncapped, manual same-level continuation remains in place.
 
@@ -48,7 +66,7 @@ This is an original pictorial activity bank inspired by concrete–pictorial–a
 
 A single numerical choice, last correct selection or final placement completes the task. Multi-step questions expose the next decision only after the previous one is correct. No submit button, animation loop or timer is introduced.
 
-Manipulatives use large taps. Track placement, tile placement, gifts and route moves have Undo. Invalid placement changes feedback without altering the model. A correct answer freezes scene controls as passive pictures. Main Next stays in the same level indefinitely; optional advance offers the next available level, and level 6 has no advance action. Back is always present.
+Manipulatives use large taps. Track placement, tile placement, gifts and route moves have Undo. Invalid placement changes feedback without altering the model. A correct answer freezes scene controls as passive pictures. Main Next stays in the same level indefinitely; optional advance offers the next available level, and level 12 has no advance action. Back is always present.
 
 Numerical picture models are visible from entry; an optional current-step hint adds guidance. Models stay fixed during retry. Early tasks remain pictogram-based; advanced tasks add mathematical symbols, short labels and a folded adult guide. Models do not require discovery taps; optional hints explain the current step. No adaptive mastery inference is implemented.
 

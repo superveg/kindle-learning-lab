@@ -22,11 +22,11 @@ Updated: 2026-10-12 (America/Los_Angeles). Start with this document, [PROJECT.md
 
 ## Additional subjects
 
-The approved order Logic → Chinese → English → Everyday Science → Stories/Social Situations now has a first usable release: five pages, six levels each, eighteen families per subject and 1,252 authored seeds. Use [LEARNING_MODULES.md](LEARNING_MODULES.md) for current implementation, build and testing, and [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for academic direction. The immediate learner is three; levels are task structures, not age norms. Early language prompts and written logic clues may be narrated by an adult. English visual spelling is not systematic phonics; audio and actual Kindle Chinese glyph support remain unverified. Framework references inform original tasks; their effectiveness does not transfer automatically to this app.
+The approved order Logic → Chinese → English → Everyday Science → Stories/Social Situations now has a first usable release: five pages, twelve levels each, thirty-six families per subject and 2,332 authored seeds. Use [LEARNING_MODULES.md](LEARNING_MODULES.md) for current implementation, build and testing, and [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for academic direction. The immediate learner is three; levels are task structures, not age norms. Early language prompts and written logic clues may be narrated by an adult. English visual spelling is not systematic phonics; audio and actual Kindle Chinese glyph support remain unverified. Framework references inform original tasks; their effectiveness does not transfer automatically to this app.
 
 ## Current implementation
 
-`index.html` contains the original Hub samples and grown-up diagnostics. `math.html` is the self-contained math app. Twelve topics offer sixty topic/level combinations: the original nine have levels 1–6; Tens Workshop starts at 4, Share Fairly at 5, Fraction Kitchen at 6.
+`index.html` contains the original Hub samples and grown-up diagnostics. `math.html` is the self-contained math app. Twelve topics offer 132 topic/level combinations: the original nine have levels 1–12; Tens Workshop starts at 4, Share Fairly at 5, Fraction Kitchen at 6.
 
 See [MATH_PLAYGROUND.md](MATH_PLAYGROUND.md) for levels 1–3 and earlier changes, and [MATH_SIX_LEVELS.md](MATH_SIX_LEVELS.md) for levels 4–6 and generator constraints. Later rules in this handoff supersede earlier gated demonstrations or multi-click hint descriptions.
 
@@ -34,8 +34,11 @@ The 2026-10-10 interaction revision removes mandatory unlock taps from bridging 
 
 ## Current interface contract
 
+The owner requests much less incidental text and freely selectable levels 7–12. Subject menus now use six numbered passive picture previews per page and pictorial family tiles; names, goals and descriptions are retained for accessibility and the adult guide. Operation and completion cues use symbols; essential reading passages, equations and conditions remain visible. See LEARNING_MODULES.md and MATH_SIX_LEVELS.md for exact higher-level strands and limits. The child finding a shape or position task easy does not establish readiness for larger arithmetic.
+
+
 - Topic selection shows six large pictures per page, in the original order. Returning from levels preserves the topic page. Played marks belong on level selection, not on topic cards.
-- Each of the 60 available levels has a passive, representative example. Menu previews do not generate tasks, consume randomness or change saved progress. Preview CSS classes are separate from task counter/fraction classes.
+- Each of the 132 available levels has a passive, representative example. Menu previews do not generate tasks, consume randomness or change saved progress. Preview CSS classes are separate from task counter/fraction classes.
 - A compact toolbar holds Home, Back, level and question number. Numeric answer choices are centered and evenly spaced with large targets; picture choices keep their task-specific layout.
 - The primary same-level continuation is a large arrow. Optional level advance is a smaller staircase with its destination number, without an arrow. Both remain manual. Level explanations and storage notes are collapsed adult content.
 - Screen breakpoints and touch dimensions are implementation targets, not verified Kindle behavior. On-device picture recognition, paging, preview meaning and fit still need checking.

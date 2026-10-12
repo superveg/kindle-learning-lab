@@ -29,7 +29,10 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 
 ## Child experience
 
-- Math reference ages: roughly 3–8 years, with six independently selectable task levels.
+- The owner requests a simpler picture-led interface and levels 7–12 beyond the original six. Reduce menu and operation prose while keeping essential learning content and conditions visible. Use composed, inverse and multi-condition reasoning; avoid increasing every child’s arithmetic range just because another strand is easy.
+
+
+- Math reference ages: roughly 3–8 years, with twelve independently selectable task levels.
 - Keep operation simple and minimize the need for adult assistance.
 - Early-level children may not yet be reading; later-level instructions still need concise visual support. Use pictograms for activity selection, navigation, feedback, and story choices; minimize visible text while retaining numerals and letters as learning content.
 - Design activities for suggested 10–15 minute sessions.
@@ -39,7 +42,7 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 
 ## Planned subject expansion
 
-The owner approved a detailed planning phase for Logic, Chinese, English, Everyday Science and Stories/Social Situations, in that order. Each subject uses six freely selectable capability levels, broadly aimed at ages 3–8/9; age is a reference, not a lock or developmental norm. The immediate learner is three. Preserve picture-led entry and honestly labeled adult narration for nonreaders. See [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for curriculum direction. All five modules now contain six levels and three initial families per level; see [LEARNING_MODULES.md](LEARNING_MODULES.md) for delivered content, contracts and verification limits.
+The owner approved a detailed planning phase for Logic, Chinese, English, Everyday Science and Stories/Social Situations, in that order. Each subject uses twelve freely selectable capability levels, broadly aimed at ages 3–8/9; age is a reference, not a lock or developmental norm. The immediate learner is three. Preserve picture-led entry and honestly labeled adult narration for nonreaders. See [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for curriculum direction. All five modules now contain twelve levels and three families per level; see [LEARNING_MODULES.md](LEARNING_MODULES.md) for delivered content, contracts and verification limits.
 
 ## Working practices
 

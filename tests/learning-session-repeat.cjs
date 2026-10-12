@@ -8,16 +8,17 @@ function semantic(q){if(q.stages)return q.stages.map(semantic);if(q.nodes)return
 function tap(d,prefix){const b=[...d.querySelectorAll('button')].find(x=>(x.getAttribute('aria-label')||x.textContent).startsWith(prefix));assert(b,prefix);b.click();}
 function open(html,saved,rng,blocked=false){return new JSDOM(html,{url:'https://example.test/kindle-learning-lab/',runScripts:'dangerously',beforeParse(w){w.Math.random=rng;for(const [k,v] of Object.entries(saved))w.localStorage.setItem(k,v);if(blocked){w.Storage.prototype.getItem=function(){throw Error('blocked');};w.Storage.prototype.setItem=function(){throw Error('blocked');};}}});}
 function snapshot(w){const out={};for(let i=0;i<w.localStorage.length;i++){const k=w.localStorage.key(i);out[k]=w.localStorage.getItem(k);}return out;}
+async function main(){
 let presented=0,reloads=0;
 for(const kind of ['constant','seeded']){
  let seed=4719;const rng=kind==='constant'?()=>0:()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);
  for(const [sub,cfg] of Object.entries(data)){
   const html=fs.readFileSync(sub+'.html','utf8');let saved={'unrelated-key':'preserve-me'};
-  for(let l=1;l<=6;l++)for(let f=0;f<3;f++){
+  for(let l=1;l<=cfg.levels.length;l++)for(let f=0;f<3;f++){
    const recent=[];
    // Three five-question visits, reconstructing the whole page between visits.
    for(let visit=0;visit<3;visit++){
-    const dom=open(html,saved,rng),d=dom.window.document;tap(d,'Level '+l+':');
+    if(global.gc)global.gc();const dom=open(html,saved,rng),d=dom.window.document;tap(d,'Level '+l+':');
     for(let n=0;n<5;n++){
      tap(d,'Activity '+(f+1)+':');const p=d.getElementById('play');
      const source=cfg.levels[l-1].families[f].tasks.find(q=>q.id===p.getAttribute('data-task-id'));
@@ -28,7 +29,7 @@ for(const kind of ['constant','seeded']){
     }
     saved=snapshot(dom.window);assert.equal(saved['unrelated-key'],'preserve-me');
     const h=JSON.parse(saved['kll-'+sub+'-recent-v1']);assert(Object.values(h).every(a=>a.length<=10));
-    assert.equal(h[l+'-'+f].length,Math.min(recent.length,10));dom.window.close();if(visit<2)reloads++;
+    assert.equal(h[l+'-'+f].length,Math.min(recent.length,10));dom.window.close();await new Promise(resolve=>setImmediate(resolve));if(visit<2)reloads++;
    }
   }
  }
@@ -39,7 +40,10 @@ for(const sub of Object.keys(data)){
  const html=fs.readFileSync(sub+'.html','utf8');
  for(const saved of [{}, {['kll-'+sub+'-recent-v1']:'not-json'}, {['kll-'+sub+'-recent-v1']:'{"1-0":[null,123,"valid"],"bad-key":["x"]}'}]){
   const blocked=Object.keys(saved).length===0,dom=open(html,saved,()=>0,blocked),d=dom.window.document,seen=[];
-  tap(d,'Level 1:');for(let n=0;n<15;n++){tap(d,'Activity 1:');const p=d.getElementById('play'),q=data[sub].levels[0].families[0].tasks.find(q=>q.id===p.getAttribute('data-task-id'));const s=JSON.stringify(semantic(gen.materialize(q,Number(p.getAttribute('data-variant')))));assert(!seen.slice(-10).includes(s));seen.push(s);tap(d,'Back');fallback++;}dom.window.close();
+  tap(d,'Level 1:');for(let n=0;n<15;n++){tap(d,'Activity 1:');const p=d.getElementById('play'),q=data[sub].levels[0].families[0].tasks.find(q=>q.id===p.getAttribute('data-task-id'));const s=JSON.stringify(semantic(gen.materialize(q,Number(p.getAttribute('data-variant')))));assert(!seen.slice(-10).includes(s));seen.push(s);tap(d,'Back');fallback++;}dom.window.close();await new Promise(resolve=>setImmediate(resolve));
  }
 }
-console.log('PASS:',presented,'presentations across all 90 families with constant/seeded RNG;',reloads,'fresh-page boundaries;',fallback,'storage-failure/malformed-history presentations; unrelated storage preserved. These visits leave questions unanswered; learning-repeat.cjs covers solved Next rounds.');
+console.log('PASS:',presented,'presentations across all 180 families with constant/seeded RNG;',reloads,'fresh-page boundaries;',fallback,'storage-failure/malformed-history presentations; unrelated storage preserved. These visits leave questions unanswered; learning-repeat.cjs covers solved Next rounds.');
+
+}
+main().catch(error=>{console.error(error);process.exitCode=1;});
