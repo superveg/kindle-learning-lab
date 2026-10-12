@@ -15,6 +15,8 @@ Updated: 2026-10-10. For decisions and continuity, read [SESSION_HANDOFF.md](SES
 - Runtime question quality: eight recent initial tasks per topic/level retained in page memory; up to twelve candidate generations preserve balanced variants while reducing recent repeats. Small banks repeat safely. See QUESTION_QUALITY.md.
 - After changes, maintain useful long-term project knowledge in place; no chronological change log or mandatory per-change report.
 
+- Accidental double-tap zoom prevention on every page: fixed viewport, touch-action and embedded legacy gesture guard, preserved by the subject builder. ES5 and gesture regression checks pass; Hub, storage, capability, drag diagnostics, math and 9,000 learning-question checks pass. Local rendered-browser suites could not run because the Chromium download was blocked/truncated; `tests/touch-browser.cjs` remains an unexecuted mobile check. Kindle effectiveness remains pending.
+
 ## Checks and remaining uncertainty
 
 All four math suites and the interface navigation check pass: 1,296 legacy and 891 higher-level solved questions, ES5 parsing, 1,080 quality samples across all sixty combinations, and focused interaction checks. Coverage includes arithmetic, legal construction, retries, Undo, passive completion, history, variant balance and storage fallback. Guidance checks also cover current-step hints opened before/after phase changes, route targets, known comparison portions and completion without stale cross-level summaries.

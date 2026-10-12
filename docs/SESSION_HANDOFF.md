@@ -40,6 +40,10 @@ The 2026-10-10 interaction revision removes mandatory unlock taps from bridging 
 - The primary same-level continuation is a large arrow. Optional level advance is a smaller staircase with its destination number, without an arrow. Both remain manual. Level explanations and storage notes are collapsed adult content.
 - Screen breakpoints and touch dimensions are implementation targets, not verified Kindle behavior. On-device picture recognition, paging, preview meaning and fit still need checking.
 
+## Accidental zoom prevention
+
+The owner reports accidental double taps zooming the Kindle page and requests a fixed scale. All shipped pages embed a fixed-scale viewport, `touch-action: manipulation` and an ES5 gesture guard; the subject builder retains these settings. The legacy fallback cancels a nearby rapid second tap and delivers its control click once, while ignoring scrolls, drags, long presses and multi-touch. No zoom polling, page reload, CSS counter-scaling or activity reset is used. Browser-controlled zoom cannot reliably be detected or undone by page JavaScript on the unknown Kindle browser; prevention requires actual-device verification.
+
 ## Engineering rules
 
 - Repository: `superveg/kindle-learning-lab`; deployed branch `main`; GitHub Pages serves the repository root.

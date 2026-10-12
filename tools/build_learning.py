@@ -1,5 +1,6 @@
 """Build self-contained ES5 subject pages from reviewed authored banks and PNG art."""
 from pathlib import Path
+from build_touch_guard import protect_page
 from PIL import Image,ImageDraw
 import json,re,io,base64,subprocess,tempfile
 ROOT=Path(__file__).resolve().parent.parent
@@ -119,5 +120,5 @@ for subject,config in data.items():
  used=assets # Small complete pack keeps authorship and offline session simple.
  page='<!doctype html><html lang="'+('zh-Hans' if subject=='chinese' else 'en')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+config['title']+' — Kindle Learning Lab</title><style>'+style+'</style></head><body><main><nav><a href="subjects.html" aria-label="All subjects">⌂ <span>Subjects</span></a><button id="back" aria-label="Back">← <span>Back</span></button></nav><h1>'+config['title']+'</h1><div id="levels"></div><div id="families" hidden></div><section id="play" hidden><div id="progress"></div><h2 id="family-title"></h2><p id="cue"></p><div id="scene"></div><div id="choices"></div><div id="work"></div><div id="feedback" role="status" aria-live="polite"></div><div id="tools"></div><button id="next" hidden>→ Another question</button><details><summary>Grown-up guide</summary><p id="guide"></p></details></section><noscript>JavaScript is needed for these activities.</noscript></main><script>var CONFIG='+json.dumps(config,ensure_ascii=False)+';var ART='+json.dumps(used)+';'+engine+'</script></body></html>'
  page=page.replace('</details>', '<p class="art-credit">Object pictures by <a href="art-credits.html">OpenMoji · CC BY-SA 4.0</a>.</p></details>')
- (ROOT/(subject+'.html')).write_text(page)
+ (ROOT/(subject+'.html')).write_text(protect_page(page))
 print('Built:',', '.join(data))
