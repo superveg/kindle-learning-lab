@@ -1,55 +1,8 @@
 # Agent Instructions — Kindle Learning Lab
 
-## Scope and communication
-
-- Keep repository changes focused on the Kindle children's interactive learning system.
-- Use English for project communication, code, and documentation.
-- Read docs/PROJECT.md, docs/SESSION_HANDOFF.md and docs/STATUS.md before implementation. Preserve confirmed decisions and update these records when requirements or evidence change.
-- Do not repeatedly ask about the product purpose or target age.
-- Explain the reason before proposing a change to project scope or technical direction.
-- Distinguish confirmed requirements, proposals, and unverified assumptions.
-
-## Product and child experience
-
-- Target children roughly aged 3–8 using an Amazon Kindle E Ink reader's built-in browser.
-- Support early math, literacy, shape recognition, branching stories, and simple games.
-- Use simple interactions that aim to be usable with minimal adult help.
-- Early-level children may not yet be reading; later-level instructions still need concise visual support. Prefer pictograms for navigation, choices, and feedback; keep numerals and letters when they are the learning content. See docs/PICTOGRAMS.md.
-- Offer natural pauses after each answered question, without speed pressure or reward mechanics that encourage repeated clicking. The owner explicitly requested uncapped, manually continued random math practice on 2026-10-09; do not reintroduce a three-question limit.
-- Necessary task information and answer controls must be visible without a discovery tap on a diagram. Picture tools are optional unless manipulation is the actual task; make control purpose explicit. Reference/decorative areas remain passive.
-- Activities may use selectable answers, immediate feedback, scores, and question navigation.
-- Validate displayed intermediate mathematics as well as final answers. Clear obsolete failure feedback on new valid actions/phases. Each task mode needs a cue for its current action; hints must follow the current phase, and completion must replace obsolete action instructions; diagram navigation and spatial anchors need explicit visual meaning.
-
-## Implementation constraints
-
-- Prefer static HTML, CSS, and Vanilla JavaScript, hosted on GitHub Pages with no dedicated backend.
-- Avoid large frameworks and complex dependencies.
-- Use black-and-white high contrast, large text, and large touch targets.
-- Avoid continuous animation, frequent refreshes, complex graphics, and autoplay.
-- Favor conservative browser features and low processing cost; the exact JavaScript/CSS baseline remains to be verified on the device.
-- Where feasible, load the data and assets needed for the active session up front so interaction can continue during a brief disconnection.
-- Do not treat continued interaction in an already loaded page as proof that offline reload or reopening works.
-- Do not require or claim support for modern APIs (including service workers or persistent storage) without device testing or a working fallback.
-
-## Evidence, documentation, and tasks
-
-- The exact Kindle model and firmware remain unknown. GitHub Pages has deployed successfully. On 2026-10-09 the owner reported that the localStorage marker test and all four v0.4 capability checks passed on their Kindle: counting restoration, nine-cell selection, manual local updates, and the tested simple SVG/PNG comparison. See docs/CAPABILITY_TESTS.md. Treat this as evidence for those tested behaviors on that device; offline behavior, other SVG features, and other Kindle models remain unverified.
-- Record important technical decisions in reusable repository documentation, with rationale and validation status.
-- After each project change, review what deserves lasting documentation: confirmed owner preferences, current product rules, architectural decisions and rationale, reusable failure lessons, or evidence that changes future decisions. Update the relevant existing document when needed; no entry is required for a transient implementation detail.
-- Maintain project knowledge in place, not a chronological change log. Replace or remove superseded rules, consolidate duplicates, and keep only evidence needed to distinguish verified behavior from assumptions. Git history preserves past implementation details.
-- Use PROJECT.md for product constraints, feature documents for current behavior, SESSION_HANDOFF.md for durable decisions and useful lessons, and STATUS.md for concise current state and unresolved checks. Do not require a per-change report, dated entry or new file.
-- Use docs/TASK_TEMPLATE.md when preparing Codex development tasks; include concrete implementation steps and acceptance criteria.
-- Report what was changed, how it was verified, and what still requires actual Kindle testing.
-- Desktop or iPhone browser checks do not establish Kindle compatibility.
-
-## Delivery workflow
-
-Use the `maintain-kindle-learning-lab` skill for reusable execution and verification procedures when it is available. Keep changing curriculum, architecture and validation evidence in the repository documents; the skill does not replace those sources or platform permission settings.
-
-
-- The owner explicitly authorized direct updates to `main` on 2026-10-12. For routine project changes, implement, run appropriate checks, commit directly to `main`, and publish without creating a PR or requesting another manual review or confirmation. Create a PR only if the owner explicitly asks for one.
-- Inspect current remote `main` before writing, preserve unrelated work, and use a guarded fast-forward; never force-push over another change.
-- Open the application and verify the affected interactions as part of delivery. After the direct main update, inspect GitHub Pages deployment and verify the deployed application; report the live page link and any concrete verification blocker.
-- The owner validates the result by opening the deployed page on their device and providing feedback.
-- Report development checks and device-testing limitations accurately. Continue to explain changes to project scope or technical direction before implementing them.
-
+- Scope: `superveg/kindle-learning-lab`, a static learning app for children roughly aged 3–8 using Kindle E Ink browsers.
+- Use `maintain-kindle-learning-lab` automatically when available. Read [agent workflow](docs/AGENT_WORKFLOW.md), [product requirements](docs/PROJECT.md), [durable decisions](docs/SESSION_HANDOFF.md) and [current status](docs/STATUS.md) before implementation. Follow the workflow directly when the personal skill is unavailable.
+- Preserve static HTML/CSS/Vanilla JavaScript, monochrome contrast, large touch targets, visible task information, picture-led controls and manual continuation without speed pressure. Feature documents define the current curriculum and behavior.
+- Write code and documentation in English; owner conversation may be Chinese. Preserve confirmed decisions and distinguish software/browser evidence from actual Kindle or child evidence.
+- Routine changes are authorized for testing and direct publication to `main` without a PR or another manual review. Inspect fresh remote main, preserve unrelated work, use guarded fast-forward updates, and verify relevant published results. Create a PR only when explicitly requested; never force-push over another change.
+- Before delivery, maintain lasting project knowledge and review whether the personal skill needs a reusable update, following docs/AGENT_WORKFLOW.md. Keep changing facts in repository documents and avoid duplicate logs. Skill installation does not override platform permissions.

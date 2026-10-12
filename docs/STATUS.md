@@ -17,7 +17,7 @@ Updated: 2026-10-12. For decisions and continuity, read [SESSION_HANDOFF.md](SES
 
 ## Current delivery and device decisions
 
-Routine changes are tested and committed directly to `main`, then published and checked in the live application; no PR or another manual review is requested unless the owner explicitly asks. Use guarded fast-forward updates and preserve unrelated work.
+Development, verification, direct-main delivery and ongoing skill/documentation maintenance follow [AGENT_WORKFLOW.md](AGENT_WORKFLOW.md). Current product and device evidence remains below.
 
 The owner reports that iOS Home Screen web-app use avoids unwanted zoom in their setup. PR #4 for application-level zoom suppression was declined and closed without merging; its viewport and touch-guard changes are not deployed. This does not establish Kindle behavior.
 
@@ -48,6 +48,7 @@ Focused follow-up verification adds 2,700 presentations across all 90 families a
 
 | Document | Purpose |
 | --- | --- |
+| [AGENT_WORKFLOW.md](AGENT_WORKFLOW.md) | Agent procedure, delivery and ongoing instruction/skill upkeep |
 | [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) | Five subject outlines, six-level details, interaction and delivery plan |
 | [QUESTION_QUALITY.md](QUESTION_QUALITY.md) | Runtime generation, recent repeats, balance and structural level boundaries |
 | [PROJECT.md](PROJECT.md) | Product and implementation constraints |

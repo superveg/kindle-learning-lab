@@ -1,6 +1,6 @@
 # Codex Development Task Template
 
-Copy this template and replace placeholders with concrete requirements before implementation. Read AGENTS.md and docs/PROJECT.md first.
+Use this template for substantial tasks; replace placeholders with concrete requirements. Read AGENTS.md, PROJECT.md and [AGENT_WORKFLOW.md](AGENT_WORKFLOW.md). Keep this task format in the repo; the personal skill refers to it without keeping a duplicate.
 
 ## Objective
 
@@ -14,15 +14,15 @@ Implement [one bounded learning activity or repository change] for children roug
 - Device details: [known model/firmware, or explicitly unknown].
 - Existing decisions to retain: [links to relevant documentation].
 
-## Deliverables and implementation steps
+## Deliverables
 
-1. Inspect the existing implementation and applicable agent instructions.
-2. Implement [specific UI and behavior] in [specific files], using static HTML, CSS, and Vanilla JavaScript.
-3. Define [answer handling, feedback, score rules, navigation, and completion behavior] where relevant.
-4. Load the active session's required data/assets up front where feasible.
-5. Review what deserves long-term retention and update the relevant existing project/feature/handoff documents in place; replace superseded rules and keep status concise. Do not add a change log or preserve transient details.
-6. Run appropriate checks and open the application to verify affected interactions; report concrete blockers and remaining actual-device checks.
-7. Commit routine changes directly to `main` with a guarded fast-forward and publish without a PR or another manual review. Inspect Pages deployment and verify the live application. Create a PR only when explicitly requested.
+- Affected authoring sources and generated outputs: [paths].
+- Behavior to implement: [task entry, answers, feedback, navigation and completion].
+- Relevant automated and rendered checks: [commands and interactions].
+- Durable product/evidence updates: [existing documents, if needed].
+- Reusable workflow/skill updates: [only when a lasting procedure changed].
+
+Follow AGENT_WORKFLOW.md for implementation, instruction upkeep and delivery rather than copying its procedure into each task.
 
 ## Acceptance criteria
 
@@ -41,7 +41,9 @@ Replace each bracketed value before assigning the task.
 - The implementation works under the GitHub Pages repository path, if deployment is part of the task.
 - Results distinguish completed browser checks from pending Kindle testing.
 
-## Verification record
+## Verification evidence
+
+Record useful results in the existing relevant feature/status document. This table is an optional planning aid, not a required separate report.
 
 | Check | Environment | Result | Evidence or limitation |
 | --- | --- | --- | --- |

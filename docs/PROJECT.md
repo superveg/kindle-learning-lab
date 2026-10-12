@@ -44,18 +44,9 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 
 The owner approved a detailed planning phase for Logic, Chinese, English, Everyday Science and Stories/Social Situations, in that order. Each subject uses twelve freely selectable capability levels, broadly aimed at ages 3–8/9; age is a reference, not a lock or developmental norm. The immediate learner is three. Preserve picture-led entry and honestly labeled adult narration for nonreaders. See [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for curriculum direction. All five modules now contain twelve levels and three families per level; see [LEARNING_MODULES.md](LEARNING_MODULES.md) for delivered content, contracts and verification limits.
 
-## Working practices
+## Development instructions
 
-- Use English for project communication, code, and documentation.
-- Continue existing project decisions and technical conventions.
-- The owner explicitly authorizes routine changes to be tested, committed directly to `main`, and published without a PR or another manual review/confirmation. Inspect current remote main and use guarded fast-forward updates; preserve unrelated changes. Create a PR only when explicitly requested.
-- Open the application and test affected interactions, check the resulting GitHub Pages deployment, verify the live application, and provide the page link. Report concrete verification blockers accurately. The owner provides further device feedback.
-- Do not repeatedly ask about Kindle's intended use or the product's goals.
-- Record important technical decisions in reusable documentation.
-- After each change, automatically review and maintain durable project knowledge in the existing relevant documents. Record lasting requirements, rationale, reusable lessons and decision-relevant evidence; replace superseded content and remove duplication. Keep current state concise. Do not keep a chronological change log or require documentation for temporary implementation details; Git preserves history.
-- Provide actionable instructions and acceptance criteria for Codex development tasks.
-- Explain the reason before proposing changes to project scope or technical direction.
-- Do not present unconfirmed information as established fact.
+Use [AGENT_WORKFLOW.md](AGENT_WORKFLOW.md) for execution, verification, direct-main delivery and ongoing documentation/skill maintenance. Use the personal `maintain-kindle-learning-lab` skill when available; agents without it follow the repository workflow directly. This document remains the source of product requirements.
 
 ## Repository scope
 
