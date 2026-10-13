@@ -66,3 +66,7 @@ All five pages remain self-contained and reached through subjects.html. Recent-t
 | [PICTOGRAMS.md](PICTOGRAMS.md), [HUB_DESIGN.md](HUB_DESIGN.md) | Historical design decisions |
 | [TASK_TEMPLATE.md](TASK_TEMPLATE.md) | Development task format |
 
+
+## Upper-subject published-browser check (2026-10-13)
+
+Chrome opened all three activities at levels 7 and 12 in each of the five subjects (30 entry states). At the tested 1363px viewport, these states had no horizontal overflow or broken visible images. Representative completed flows covered English contextual vocabulary, Chinese passage/evidence, logic clue revision, science claim limits and story checking/revision. Level-9 science also saved a neutral prediction, revealed the supplied observation only through Observe, and retained the record afterward. Browser review caught and corrected a sufficient alternate paper-boat evidence set, repeated story-opening prose, and a misleading two-clue label when size was a third condition. Identical condition panels across science stages are rendered once. These checks do not establish semantic correctness of every reading interpretation, small-screen/Kindle/iOS rendering, or child comprehension.
