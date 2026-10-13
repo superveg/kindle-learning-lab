@@ -19,7 +19,7 @@ for(const q of data.logic.levels[0].families[0].tasks){const expected=q.options.
 for(const q of data.logic.levels[3].families[0].tasks){const clue=q.prompt.match(/(circle|square|triangle) outline AND NOT (plain|striped|filled)/);assert(clue);const expected=q.options.map((o,i)=>{let [shape,pattern]=o.art.split('-');return shape===clue[1]&&pattern!==clue[2]?i:-1;}).filter(i=>i>=0);assert.deepEqual(q.answers,expected);}
 const dom=new JSDOM(fs.readFileSync('english.html','utf8'),{runScripts:'dangerously',url:'https://example.test'}),w=dom.window,d=w.document;
 function tap(prefix){let b=[...d.querySelectorAll('button')].find(b=>(b.getAttribute('aria-label')||b.textContent).startsWith(prefix));assert(b,prefix);b.click();}
-tap('Level 3:');tap('Activity 1:');
+tap('Level 3:');tap('Activity 1:');assert(!d.querySelector('#choices .text-choice'),'Single letters remain word-building tiles, not full-width sentence cards');
 // Both cat and book are valid print-construction samples; deliberately choose a reversed order.
 const id=d.getElementById('play').getAttribute('data-task-id'),q=data.english.levels[2].families[0].tasks.find(q=>q.id===id);
 for(let i=q.items.length-1;i>=0;i--)tap('Add card '+(i+1)+':');assert(d.getElementById('feedback').textContent.startsWith('↺'));assert(d.getElementById('next').hidden);tap('↶ Undo');assert.equal(d.getElementById('feedback').textContent,'');assert.equal(d.querySelectorAll('#work .card').length,q.items.length-1);

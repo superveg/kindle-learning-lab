@@ -199,8 +199,8 @@ put('stories',6,
  F('Ask, then revise','New information can change a response.',[B2('Bear looks upset after a game. Rabbit does not know why.','sad',[('Ask what happened','Bear says the rules were confusing.'),('Ask whether help or space is wanted','Bear says help understanding the rules would be useful.')],[('Go over the rules together','They can clarify the rules and decide whether to continue.'),('Ask a trusted grown-up to explain','A grown-up can help with confusing rules.')]),B2('Rabbit is standing outside a group game. Bear is unsure whether Rabbit wants to join.','rabbit0',[('Ask if Rabbit wants to join','Rabbit says watching first feels better.'),('Offer information about the game','Rabbit says knowing the rules helps, but watching first is preferred.')],[('Respect watching first','Rabbit can watch and decide later.'),('Stay available for questions','Support can remain available without forcing participation.')])]))
 from expand_learning import expand
 expand(D,Q,A,O,S,B,B2,M,feat)
-from extend_learning import extend
-extend(D)
+from subject_depth import improve
+improve(D)
 from picture_first import apply
 apply(D)
 # Every displayed sample has a stable identity; no runtime language stitching.

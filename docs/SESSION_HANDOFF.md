@@ -1,6 +1,6 @@
 # Project handoff and durable session decisions
 
-Updated: 2026-10-12 (America/Los_Angeles). Start with this document, [PROJECT.md](PROJECT.md), and [STATUS.md](STATUS.md). This is a maintained handoff, not a transcript or a child assessment.
+Updated: 2026-10-12 (America/Denver). Start with this document, [PROJECT.md](PROJECT.md), and [STATUS.md](STATUS.md). This is a maintained handoff, not a transcript or a child assessment.
 
 ## Confirmed owner requirements
 
@@ -23,6 +23,8 @@ Updated: 2026-10-12 (America/Los_Angeles). Start with this document, [PROJECT.md
 ## Additional subjects
 
 The approved order Logic → Chinese → English → Everyday Science → Stories/Social Situations now has a first usable release: five pages, twelve levels each, thirty-six families per subject and 2,332 authored seeds. Use [LEARNING_MODULES.md](LEARNING_MODULES.md) for current implementation, build and testing, and [LEARNING_EXPANSION_PLAN.md](LEARNING_EXPANSION_PLAN.md) for academic direction. The immediate learner is three; levels are task structures, not age norms. Early language prompts and written logic clues may be narrated by an adult. English visual spelling is not systematic phonics; audio and actual Kindle Chinese glyph support remain unverified. Framework references inform original tasks; their effectiveness does not transfer automatically to this app.
+
+Upper subjects have a separate quality revision described in LEARNING_MODULES.md: subject-specific reading/grammar, investigation/evidence and interpersonal reasoning replace repeated ownership, arithmetic-record and resource-copy templates. New sources live in tools/subject_depth.py and learning/subject-pictures.js. Preserve alternative sufficient evidence and controlled investigation plans; keep known information separate from inferred intention. Earlier clues and observations must remain visible across phases. Do not treat language-string consistency tests as independent semantic validation.
 
 ## Current implementation
 

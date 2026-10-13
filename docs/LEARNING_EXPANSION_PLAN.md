@@ -1,5 +1,7 @@
 # Learning expansion plan — six levels beyond mathematics
 
+Current upper-level implementation and its revised per-subject map are maintained in [LEARNING_MODULES.md](LEARNING_MODULES.md). The outline below remains curriculum direction rather than a claim that all strands or grade outcomes are delivered.
+
 Status: first usable release implemented for all five subjects, six levels each and three activity families per level. See [LEARNING_MODULES.md](LEARNING_MODULES.md) for actual coverage and evidence. Maintain this plan in place as designs become implemented or evidence changes. This is not a change log or a claim of educational effectiveness.
 
 ## Confirmed scope and delivery order
