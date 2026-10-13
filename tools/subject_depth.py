@@ -126,7 +126,7 @@ def language(sub,l,f,s):
     details=[[1,2],[1,2],[1,2],[1,2],[1,2],[2],[0],[0],[2],[0],[1],[1]]
     inferences=[[0,1],[0,1],[0,1,2],[0,1],[1],[0,2],[0,1,2],[0],[0,1],[0],[0,1],[1,3]]
     evidence=(details if l==9 else inferences if l>=10 else causes)[s];proofs=[evidence]
-    alternatives=({0:[[1],[0,2]],4:[[0],[1,2]],11:[[1],[2]]} if l<9 else {4:[[1,2],[0,2]],7:[[0],[1,2]],11:[[1],[2]]} if l==9 else {2:[[0,1],[1,2]],4:[[1],[0,2]],7:[[0],[1,2]],8:[[0,1],[1,2]],10:[[0,1],[0,2]]})
+    alternatives=({0:[[1],[0,2]],4:[[0],[1,2]],11:[[1],[2]]} if l<9 else {4:[[1,2],[0,2]],7:[[0],[1,2]],11:[[1],[2]]} if l==9 else {2:[[0,1],[1,2]],4:[[1],[0,2]],7:[[0],[1,2]],8:[[0,1],[1,2]],10:[[0,1],[0,2]],11:[[1,3],[2,3]]})
     proofs=alternatives.get(s,proofs);evidence=proofs[0]
     possible=[list(ids) for n in range(1,4) for ids in combinations(range(4),n)]
     supports=lambda ids:any(all(i in ids for i in proof) for proof in proofs)
@@ -257,7 +257,7 @@ def stories(l,f,s):
         intro=event+' '+context
         a1='Ask what would help now.' if l<=9 else 'Check the current agreement and ask what has changed.'
         a2='Offer a choice of help or space.' if l<=9 else 'Pause and ask whether another plan is wanted.'
-        nodes={'start':{'text':intro,'art':art,'options':[{'text':a1,'to':'ask'},{'text':a2,'to':'choice'}]},
+        nodes={'start':{'text':intro,'options':[{'text':a1,'to':'ask'},{'text':a2,'to':'choice'}]},
                'ask':{'text':reveal,'options':[{'text':good1,'to':'end-a'},{'text':good2,'to':'end-b'}]},
                'choice':{'text':reveal+' The person can still choose whether to accept support.','options':[{'text':good2,'to':'end-c'},{'text':good1,'to':'end-d'}]},
                'end-a':{'text':'They try the chosen plan and check whether it works for both. Another request can change the plan.','end':True},
@@ -307,7 +307,7 @@ def logic(l,f,s):
     cards=[{'art':shape+'-'+fill+'-'+sz,'label':sz+' '+fill+' '+shape,'shape':i,'fill':j,'size':sz} for i,shape in enumerate(shapes) for j,fill in enumerate(features) for sz in ['small','large']]
     predicate=lambda c:c['shape']==target and c['fill']!=other and c['size']==size
     if l==7:
-        answers=[i for i,c in enumerate(cards) if predicate(c)];prompt='Select every card meeting both clues.';clues=['Shape: '+shapes[target]+'.','Not '+features[other]+'.'];op='two-clues'
+        answers=[i for i,c in enumerate(cards) if predicate(c)];prompt='Select every card meeting all stated clues.';clues=['Shape: '+shapes[target]+'.','Not '+features[other]+'.'];op='two-clues'
     elif l==8:
         answers=[i for i,c in enumerate(cards) if c['shape']==target and c['fill']==other and c['size']==size];prompt='Select the cards that break the stated rule.';clues=['Only check '+size+' cards.','If '+shapes[target]+', then NOT '+features[other]+'.','A rule is broken only when the first condition is present and the second fails.'];op='counterexample'
     elif l==9:

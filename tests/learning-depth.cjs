@@ -30,6 +30,8 @@ for(const [sub,cfg]of Object.entries(data))for(const level of cfg.levels.slice(6
  if(s.oracle?.type==='language-evidence'){assert(s.oracle.required.length<4);for(const option of s.options){assert(option.evidence.length<4);assert.deepEqual(option.panel.rows.map(r=>r[1]),option.evidence.map(i=>s.oracle.lines[i]));assert.deepEqual(option.panel.rows.map(r=>Number(r[0])),option.evidence.map(i=>i+1));}assert(!s.options.some(c=>c.text==='Only a guess'));}
  for(const c of s.scene||[]){if(c.panel){assert(c.panel.columns.length>=2);for(const row of c.panel.rows)assert.equal(row.length,c.panel.columns.length);const html=scope.SubjectPictures.html(c,{});assert(html.includes('<caption>'));assert(html.includes('scope="col"'));}}
 }}}
+// Editorial regression: the boat's wet-paper revision plus the spare-sheet detail is also sufficient.
+for(const sub of ['chinese','english'])for(const level of data[sub].levels.slice(9)){const evidence=level.families[2].tasks[11].stages[1];const i=evidence.options.findIndex(c=>JSON.stringify(c.evidence)==='[2,3]');assert(i>=0);assert(evidence.answers.includes(i));}
 for(const sub of Object.keys(data)){
  const raw=fs.readFileSync(sub+'.html','utf8');acorn.parse(raw.match(/<script>([\s\S]*?)<\/script>/)[1],{ecmaVersion:5});
  const html=raw.replace('loadMarks();loadHistory();levels();','window.__depth={open:function(l,f,qIndex){level=l;family=f;q=JSON.parse(JSON.stringify(CONFIG.levels[l-1].families[f].tasks[qIndex]));phase=0;done=false;selected=[];order=[];storyNode="start";show("play");render();},phase:function(){return phase;}};loadMarks();loadHistory();levels();');
@@ -37,7 +39,7 @@ for(const sub of Object.keys(data)){
  const click=label=>{const b=[...d.querySelectorAll('button')].find(b=>b.getAttribute('aria-label')===label||b.textContent===label);assert(b,label);b.click();};
  for(let l=7;l<=12;l++)for(let f=0;f<3;f++){
   const q=data[sub].levels[l-1].families[f].tasks[0];w.__depth.open(l,f,0);
-  if(q.mode==='branch'){let node='start';while(!q.nodes[node].end){const op=q.nodes[node].options[0];click('Story choice 1: '+op.text);node=op.to;}assert(d.getElementById('feedback').textContent.startsWith('✓'));continue;}
+  if(q.mode==='branch'){assert.equal(d.querySelectorAll('#scene .text-card').length,0,'Opening context appears once in its panel');let node='start';while(!q.nodes[node].end){const op=q.nodes[node].options[0];click('Story choice 1: '+op.text);node=op.to;}assert(d.getElementById('feedback').textContent.startsWith('✓'));continue;}
   for(const s of q.stages||[q]){
    const before=d.getElementById('scene').innerHTML;const hint=d.querySelector('.hint-control');assert(hint);hint.click();assert(d.querySelector('.hint'));assert.equal(d.getElementById('scene').innerHTML,before);
    if(s.mode==='order'){for(const i of orderSolution(s))click('Add card '+(i+1)+': '+s.items[i].label);continue;}
