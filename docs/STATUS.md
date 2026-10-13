@@ -8,10 +8,10 @@ Updated: 2026-10-12. For decisions and continuity, read [SESSION_HANDOFF.md](SES
 - Optional marker persistence and a separate real counting-resume diagnostic.
 - Four capability checks owner-reported passing on Kindle.
 - Drag/release diagnostics, timestamp-based elapsed time with approximately ten-second refreshes, and cancellable delayed-result diagnostics.
-- Twelve math themes and twelve task levels; 132 available combinations. Same-level random practice has no fixed question cap.
+- Sixteen math themes and twelve task levels; 160 available combinations. Four new strands begin at 6: bar models, measurement, data and time. Same-level random practice has no fixed question cap.
 - Levels 4–6 include tens, regrouping, grouping/remainders, multistep stories, constraint-based construction, spatial reasoning and introductory fractions.
 - Latest interaction revision: immediate numeric answers, passive reference models and optional explicit tools in bridge/bundle/regroup questions; visible upper-level task cues; one optional hint instead of a discovery ladder.
-- Picture-led interface: six topics per page, 132 passive level examples, played marks on level selection, compact toolbar, evenly spaced numeric answers and distinct Continue/level-change controls.
+- Picture-led interface: six topics per page across three pages, 160 passive level examples, played marks on level selection, compact toolbar, evenly spaced numeric answers and distinct Continue/level-change controls.
 - Runtime question quality: eight recent initial tasks per topic/level retained in page memory; up to twelve candidate generations preserve balanced variants while reducing recent repeats. Small banks repeat safely. See QUESTION_QUALITY.md.
 - After changes, maintain useful long-term project knowledge in place; no chronological change log or mandatory per-change report.
 
@@ -22,6 +22,9 @@ Development, verification, direct-main delivery and ongoing skill/documentation 
 The owner reports that iOS Home Screen web-app use avoids unwanted zoom in their setup. PR #4 for application-level zoom suppression was declined and closed without merging; its viewport and touch-guard changes are not deployed. This does not establish Kindle behavior.
 
 ## Checks and remaining uncertainty
+
+Current upper-math quality revision replaces shared decorative arithmetic extensions with topic-specific quantity/process models, visible symbol keys and optional thinking steps. New strands use units, scaled picture graphs, area/perimeter and time relationships. Independent checks pass 6,000 generated upper/new tasks and 1,848 exact representations; all 100 upper/new entries have hint/retry/completion/continuation coverage with normal and blocked storage. Navigation checks cover 160 passive previews. Actual rendered checks and Kindle/child understanding must be recorded separately; see MATH_SIX_LEVELS.md for the progression and remaining curriculum gaps.
+
 
 The twelve-level release adds 1,080 authored tasks (180 families total), picture-led paged menus and compact action cues. Independent software checks pass 4,320 new generated math tasks and all 72 new math-entry lifecycles; the 18,000-question learning DOM, authored quality, and 4,500-round recent-ten suites pass. Original math and Hub diagnostics pass. Reading content and necessary narrative/record conditions remain visible; higher written tasks can still require adult narration. Live Chrome verified the new paged menus and 17 representative activity entries across all five subjects: Logic levels 1/7/12 in all three families, plus the first family at 7/12 in each other subject. No broken visible images or desktop horizontal overflow appeared. An English level-12 evidence task retained its passage after a wrong retry, advanced its cue, completed passively and continued at the same level. Math level-7 rotate/reflection checked a stable wrong retry and completion; grid cells were measured at 24px in a correct 3×3 layout. This is targeted desktop evidence, not every rendered entry or child/Kindle validation. Actual-child/device comprehension remains pending.
 

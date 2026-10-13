@@ -32,6 +32,7 @@ Build interactive learning content for children roughly aged 3–8 using Kindle 
 - The owner requests a simpler picture-led interface and levels 7–12 beyond the original six. Reduce menu and operation prose while keeping essential learning content and conditions visible. Use composed, inverse and multi-condition reasoning; avoid increasing every child’s arithmetic range just because another strand is easy.
 
 
+- Expand depth and breadth together: later levels should connect representations and relationships and introduce appropriate new strands such as measurement, data and time. Do not reuse one symbolic challenge across differently named topics or substitute decorative pictures for mathematical models. See MATH_SIX_LEVELS.md for the current progression.
 - Math reference ages: roughly 3–8 years, with twelve independently selectable task levels.
 - Keep operation simple and minimize the need for adult assistance.
 - Early-level children may not yet be reading; later-level instructions still need concise visual support. Use pictograms for activity selection, navigation, feedback, and story choices; minimize visible text while retaining numerals and letters as learning content.

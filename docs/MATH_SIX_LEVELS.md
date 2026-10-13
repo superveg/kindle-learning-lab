@@ -1,22 +1,75 @@
 # Math levels 1–12: implementation and original 1–6 foundations
 
-## Current levels 7–12
+## Current depth and breadth: levels 6–12
 
-All twelve topics now expose levels through 12; the three later-starting topics keep their original minimum levels (4, 5 and 6). There are 132 available topic/level entries. Six picture previews appear per menu page; 7–12 use a second page. Played marks keep the existing storage key and legacy `level + 2` index. Manual Next stays at the current level, and optional advance ends at 12. Levels are independently selectable skills, not age or grade assignments.
+The owner requested an individual quality review of levels 6–12: improve weak diagrams and unclear processes, deepen the existing strands and introduce additional mathematical topics as prerequisites accumulate. The app now has sixteen topics and 160 selectable topic/level entries. Four later-starting strands begin at 6; the original minimum levels remain unchanged. Topic menus use three pages of at most six pictures; level menus use two pages. Original topic IDs and played-mark storage identities are unchanged.
 
-`learning/higher-math.js` provides bounded generators, and `learning/pictures.js` renders exact static grids, rule diagrams and equal-part fraction strips. `tools/build_math_extensions.py` embeds both in self-contained `math.html`; commit sources and page together. Arithmetic extensions share small-operand symbolic challenges across the original arithmetic topic contexts: multiplication/addition, distributive grouping, missing factors, balance equations, ratios and inverse expressions. They increase relationship complexity rather than assigning every child larger addition/subtraction.
+Levels remain independent task structures, not ages, school grades or a complete Singapore course. An easy spatial level does not establish arithmetic readiness. Difficulty should connect representations and relationships, not merely enlarge operands or add unfamiliar symbols.
+
+### Quality findings and resulting contracts
+
+- The earlier seven arithmetic-themed extensions reused the same six symbolic expressions with one decorative topic image. The new train, track, comparison, place-value and sharing generators have different mathematical structures. Rabbit equal-group tasks use actual groups; counter tasks use arrays, including a visible per-row split for distributivity.
+- A picture must encode the quantities or relationship being used. Decorative nouns cannot substitute for the model. Unknown groups are shown as unknowns, not as a countable hidden answer. Matching unknown bar portions are equal; known extras have different dashed borders. Unknown quantity bars are schematic, not a scale from which to measure the answer.
+- Transformation tasks show intermediate operations rather than only two disconnected grids. Visible keys explain quarter-turns, mirror axes, exactly-one overlap, relative turns, route constraints and feature conditions. Logic uses short AND/OR wording and examples; essential meaning is not confined to a folded adult guide.
+- Every upper task offers optional thinking steps. Answers stay available immediately; opening guidance does not regenerate the task or change the answer. Wrong retries preserve both model and shown guidance. Completion removes obsolete guidance, retains the result and allows manual same-level continuation.
+- Numeric distractors include plausible errors where applicable: forgetting extras, reading the endpoint instead of ruler length, ignoring chart scale or confusing perimeter and area. They remain distinct from the valid answer.
+- Carry, borrow, shifted-ruler and hour-crossing generators enforce their named structural conditions. Unit conversions preserve explicit units. There is no timer, animation loop or automatic advancement.
+
+### Existing arithmetic strands: topic-specific progression
+
+| Strand | 6 foundation | 7 | 8 | 9 | 10 | 11 | 12 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Rabbits | Full servings and leftovers | Groups plus extras | Split each group | Unknown group size | Balanced totals | Multiplicative comparison | Inverse grouping and removal |
+| Train | Undo two stops | Apply two changes | Undo two changes | Connect three changes | Transfer to another train | Transfer until equal | Undo three changes |
+| Track | Length and piece-count constraints | Combine two lengths | Infer short-piece count | Infer long-piece count | Find piece count | Difference from all-long stock | Infer unknown piece length |
+| Counters | Array and hidden counters | Array plus extras | Distributive row split | Unknown array dimension | Balance totals | Equal array units | Recover a dimension |
+| Comparison | Sum and difference | Sum and difference model | Multiplicative sum | Multiplicative difference | Equalize by transfer | Relation then change | Ratio with an extra |
+| Tens | Missing amount | Carry with tens/ones | Borrow with tens/ones | Compensate around ten | Missing amount | Exchange one ten | Compose two changes |
+| Sharing | Whole shares/remainders | Equal shares plus leftover | Remainder | Number of groups | Only full groups | Complete equal sharing | Reverse group relation |
+
+### Existing spatial, rule and fraction strands
 
 | Strand | 7 | 8 | 9 | 10 | 11 | 12 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Shapes | Rotate then reflect | Composed reflection | Several operations | Inverse composition | Transform then combine two grids by XOR | Another composed grid/XOR condition |
-| Position | Turn relative to current facing | Reverse turns from an endpoint | Shortest path around walls | Shortest path through a waypoint | Get a key, visit a locked door, then reach the flag | Key plus ordered waypoint/door conditions |
-| Patterns | Alternating increments | Two interleaved sequences | Transformed grid/XOR | Increasing differences | Inverse affine relation | Increasing step size |
-| Sorting | Exactly one of two features | Three features together | OR within a negative condition | Two alternative conjunctions | Counterexample to an implication | Combine features while excluding one exact card |
-| Fractions | Like-denominator addition | Like-denominator subtraction | Equivalent numerators | Groups of a fraction | Complete one whole | Missing addend |
+| Shapes | Turn then reflect | Composed reflection | Three transformations | Recover original grid | Transform plus exactly-one overlap | Another composition and mask |
+| Position | Relative turns | Recover start | Shortest legal route | Shortest through waypoint | Key before door before flag | Key plus ordered visits |
+| Patterns | Alternating increments | Separate interleaved rows | Transformed-grid pattern | Increasing differences | Inverse number machine | Increasing step size |
+| Sorting | Exactly one feature | Three features | Either feature with exclusion | Alternative conjunctions | Counterexample | Combined features excluding one card |
+| Fractions | Like-denominator addition | Like-denominator subtraction | Equivalent partitions | Groups of one third | Complete one whole | Missing fraction addend |
 
-Every route is constructed from a witness satisfying its conditions; obstacles stay off that witness. An independent state-space search verifies shortest distances. All matching selection cards are checked; wrong attempts preserve task state and completion makes choices passive. Math action prose is visually replaced by phase-specific symbols while full text remains accessible and in the adult guide. Essential equations and model quantities stay visible. These are initial original challenge strands, not comprehensive later-grade curricula.
+These strands still need child observation, especially exactly-one grid overlap, implication counterexamples and shortest-route counting. More operations do not automatically constitute better geometry or a balanced curriculum. Do not describe these puzzles as a comprehensive geometry progression.
 
-Verification: `tests/extended-quality.cjs` uses independent coordinate transformations, set predicates, arithmetic/fraction calculations and a route-state search across 4,320 new generated tasks; it exercises all 72 new entry lifecycles and the level-12 boundary. The original math DOM, higher-level, quality, usability and navigation checks still protect 1–6. `tests/math-navigation.cjs` verifies 132 passive previews without consuming practice randomness. Actual child understanding of composed rules, symbols, relative turns and minimum-path counting remains a device/use check.
+### New breadth strands, each starting at level 6
+
+| Topic | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Bar Model Lab | Whole and missing part | Sum/difference | Multiplicative total | Multiplicative difference | Equalizing transfer | Relation followed by change | Equal units with an extra |
+| Measure and Build | Ruler starting away from zero | Scaled ruler | Metres and centimetres | Missing rectangle side from perimeter | Rectangular area | L-shaped area by removing a corner | Equal area, different perimeter |
+| Data Detective | Read picture graph | Apply mark scale | Scaled category difference | Combine categories | Recover the scale | Infer missing category | Largest/smallest difference |
+| Time Journey | Within-hour elapsed time | Across-hour elapsed time | Hours/minutes conversion | Ending time | Starting time | Work versus breaks | Reverse a timetable |
+
+The new topics introduce different mathematical objects, units and representations rather than relabeling an existing equation. They currently use bounded generated original tasks and passive diagrams. Time uses explicit same-day digital times and timelines; analog clock reading, dates, midnight crossings and calendars are not delivered. Measurements cover length/area/perimeter; mass and liquid volume remain future work.
+
+### Source, navigation and verification
+
+`learning/higher-math.js` owns the generated upper/new tasks, mathematical model renderer, meaningful hints, visible keys, topic descriptions and passive previews. `learning/higher-math.css` owns their layout. `tools/build_math_extensions.py` embeds these and shared `learning/pictures.js` into self-contained `math.html`; commit all authoring and generated changes together. Math-specific models do not change the other subject pages. Menus never generate practice tasks or consume randomness.
+
+`tests/extended-quality.cjs` independently solves 6,000 generated tasks across all 100 upper/new entries, preserves the other-subject diagram checks, and tests retries, passive completion, same-level Next and the level-12 limit. `tests/math-depth-models.cjs` checks 1,848 exact diagrams, named generator conditions, optional guidance, stable retries, result cleanup and continuation for all 100 entries under normal and blocked storage. `tests/math-navigation.cjs` checks 160 passive previews and all three topic pages without randomness consumption. Existing math suites protect levels 1–6; these software checks do not establish rendered layout, Kindle support or child comprehension.
+
+### Next breadth and depth, with prerequisites
+
+| Next strand or refinement | Required foundation | Meaningful extension |
+| --- | --- | --- |
+| Money and budgeting | Value equivalence and base-ten units | Coins, cents/dollars, change, constrained purchase choices |
+| Mass and capacity | Reading scales and units | Compare measurements, unit conversion and combining quantities |
+| Geometry beyond grid operations | Shape properties and measurement | Angles, symmetry axes, 3D faces/nets and spatial explanations |
+| Fractions beyond same denominators | Same whole, equal partitions and equivalence | Unlike-denominator comparison/addition and fractions of a set |
+| Decimals and percentage | Place value and fraction equivalence | Tenths/hundredths, decimal measurement and proportional quantities |
+| Reasoning and strategy | Understand the current mathematical model | Choose a valid model, explain an error, find multiple solutions and check by an inverse relation |
+
+Prioritize model-choice and error-explanation activities before adding more symbolic operation chains. Use concrete objects outside the screen where useful, then connect an accurate diagram to notation. The app can provide original bounded practice; its results do not measure mastery or validate a child's readiness.
+
+Curriculum reference: Singapore MOE [Primary Mathematics syllabus, updated October 2025](https://www.moe.gov.sg/-/media/files/primary/2021-primary-mathematics-syllabus-p1-to-p6-updated-october-2025.pdf) organizes Number/Algebra, Measurement/Geometry and Statistics with mathematical processes across them. The indexed Primary Two content includes measurement, time and scaled picture graphs; the PDF download itself was blocked during this review, so no complete syllabus-coverage claim is made. NIE/NTU's [CPA course description](https://www.ntu.edu.sg/admissions/continuing-education-programmes/detail/nie-cme0002-singapore-primary-mathematics-concrete-pictorial-abstract) emphasizes connecting concrete materials, representations and notation. These inform this original design, not a licensed course, grade map or effectiveness claim.
 
 ## Original levels 1–6: direction and delivery order
 
@@ -43,7 +96,7 @@ Implementation order: six-level navigation; level 4 arithmetic; level 4 spatial/
 
 The first nine topics retain their existing levels 1–3. Tens Workshop begins at 4, Share Fairly at 5, Fraction Kitchen at 6. Topic tiles show marks only for available levels. Every available level is selectable. Six staircase bars and a persistent numeric badge identify the current level.
 
-This is an original pictorial activity bank inspired by concrete–pictorial–abstract progression. It is not a complete Singapore Mathematics syllabus, licensed course, or validated assessment. Fractions do not yet include fraction arithmetic; multiplication uses small equal groups, not a full times-table curriculum. The goal is conceptual progression before expanding breadth.
+This is an original pictorial activity bank inspired by concrete–pictorial–abstract progression. It is not a complete Singapore Mathematics syllabus, licensed course, or validated assessment. The original level-6 fraction foundation is introductory; the current upper levels add like-denominator arithmetic. Multiplication still uses bounded small equal groups, not a full times-table curriculum. Current breadth and remaining gaps are described above.
 
 ## Generators and mathematical conditions
 
